@@ -1,0 +1,10 @@
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\bin\Debug\Centipac.exe.config
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\bin\Debug\Centipac.exe
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\bin\Debug\Centipac.pdb
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\bin\Debug\MaterialSkin.dll
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.csprojResolveAssemblyReference.cache
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.Properties.Resources.resources
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.csproj.GenerateResource.Cache
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.exe
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.pdb
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.Form1.resources
