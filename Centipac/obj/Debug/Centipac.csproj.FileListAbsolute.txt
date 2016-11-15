@@ -8,3 +8,4 @@ c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\
 c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.exe
 c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.pdb
 c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.Form1.resources
+c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.loginForm.resources
