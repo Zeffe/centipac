@@ -28,6 +28,7 @@ namespace Centipac
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            lblStatus.Text = "Logging in...";
             try
             {
                 string postData = "username=" + txtUser.Text + "&password=" + txtPass.Text;
@@ -42,17 +43,17 @@ namespace Centipac
                 reqStream.Close();
                 StreamReader sr = new StreamReader(request.GetResponse().GetResponseStream());
                 string result = sr.ReadToEnd();
-                msgbox msg = new Centipac.msgbox(result, "Error", 1);
-                msg.Show();
-
-                /* implement JWT token for security reasons 
-                 * https://github.com/firebase/php-jwt
-                 * http://stackoverflow.com/questions/29121112/how-to-implement-token-based-authentication-securely-for-accessing-the-website
-                 */
+                if (!result.Contains("token"))
+                {
+                    lblStatus.Text = "Invalid username or password.";
+                } else
+                {
+                    lblStatus.Text = "Success";
+                }
             }
             catch
             {
-                MessageBox.Show("Could not connect to server.");
+                lblStatus.Text = "Couldn't connect to server.";
             }
         }
     }

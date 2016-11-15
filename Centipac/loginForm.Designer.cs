@@ -31,13 +31,14 @@
             this.txtUser = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtPass = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnLogin = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.lblStatus = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // txtUser
             // 
             this.txtUser.Depth = 0;
             this.txtUser.Hint = " Username";
-            this.txtUser.Location = new System.Drawing.Point(46, 86);
+            this.txtUser.Location = new System.Drawing.Point(46, 79);
             this.txtUser.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
@@ -52,7 +53,7 @@
             // 
             this.txtPass.Depth = 0;
             this.txtPass.Hint = " Password";
-            this.txtPass.Location = new System.Drawing.Point(46, 115);
+            this.txtPass.Location = new System.Drawing.Point(46, 108);
             this.txtPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
@@ -66,7 +67,7 @@
             // btnLogin
             // 
             this.btnLogin.Depth = 0;
-            this.btnLogin.Location = new System.Drawing.Point(76, 152);
+            this.btnLogin.Location = new System.Drawing.Point(75, 140);
             this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Primary = true;
@@ -76,16 +77,31 @@
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // lblStatus
+            // 
+            this.lblStatus.BackColor = System.Drawing.Color.White;
+            this.lblStatus.Depth = 0;
+            this.lblStatus.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblStatus.Location = new System.Drawing.Point(12, 173);
+            this.lblStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(234, 24);
+            this.lblStatus.TabIndex = 3;
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // loginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(258, 190);
+            this.ClientSize = new System.Drawing.Size(258, 203);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUser);
             this.MaximizeBox = false;
             this.Name = "loginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
 
@@ -96,5 +112,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtUser;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPass;
         private MaterialSkin.Controls.MaterialRaisedButton btnLogin;
+        private MaterialSkin.Controls.MaterialLabel lblStatus;
     }
 }
