@@ -41,7 +41,7 @@
             this.lblMessage.Depth = 0;
             this.lblMessage.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblMessage.Location = new System.Drawing.Point(26, 91);
+            this.lblMessage.Location = new System.Drawing.Point(10, 74);
             this.lblMessage.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(87, 19);
@@ -52,7 +52,7 @@
             // 
             this.btnNo.Depth = 0;
             this.btnNo.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.btnNo.Location = new System.Drawing.Point(119, 103);
+            this.btnNo.Location = new System.Drawing.Point(42, 74);
             this.btnNo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNo.Name = "btnNo";
             this.btnNo.Primary = true;
@@ -67,7 +67,7 @@
             // 
             this.btnYes.Depth = 0;
             this.btnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.btnYes.Location = new System.Drawing.Point(45, 65);
+            this.btnYes.Location = new System.Drawing.Point(12, 73);
             this.btnYes.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnYes.Name = "btnYes";
             this.btnYes.Primary = true;
@@ -82,7 +82,7 @@
             // 
             this.btnOk.Depth = 0;
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(130, 74);
+            this.btnOk.Location = new System.Drawing.Point(69, 73);
             this.btnOk.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnOk.Name = "btnOk";
             this.btnOk.Primary = true;
@@ -97,11 +97,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 174);
-            this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.btnYes);
-            this.Controls.Add(this.btnNo);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(102, 108);
             this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.btnYes);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.btnNo);
             this.MaximizeBox = false;
             this.Name = "msgbox";
             this.Text = "msgbox";
