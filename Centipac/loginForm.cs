@@ -42,10 +42,17 @@ namespace Centipac
                 reqStream.Close();
                 StreamReader sr = new StreamReader(request.GetResponse().GetResponseStream());
                 string result = sr.ReadToEnd();
-                MessageBox.Show(result);
-            } catch
-            {
+                msgbox msg = new Centipac.msgbox(result, "Error", 1);
+                msg.Show();
 
+                /* implement JWT token for security reasons 
+                 * https://github.com/firebase/php-jwt
+                 * http://stackoverflow.com/questions/29121112/how-to-implement-token-based-authentication-securely-for-accessing-the-website
+                 */
+            }
+            catch
+            {
+                MessageBox.Show("Could not connect to server.");
             }
         }
     }
