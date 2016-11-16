@@ -12,6 +12,7 @@ using System.Net;
 using ExtensionMethods;
 using System.IO;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace Centipac
 {
@@ -29,7 +30,7 @@ namespace Centipac
 
         User activeUser = new User();
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        void login()
         {
             lblStatus.Text = "Logging in...";
             StringBuilder postData = new StringBuilder();
@@ -42,7 +43,8 @@ namespace Centipac
             if (!result.Contains("token"))
             {
                 lblStatus.Text = "Invalid username or password.";
-            } else
+            }
+            else
             {
                 activeUser.updateToken(result);
 
@@ -50,7 +52,8 @@ namespace Centipac
                 {
                     registerForm register = new registerForm(activeUser);
                     register.Show();
-                } else
+                }
+                else
                 {
                     mainForm main = new mainForm(activeUser);
                     main.Show();
@@ -62,6 +65,27 @@ namespace Centipac
             if (result == "Couldn't connect to server.")
             {
                 lblStatus.Text = result;
+            }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            login();
+        }
+
+        private void txtUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtPass.Focus();
+            }
+        }
+
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                login();
             }
         }
     }
