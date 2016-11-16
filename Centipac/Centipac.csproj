@@ -82,6 +82,7 @@
       <DependentUpon>registerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Server.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="User.cs" />
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
