@@ -11,6 +11,7 @@ using MaterialSkin;
 using System.Net;
 using ExtensionMethods;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Centipac
 {
@@ -26,34 +27,41 @@ namespace Centipac
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        User activeUser = new User();
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             lblStatus.Text = "Logging in...";
-            try
-            {
-                string postData = "username=" + txtUser.Text + "&password=" + txtPass.Text;
-                string url = "https://conveyable-wrenches.000webhostapp.com/login.php";
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("username", txtUser.Text);
+            postData.AppendUrlEncoded("password", txtPass.Text);
+            string url = "https://conveyable-wrenches.000webhostapp.com/login.php";
 
-                WebRequest request = WebRequest.Create(url);
-                request.Method = "POST";
-                request.ContentType = "application/x-www-form-urlencoded";
-                Stream reqStream = request.GetRequestStream();
-                byte[] postBytes = ASCIIEncoding.ASCII.GetBytes(postData);
-                reqStream.Write(postBytes, 0, postBytes.Length);
-                reqStream.Close();
-                StreamReader sr = new StreamReader(request.GetResponse().GetResponseStream());
-                string result = sr.ReadToEnd();
-                if (!result.Contains("token"))
+            string result = Server.postPHP(url, postData.ToString());
+
+            if (!result.Contains("token"))
+            {
+                lblStatus.Text = "Invalid username or password.";
+            } else
+            {
+                activeUser.updateToken(result);
+
+                if (txtUser.Text == "admin")
                 {
-                    lblStatus.Text = "Invalid username or password.";
+                    registerForm register = new registerForm(activeUser);
+                    register.Show();
                 } else
                 {
-                    lblStatus.Text = "Success";
+                    mainForm main = new mainForm(activeUser);
+                    main.Show();
                 }
+
+                this.Hide();
             }
-            catch
+
+            if (result == "Couldn't connect to server.")
             {
-                lblStatus.Text = "Couldn't connect to server.";
+                lblStatus.Text = result;
             }
         }
     }

@@ -16,9 +16,12 @@ C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\Centipac.exe
 C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\Centipac.pdb
 C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\MaterialSkin.dll
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.csprojResolveAssemblyReference.cache
-C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.Form1.resources
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.loginForm.resources
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.Properties.Resources.resources
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.csproj.GenerateResource.Cache
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.msgbox.resources
 C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.msgbox.resources
+C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\Newtonsoft.Json.dll
+C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\Newtonsoft.Json.xml
+C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.mainForm.resources
+C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.registerForm.resources
