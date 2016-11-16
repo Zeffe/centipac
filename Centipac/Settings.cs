@@ -38,6 +38,7 @@ namespace Centipac
             materialSkinManager.ColorScheme = Settings.colorSchemes[colorScheme];
 
             Properties.Settings.Default["COLORSCHEME"] = colorScheme;
+            Properties.Settings.Default["THEME"] = theme;
             Properties.Settings.Default.Save();
 
             return materialSkinManager;

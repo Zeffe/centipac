@@ -7,7 +7,6 @@ c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\
 c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.csproj.GenerateResource.Cache
 c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.exe
 c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.pdb
-c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.Form1.resources
 c:\users\seth\documents\visual studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.loginForm.resources
 C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\Centipac.exe.config
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.exe
@@ -25,3 +24,7 @@ C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\Newtonsoft.Json.dll
 C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\Newtonsoft.Json.xml
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.mainForm.resources
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.registerForm.resources
+C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.mainForm.resources
+C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.registerForm.resources
+C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\bin\Debug\Newtonsoft.Json.xml

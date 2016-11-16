@@ -39,7 +39,12 @@ namespace Centipac
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
+            Settings.changeSkin(comboBox1.SelectedItem.ToString(), Properties.Settings.Default["THEME"].ToString(), this);
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), comboBox2.SelectedItem.ToString(), this);
         }
     }
 }
