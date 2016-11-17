@@ -21,8 +21,10 @@ namespace Centipac
 
             activeUser = user;
 
-            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
+            var materialSkinManager = Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
         }
+
+
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -31,7 +33,21 @@ namespace Centipac
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            foreach(KeyValuePair<string, ColorScheme> entry in Settings.colorSchemes)
+            string username = activeUser.data.Split('_')[1].Split('-')[0];
+
+            MaterialSkin.Controls.MaterialFlatButton user = new MaterialSkin.Controls.MaterialFlatButton();
+            user.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
+            user.ForeColor = Color.White;
+            user.Text = username;
+            user.Name = "btnUser";
+            user.useBackColor = true;
+            user.useForeColor = true;
+            user.ForeColor = Color.White;
+            user.Location = new System.Drawing.Point(this.Size.Width - user.Size.Width - 1, 26);            
+            this.Controls.Add(user);
+
+
+            foreach (KeyValuePair<string, ColorScheme> entry in Settings.colorSchemes)
             {
                 comboBox1.Items.Add(entry.Key);
             }
@@ -40,11 +56,14 @@ namespace Centipac
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Settings.changeSkin(comboBox1.SelectedItem.ToString(), Properties.Settings.Default["THEME"].ToString(), this);
+
+            MaterialSkin.Controls.MaterialFlatButton userBtn = this.Controls.Find("btnUser", false)[0] as MaterialSkin.Controls.MaterialFlatButton;
+            userBtn.BackColor = Settings.colorSchemes[comboBox1.SelectedItem.ToString()].PrimaryColor;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), comboBox2.SelectedItem.ToString(), this);
+            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), comboBox2.SelectedItem.ToString(), this);         
         }
     }
 }

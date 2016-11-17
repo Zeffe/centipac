@@ -68,12 +68,13 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnLogin.Depth = 0;
-            this.btnLogin.Location = new System.Drawing.Point(75, 140);
+            this.btnLogin.Location = new System.Drawing.Point(100, 141);
             this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Primary = true;
-            this.btnLogin.Size = new System.Drawing.Size(105, 26);
+            this.btnLogin.Size = new System.Drawing.Size(60, 26);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;

@@ -14,9 +14,9 @@ namespace Centipac
         {
             { "Default", new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE)},
             { "Amber", new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Amber500, Accent.LightBlue200, TextShade.WHITE)},
-            { "Red", new ColorScheme(Primary.Red800, Primary.Red900, Primary.Red500, Accent.LightBlue200, TextShade.WHITE) },
-            { "Green", new ColorScheme(Primary.Green800, Primary.Green900, Primary.Green500, Accent.LightBlue200, TextShade.WHITE) },
-            { "Grey", new ColorScheme(Primary.Grey800, Primary.Grey900, Primary.Grey500, Accent.LightBlue200, TextShade.WHITE) }
+            { "Indigo", new ColorScheme(Primary.Indigo500, Primary.Indigo700, Primary.Indigo100, Accent.Pink200, TextShade.WHITE) },
+            { "Green", new ColorScheme(Primary.Green600, Primary.Green700, Primary.Green200, Accent.Red100, TextShade.WHITE) },
+            { "Grey", new ColorScheme(Primary.Grey500, Primary.Grey700, Primary.Grey100, Accent.LightBlue200, TextShade.WHITE) }
         };   
 
         public static MaterialSkinManager.Themes getTheme(string theme)
