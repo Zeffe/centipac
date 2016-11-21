@@ -42,6 +42,6 @@ namespace Centipac
             Properties.Settings.Default.Save();
 
             return materialSkinManager;
-        }     
+        }  
     }
 }

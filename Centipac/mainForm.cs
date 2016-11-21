@@ -43,13 +43,27 @@ namespace Centipac
             user.useBackColor = true;
             user.useForeColor = true;
             user.ForeColor = Color.White;
-            user.Location = new System.Drawing.Point(this.Size.Width - user.Size.Width - 1, 26);            
+            user.Location = new System.Drawing.Point(this.Size.Width - user.Size.Width - 1, 26);
+            user.Click += new EventHandler(this.onUserClick);       
             this.Controls.Add(user);
 
+            groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
+            groupUserOptions.Location = new Point(this.Width - groupUserOptions.Width - 3, user.Location.Y + user.Size.Height);
+            groupUserOptions.DiamondPos = user.Location.X - groupUserOptions.Location.X + (user.Width / 2) - 9;
+            btnLogOut.Width = btnSettings.Width;
 
             foreach (KeyValuePair<string, ColorScheme> entry in Settings.colorSchemes)
             {
                 comboBox1.Items.Add(entry.Key);
+            }
+        }
+
+        private void onUserClick(object sender, EventArgs e)
+        {
+            groupUserOptions.Visible = !groupUserOptions.Visible;
+            if (groupUserOptions.Visible)
+            {
+                groupUserOptions.Focus();
             }
         }
 
@@ -59,11 +73,23 @@ namespace Centipac
 
             MaterialSkin.Controls.MaterialFlatButton userBtn = this.Controls.Find("btnUser", false)[0] as MaterialSkin.Controls.MaterialFlatButton;
             userBtn.BackColor = Settings.colorSchemes[comboBox1.SelectedItem.ToString()].PrimaryColor;
+            groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), comboBox2.SelectedItem.ToString(), this);         
+            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), comboBox2.SelectedItem.ToString(), this);  
+               
+        }
+
+        private void groupUserOptions_Leave(object sender, EventArgs e)
+        {
+            groupUserOptions.Visible = false;
+        }
+
+        private void materialTabControl1_MouseClick(object sender, MouseEventArgs e)
+        {
+            groupUserOptions.Visible = false;
         }
     }
 }
