@@ -28,3 +28,4 @@ C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\obj\Debug\
 C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\bin\Debug\MaterialSkin.pdb
+C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\bin\Debug\MaterialSkin.dll

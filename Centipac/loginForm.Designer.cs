@@ -39,6 +39,7 @@
             this.txtUser.Depth = 0;
             this.txtUser.Hint = " Username";
             this.txtUser.Location = new System.Drawing.Point(46, 79);
+            this.txtUser.MaxLength = 32767;
             this.txtUser.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
@@ -47,6 +48,7 @@
             this.txtUser.SelectionStart = 0;
             this.txtUser.Size = new System.Drawing.Size(168, 23);
             this.txtUser.TabIndex = 0;
+            this.txtUser.TabStop = false;
             this.txtUser.UseSystemPasswordChar = false;
             this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUser_KeyDown);
             // 
@@ -55,6 +57,7 @@
             this.txtPass.Depth = 0;
             this.txtPass.Hint = " Password";
             this.txtPass.Location = new System.Drawing.Point(46, 108);
+            this.txtPass.MaxLength = 32767;
             this.txtPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
@@ -63,6 +66,7 @@
             this.txtPass.SelectionStart = 0;
             this.txtPass.Size = new System.Drawing.Size(168, 23);
             this.txtPass.TabIndex = 1;
+            this.txtPass.TabStop = false;
             this.txtPass.UseSystemPasswordChar = false;
             this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPass_KeyDown);
             // 
@@ -70,6 +74,7 @@
             // 
             this.btnLogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnLogin.Depth = 0;
+            this.btnLogin.Icon = null;
             this.btnLogin.Location = new System.Drawing.Point(100, 141);
             this.btnLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLogin.Name = "btnLogin";
@@ -106,6 +111,7 @@
             this.Name = "loginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.loginForm_FormClosing);
             this.ResumeLayout(false);
 
         }

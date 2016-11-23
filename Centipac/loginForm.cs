@@ -25,17 +25,16 @@ namespace Centipac
             Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
         }
 
-        User activeUser = new User();
 
         void login()
         {
-            lblStatus.Text = "Logging in...";
             StringBuilder postData = new StringBuilder();
             postData.AppendUrlEncoded("username", txtUser.Text);
             postData.AppendUrlEncoded("password", txtPass.Text);
             string url = "https://conveyable-wrenches.000webhostapp.com/login.php";
 
             string result = Server.postPHP(url, postData.ToString());
+            User activeUser = new User();
 
             if (!result.Contains("token"))
             {
@@ -67,6 +66,7 @@ namespace Centipac
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            lblStatus.Text = "Logging in...";
             login();
         }
 
@@ -75,6 +75,8 @@ namespace Centipac
             if (e.KeyCode == Keys.Enter)
             {
                 txtPass.Focus();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -82,8 +84,16 @@ namespace Centipac
         {
             if (e.KeyCode == Keys.Enter)
             {
+                lblStatus.Text = "Logging in...";
                 login();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
+
+        private void loginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }      
     }
 }

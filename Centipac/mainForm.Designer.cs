@@ -35,8 +35,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupUserOptions = new MaterialSkin.Controls.MaterialGroupBox();
-            this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnLogOut = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -120,12 +120,27 @@
             this.groupUserOptions.Location = new System.Drawing.Point(187, 63);
             this.groupUserOptions.MouseState = MaterialSkin.MouseState.HOVER;
             this.groupUserOptions.Name = "groupUserOptions";
-            this.groupUserOptions.Size = new System.Drawing.Size(97, 93);
+            this.groupUserOptions.Size = new System.Drawing.Size(97, 99);
             this.groupUserOptions.TabIndex = 4;
             this.groupUserOptions.TabStop = false;
             this.groupUserOptions.Text = "materialGroupBox1";
             this.groupUserOptions.Visible = false;
             this.groupUserOptions.Leave += new System.EventHandler(this.groupUserOptions_Leave);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnLogOut.Depth = 0;
+            this.btnLogOut.Icon = null;
+            this.btnLogOut.Location = new System.Drawing.Point(6, 57);
+            this.btnLogOut.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Primary = true;
+            this.btnLogOut.Size = new System.Drawing.Size(85, 36);
+            this.btnLogOut.TabIndex = 1;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnSettings
             // 
@@ -133,7 +148,7 @@
             this.btnSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSettings.Depth = 0;
             this.btnSettings.Icon = null;
-            this.btnSettings.Location = new System.Drawing.Point(6, 12);
+            this.btnSettings.Location = new System.Drawing.Point(6, 16);
             this.btnSettings.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Primary = true;
@@ -141,21 +156,6 @@
             this.btnSettings.TabIndex = 0;
             this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = true;
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.AutoSize = true;
-            this.btnLogOut.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnLogOut.Depth = 0;
-            this.btnLogOut.Icon = null;
-            this.btnLogOut.Location = new System.Drawing.Point(10, 51);
-            this.btnLogOut.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Primary = true;
-            this.btnLogOut.Size = new System.Drawing.Size(77, 36);
-            this.btnLogOut.TabIndex = 1;
-            this.btnLogOut.Text = "Log Out";
-            this.btnLogOut.UseVisualStyleBackColor = true;
             // 
             // mainForm
             // 
@@ -189,8 +189,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private MaterialSkin.Controls.MaterialGroupBox groupUserOptions;
-        private MaterialSkin.Controls.MaterialRaisedButton btnSettings;
         private MaterialSkin.Controls.MaterialRaisedButton btnLogOut;
+        private MaterialSkin.Controls.MaterialRaisedButton btnSettings;
     }
 }
 

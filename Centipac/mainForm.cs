@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using MaterialSkin;
 
@@ -15,6 +15,9 @@ namespace Centipac
     {
 
         User activeUser;
+        bool logout = false;
+
+
         public mainForm(User user)
         {
             InitializeComponent();
@@ -28,7 +31,10 @@ namespace Centipac
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (!logout)
+            {
+                Application.Exit();
+            }
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -50,7 +56,6 @@ namespace Centipac
             groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
             groupUserOptions.Location = new Point(this.Width - groupUserOptions.Width - 3, user.Location.Y + user.Size.Height);
             groupUserOptions.DiamondPos = user.Location.X - groupUserOptions.Location.X + (user.Width / 2) - 9;
-            btnLogOut.Width = btnSettings.Width;
 
             foreach (KeyValuePair<string, ColorScheme> entry in Settings.colorSchemes)
             {
@@ -90,6 +95,14 @@ namespace Centipac
         private void materialTabControl1_MouseClick(object sender, MouseEventArgs e)
         {
             groupUserOptions.Visible = false;
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            loginForm logOut = new loginForm();
+            logOut.Show();
+            logout = true;
+            this.Close();
         }
     }
 }
