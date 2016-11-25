@@ -10,6 +10,7 @@ namespace Centipac
 {
     public class Settings
     {
+        //  Theme presets
         public static Dictionary<string, ColorScheme> colorSchemes = new Dictionary<string, ColorScheme>()
         {
             { "Default", new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE)},
@@ -30,6 +31,7 @@ namespace Centipac
             return MaterialSkinManager.Themes.LIGHT;
         }
         
+        //  Used to change skins and initialize skins for new forms.
         public static MaterialSkinManager changeSkin(string colorScheme, string theme, MaterialSkin.Controls.MaterialForm form)
         {
             var materialSkinManager = MaterialSkinManager.Instance;

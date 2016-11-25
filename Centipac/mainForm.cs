@@ -27,7 +27,10 @@ namespace Centipac
             var materialSkinManager = Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
         }
 
-
+        void hideManager()
+        {
+            groupUserOptions.Height = 101;
+        }
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -39,7 +42,12 @@ namespace Centipac
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            string username = activeUser.data.Split('_')[1].Split('-')[0];
+            if (activeUser.getPerms() > 2)
+            {
+                hideManager();
+            }
+
+            string username = activeUser.getUser();
 
             MaterialSkin.Controls.MaterialFlatButton user = new MaterialSkin.Controls.MaterialFlatButton();
             user.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
@@ -56,11 +64,6 @@ namespace Centipac
             groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
             groupUserOptions.Location = new Point(this.Width - groupUserOptions.Width - 3, user.Location.Y + user.Size.Height);
             groupUserOptions.DiamondPos = user.Location.X - groupUserOptions.Location.X + (user.Width / 2) - 9;
-
-            foreach (KeyValuePair<string, ColorScheme> entry in Settings.colorSchemes)
-            {
-                comboBox1.Items.Add(entry.Key);
-            }
         }
 
         private void onUserClick(object sender, EventArgs e)
@@ -70,21 +73,6 @@ namespace Centipac
             {
                 groupUserOptions.Focus();
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Settings.changeSkin(comboBox1.SelectedItem.ToString(), Properties.Settings.Default["THEME"].ToString(), this);
-
-            MaterialSkin.Controls.MaterialFlatButton userBtn = this.Controls.Find("btnUser", false)[0] as MaterialSkin.Controls.MaterialFlatButton;
-            userBtn.BackColor = Settings.colorSchemes[comboBox1.SelectedItem.ToString()].PrimaryColor;
-            groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), comboBox2.SelectedItem.ToString(), this);  
-               
         }
 
         private void groupUserOptions_Leave(object sender, EventArgs e)
@@ -102,7 +90,44 @@ namespace Centipac
             loginForm logOut = new loginForm();
             logOut.Show();
             logout = true;
+            settings.Close();
+            settings = null;
             this.Close();
+        }
+
+        public static settingsForm settings = null;
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            if (settings == null)
+            {
+                settings = new settingsForm();
+                settings.Show();
+                timerUI.Start();
+            } else
+            {
+                settings.BringToFront();
+            }
+
+            groupUserOptions.Visible = false;
+        }
+
+        private void timerUI_Tick(object sender, EventArgs e)
+        {
+            if (groupUserOptions.BackColor != MaterialSkinManager.Instance.ColorScheme.PrimaryColor)
+            {
+                MaterialSkin.Controls.MaterialFlatButton userBtn = this.Controls.Find("btnUser", false)[0] as MaterialSkin.Controls.MaterialFlatButton;
+                userBtn.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
+                groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
+            } else if (settings == null)
+            {
+                timerUI.Stop();
+            }                
+        }
+
+        private void btnManager_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

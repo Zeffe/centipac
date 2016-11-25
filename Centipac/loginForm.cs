@@ -22,18 +22,22 @@ namespace Centipac
         {
             InitializeComponent();
 
+            //  Apply user interface presets.
             Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
         }
 
 
         void login()
         {
+            // Build the postdata required for login.
             StringBuilder postData = new StringBuilder();
             postData.AppendUrlEncoded("username", txtUser.Text);
             postData.AppendUrlEncoded("password", txtPass.Text);
             string url = "https://conveyable-wrenches.000webhostapp.com/login.php";
 
+            // Grab result from login.
             string result = Server.postPHP(url, postData.ToString());
+
             User activeUser = new User();
 
             if (!result.Contains("token"))
@@ -42,8 +46,10 @@ namespace Centipac
             }
             else
             {
+                //  Update the user based on server response.
                 activeUser.updateToken(result);
 
+                //  Require user to create new account if it is the first time logging in.
                 if (txtUser.Text == "admin")
                 {
                     registerForm register = new registerForm(activeUser);

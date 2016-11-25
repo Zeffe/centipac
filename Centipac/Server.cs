@@ -11,6 +11,7 @@ namespace Centipac
 {
     public class Server
     {
+        //  Used to post data to the PHP and returns response.
         public static string postPHP(string url, string postData)
         {
             try
@@ -31,6 +32,7 @@ namespace Centipac
             }
         }
 
+        //  With proper authentication, adds a user to the user database.
         public static string addUser(User currentUser, StringBuilder postData)
         {
             string url = "https://conveyable-wrenches.000webhostapp.com/add.php";
@@ -49,6 +51,8 @@ namespace Centipac
             }
         }
 
+
+        //  With proper authentication, delets a user from the user database.
         public static string deleteUser(User currentUser, StringBuilder postData)
         {
             string url = "https://conveyable-wrenches.000webhostapp.com/delete.php";

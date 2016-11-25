@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.components = new System.ComponentModel.Container();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -37,32 +36,11 @@
             this.groupUserOptions = new MaterialSkin.Controls.MaterialGroupBox();
             this.btnLogOut = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.timerUI = new System.Windows.Forms.Timer(this.components);
+            this.btnManager = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.groupUserOptions.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(150, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Light",
-            "Dark"});
-            this.comboBox2.Location = new System.Drawing.Point(6, 36);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(150, 21);
-            this.comboBox2.TabIndex = 1;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // materialTabSelector1
             // 
@@ -90,7 +68,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -101,7 +78,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.comboBox2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -113,6 +89,7 @@
             // groupUserOptions
             // 
             this.groupUserOptions.BackColor = System.Drawing.Color.Transparent;
+            this.groupUserOptions.Controls.Add(this.btnManager);
             this.groupUserOptions.Controls.Add(this.btnLogOut);
             this.groupUserOptions.Controls.Add(this.btnSettings);
             this.groupUserOptions.Depth = 0;
@@ -120,7 +97,7 @@
             this.groupUserOptions.Location = new System.Drawing.Point(187, 63);
             this.groupUserOptions.MouseState = MaterialSkin.MouseState.HOVER;
             this.groupUserOptions.Name = "groupUserOptions";
-            this.groupUserOptions.Size = new System.Drawing.Size(97, 99);
+            this.groupUserOptions.Size = new System.Drawing.Size(97, 144);
             this.groupUserOptions.TabIndex = 4;
             this.groupUserOptions.TabStop = false;
             this.groupUserOptions.Text = "materialGroupBox1";
@@ -132,7 +109,7 @@
             this.btnLogOut.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnLogOut.Depth = 0;
             this.btnLogOut.Icon = null;
-            this.btnLogOut.Location = new System.Drawing.Point(6, 57);
+            this.btnLogOut.Location = new System.Drawing.Point(6, 58);
             this.btnLogOut.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Primary = true;
@@ -156,6 +133,26 @@
             this.btnSettings.TabIndex = 0;
             this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // timerUI
+            // 
+            this.timerUI.Tick += new System.EventHandler(this.timerUI_Tick);
+            // 
+            // btnManager
+            // 
+            this.btnManager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnManager.Depth = 0;
+            this.btnManager.Icon = null;
+            this.btnManager.Location = new System.Drawing.Point(6, 100);
+            this.btnManager.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnManager.Name = "btnManager";
+            this.btnManager.Primary = true;
+            this.btnManager.Size = new System.Drawing.Size(85, 36);
+            this.btnManager.TabIndex = 2;
+            this.btnManager.Text = "Manager";
+            this.btnManager.UseVisualStyleBackColor = true;
+            this.btnManager.Click += new System.EventHandler(this.btnManager_Click);
             // 
             // mainForm
             // 
@@ -168,12 +165,10 @@
             this.Controls.Add(this.materialTabSelector1);
             this.MaximizeBox = false;
             this.Name = "mainForm";
-            this.Text = "Form1";
+            this.Text = "Centipac";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.materialTabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.groupUserOptions.ResumeLayout(false);
             this.groupUserOptions.PerformLayout();
             this.ResumeLayout(false);
@@ -181,9 +176,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -191,6 +183,8 @@
         private MaterialSkin.Controls.MaterialGroupBox groupUserOptions;
         private MaterialSkin.Controls.MaterialRaisedButton btnLogOut;
         private MaterialSkin.Controls.MaterialRaisedButton btnSettings;
+        private System.Windows.Forms.Timer timerUI;
+        private MaterialSkin.Controls.MaterialRaisedButton btnManager;
     }
 }
 
