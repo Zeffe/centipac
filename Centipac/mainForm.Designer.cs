@@ -34,10 +34,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupUserOptions = new MaterialSkin.Controls.MaterialGroupBox();
+            this.btnManager = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnLogOut = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.timerUI = new System.Windows.Forms.Timer(this.components);
-            this.btnManager = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabControl1.SuspendLayout();
             this.groupUserOptions.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +93,7 @@
             this.groupUserOptions.Controls.Add(this.btnLogOut);
             this.groupUserOptions.Controls.Add(this.btnSettings);
             this.groupUserOptions.Depth = 0;
-            this.groupUserOptions.DiamondPos = 16;
+            this.groupUserOptions.DiamondPos = 50;
             this.groupUserOptions.Location = new System.Drawing.Point(187, 63);
             this.groupUserOptions.MouseState = MaterialSkin.MouseState.HOVER;
             this.groupUserOptions.Name = "groupUserOptions";
@@ -103,6 +103,21 @@
             this.groupUserOptions.Text = "materialGroupBox1";
             this.groupUserOptions.Visible = false;
             this.groupUserOptions.Leave += new System.EventHandler(this.groupUserOptions_Leave);
+            // 
+            // btnManager
+            // 
+            this.btnManager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnManager.Depth = 0;
+            this.btnManager.Icon = null;
+            this.btnManager.Location = new System.Drawing.Point(6, 100);
+            this.btnManager.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnManager.Name = "btnManager";
+            this.btnManager.Primary = true;
+            this.btnManager.Size = new System.Drawing.Size(85, 36);
+            this.btnManager.TabIndex = 2;
+            this.btnManager.Text = "Manager";
+            this.btnManager.UseVisualStyleBackColor = true;
+            this.btnManager.Click += new System.EventHandler(this.btnManager_Click);
             // 
             // btnLogOut
             // 
@@ -138,21 +153,6 @@
             // timerUI
             // 
             this.timerUI.Tick += new System.EventHandler(this.timerUI_Tick);
-            // 
-            // btnManager
-            // 
-            this.btnManager.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnManager.Depth = 0;
-            this.btnManager.Icon = null;
-            this.btnManager.Location = new System.Drawing.Point(6, 100);
-            this.btnManager.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnManager.Name = "btnManager";
-            this.btnManager.Primary = true;
-            this.btnManager.Size = new System.Drawing.Size(85, 36);
-            this.btnManager.TabIndex = 2;
-            this.btnManager.Text = "Manager";
-            this.btnManager.UseVisualStyleBackColor = true;
-            this.btnManager.Click += new System.EventHandler(this.btnManager_Click);
             // 
             // mainForm
             // 

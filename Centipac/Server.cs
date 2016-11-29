@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExtensionMethods;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +31,16 @@ namespace Centipac
             {
                 return "Couldn't connect to server.";
             }
+        }
+
+        public static string login(string user, string pass)
+        {
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("username", user);
+            postData.AppendUrlEncoded("password", pass);
+            string url = "https://conveyable-wrenches.000webhostapp.com/login.php";
+
+            return Server.postPHP(url, postData.ToString());
         }
 
         //  With proper authentication, adds a user to the user database.

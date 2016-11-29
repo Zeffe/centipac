@@ -29,14 +29,7 @@ namespace Centipac
 
         void login()
         {
-            // Build the postdata required for login.
-            StringBuilder postData = new StringBuilder();
-            postData.AppendUrlEncoded("username", txtUser.Text);
-            postData.AppendUrlEncoded("password", txtPass.Text);
-            string url = "https://conveyable-wrenches.000webhostapp.com/login.php";
-
-            // Grab result from login.
-            string result = Server.postPHP(url, postData.ToString());
+            string result = Server.login(txtUser.Text, txtPass.Text);
 
             User activeUser = new User();
 

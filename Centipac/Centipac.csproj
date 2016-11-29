@@ -96,6 +96,12 @@
       <DependentUpon>settingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="verifyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="verifyForm.Designer.cs">
+      <DependentUpon>verifyForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="settingsForm.resx">
       <DependentUpon>settingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="verifyForm.resx">
+      <DependentUpon>verifyForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

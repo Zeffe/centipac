@@ -125,9 +125,19 @@ namespace Centipac
             }                
         }
 
+        public static managerForm manage = null;
+
         private void btnManager_Click(object sender, EventArgs e)
         {
-            
+            if (manage == null)
+            {
+                manage = new Centipac.managerForm(activeUser);
+                verifyForm verify = new verifyForm(activeUser, manage);
+                verify.Show();
+            } else
+            {
+                manage.BringToFront();
+            }
         }
     }
 }

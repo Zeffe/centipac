@@ -11,13 +11,22 @@ using MaterialSkin;
 
 namespace Centipac
 {
-    public partial class managerForm : MaterialSkin.Controls.MaterialForm;
+    public partial class managerForm : MaterialSkin.Controls.MaterialForm
     {
-        public managerForm()
+        User activeUser;
+
+        public managerForm(User active)
         {
             InitializeComponent();
 
             var materialSkinManager = Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
+
+            activeUser = active;
+        }
+
+        private void managerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mainForm.manage = null;
         }
     }
 }
