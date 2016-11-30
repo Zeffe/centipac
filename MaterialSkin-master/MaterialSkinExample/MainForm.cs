@@ -93,5 +93,23 @@ namespace MaterialSkinExample
             materialGroupBox1.Location = new Point(414, 20 + user.Height);
             materialGroupBox1.BackColor = materialSkinManager.ColorScheme.PrimaryColor;
         }
+
+        Point clickPos;
+
+        private void materialProgressBar2_MouseDown(object sender, MouseEventArgs e)
+        {
+            materialProgressBar2.Offset = this.PointToClient(Cursor.Position).X - materialProgressBar2.Location.X - materialTabControl1.Location.X;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {            
+            materialProgressBar2.Value = Math.Min(Math.Max((this.PointToClient(Cursor.Position).X - materialProgressBar2.Location.X - materialTabControl1.Location.X - materialProgressBar2.Offset), 0), materialProgressBar2.Maximum);
+        }
+
+        private void materialProgressBar2_MouseUp(object sender, MouseEventArgs e)
+        {
+            timer1.Stop();
+        }
     }
 }

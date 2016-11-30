@@ -15,6 +15,21 @@ namespace MaterialSkin.Controls
         {
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            offset = 0;
+        }
+
+        private int offset;
+
+        [Category("Appearance"), Description("Changes the position of the diamond in relation to the top right of the group box.")]
+        [Browsable(true)]
+        public int Offset
+        {
+            get { return offset; }
+            set
+            {
+                offset = value;
+                this.Refresh();
+            }
         }
 
         /// <summary>
@@ -67,8 +82,8 @@ namespace MaterialSkin.Controls
         protected override void OnPaint(PaintEventArgs e)
         {
             var doneProgress = (int)(e.ClipRectangle.Width * ((double)Value / Maximum));
-            e.Graphics.FillRectangle(SkinManager.ColorScheme.PrimaryBrush, 0, 0, doneProgress, e.ClipRectangle.Height);
-            e.Graphics.FillRectangle(SkinManager.GetDisabledOrHintBrush(), doneProgress, 0, e.ClipRectangle.Width, e.ClipRectangle.Height);
+            e.Graphics.FillRectangle(SkinManager.ColorScheme.PrimaryBrush, offset, 0, doneProgress, e.ClipRectangle.Height);
+            e.Graphics.FillRectangle(SkinManager.GetDisabledOrHintBrush(), 0, 0, e.ClipRectangle.Width, e.ClipRectangle.Height);
         }
     }
 }

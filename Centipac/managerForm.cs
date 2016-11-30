@@ -28,5 +28,21 @@ namespace Centipac
         {
             mainForm.manage = null;
         }
+
+        private void materialProgressBar1_MouseDown(object sender, MouseEventArgs e)
+        {
+            materialProgressBar1.Offset = this.PointToClient(Cursor.Position).X - materialProgressBar1.Location.X - materialTabControl1.Location.X;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            materialProgressBar1.Value = Math.Min(Math.Max((this.PointToClient(Cursor.Position).X - materialProgressBar1.Location.X - materialTabControl1.Location.X - materialProgressBar1.Offset), materialProgressBar1.Minimum), materialProgressBar1.Maximum);
+        }
+
+        private void materialProgressBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            timer1.Stop();
+        }
     }
 }

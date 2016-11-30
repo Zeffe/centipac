@@ -33,6 +33,7 @@ namespace MaterialSkinExample
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
@@ -65,6 +66,7 @@ namespace MaterialSkinExample
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.materialProgressBar2 = new MaterialSkin.Controls.MaterialProgressBar();
             this.materialFlatButton5 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialFlatButton4 = new MaterialSkin.Controls.MaterialFlatButton();
@@ -80,6 +82,7 @@ namespace MaterialSkinExample
             this.item3ToolStripMenuItem = new MaterialSkin.Controls.MaterialToolStripMenuItem();
             this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialGroupBox1 = new MaterialSkin.Controls.MaterialGroupBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -557,6 +560,7 @@ namespace MaterialSkinExample
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.materialProgressBar2);
             this.tabPage5.Controls.Add(this.materialFlatButton5);
             this.tabPage5.Controls.Add(this.materialLabel2);
             this.tabPage5.Controls.Add(this.materialFlatButton4);
@@ -569,6 +573,20 @@ namespace MaterialSkinExample
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // materialProgressBar2
+            // 
+            this.materialProgressBar2.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.materialProgressBar2.Depth = 0;
+            this.materialProgressBar2.Location = new System.Drawing.Point(53, 203);
+            this.materialProgressBar2.Maximum = 390;
+            this.materialProgressBar2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialProgressBar2.Name = "materialProgressBar2";
+            this.materialProgressBar2.Offset = 20;
+            this.materialProgressBar2.Size = new System.Drawing.Size(390, 5);
+            this.materialProgressBar2.TabIndex = 21;
+            this.materialProgressBar2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.materialProgressBar2_MouseDown);
+            this.materialProgressBar2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.materialProgressBar2_MouseUp);
             // 
             // materialFlatButton5
             // 
@@ -648,6 +666,7 @@ namespace MaterialSkinExample
             this.materialProgressBar1.Location = new System.Drawing.Point(6, 81);
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
+            this.materialProgressBar1.Offset = 0;
             this.materialProgressBar1.Size = new System.Drawing.Size(571, 5);
             this.materialProgressBar1.TabIndex = 0;
             this.materialProgressBar1.Value = 45;
@@ -752,6 +771,11 @@ namespace MaterialSkinExample
             this.materialGroupBox1.TabStop = false;
             this.materialGroupBox1.Text = "materialGroupBox1";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 40;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -833,5 +857,7 @@ namespace MaterialSkinExample
         private MaterialLabel materialLabel2;
         private MaterialFlatButton materialFlatButton5;
         private MaterialGroupBox materialGroupBox1;
+        private MaterialProgressBar materialProgressBar2;
+        private Timer timer1;
     }
 }
