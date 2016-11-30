@@ -48,6 +48,7 @@
             this.txtPass.TabIndex = 0;
             this.txtPass.TabStop = false;
             this.txtPass.UseSystemPasswordChar = false;
+            this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPass_KeyDown);
             // 
             // btnSubmit
             // 

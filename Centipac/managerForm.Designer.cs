@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            "Ayy",
+            "lmao"}, -1);
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -38,9 +41,11 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.materialProgressBar1 = new MaterialSkin.Controls.MaterialProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -97,6 +102,8 @@
             this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.materialListView1.FullRowSelect = true;
             this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.materialListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
             this.materialListView1.Location = new System.Drawing.Point(223, 29);
             this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
@@ -114,6 +121,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.trackBar1);
             this.tabPage3.Controls.Add(this.materialProgressBar1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -127,7 +135,7 @@
             // 
             this.materialProgressBar1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.materialProgressBar1.Depth = 0;
-            this.materialProgressBar1.Location = new System.Drawing.Point(82, 142);
+            this.materialProgressBar1.Location = new System.Drawing.Point(156, 92);
             this.materialProgressBar1.Maximum = 390;
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
@@ -141,6 +149,13 @@
             // 
             this.timer1.Interval = 40;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(195, 20);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(291, 45);
+            this.trackBar1.TabIndex = 23;
             // 
             // managerForm
             // 
@@ -156,6 +171,8 @@
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -171,5 +188,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Timer timer1;
         private MaterialSkin.Controls.MaterialProgressBar materialProgressBar1;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }

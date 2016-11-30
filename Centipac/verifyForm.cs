@@ -33,17 +33,31 @@ namespace Centipac
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            submit();
+        }
+
+        void submit()
+        {
             string token = Server.login(activeUser.getUser(), txtPass.Text);
 
             if (!token.Contains("token"))
             {
                 msgbox msg = new msgbox("Invalid password.", "Error", 1);
                 msg.Show();
-            } else
+            }
+            else
             {
                 activeUser.updateToken(token);
                 launchForm.Show();
                 this.Close();
+            }
+        }
+
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                submit();
             }
         }
     }

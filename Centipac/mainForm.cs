@@ -77,12 +77,12 @@ namespace Centipac
 
         private void groupUserOptions_Leave(object sender, EventArgs e)
         {
-            groupUserOptions.Visible = false;
+            groupUserOptions.Hide();
         }
 
         private void materialTabControl1_MouseClick(object sender, MouseEventArgs e)
         {
-            groupUserOptions.Visible = false;
+            groupUserOptions.Hide();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -109,7 +109,7 @@ namespace Centipac
                 settings.BringToFront();
             }
 
-            groupUserOptions.Visible = false;
+            groupUserOptions.Hide();
         }
 
         private void timerUI_Tick(object sender, EventArgs e)
@@ -138,6 +138,7 @@ namespace Centipac
             {
                 manage.BringToFront();
             }
+            groupUserOptions.Hide();
         }
     }
 }
