@@ -23,12 +23,8 @@ using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-#if !FRAMEWORKMENUS
-using Lyquidity.UtilityLibrary.MenusA;
-using Lyquidity.UtilityLibrary.General;
-#endif
 
-namespace Lyquidity.UtilityLibrary.Controls
+namespace MaterialSkin.Controls
 {
 	#region Enumerations
 
@@ -68,16 +64,20 @@ namespace Lyquidity.UtilityLibrary.Controls
 	/// Summary description for RulerControl.
 	/// </summary>
 	[ToolboxItem(true)]
-	[ToolboxBitmap(typeof(RulerControl), "Ruler.bmp")]
-	public class RulerControl : System.Windows.Forms.Control, IMessageFilter
+	[ToolboxBitmap(typeof(MaterialRuler), "Ruler.bmp")]
+	public class MaterialRuler : Control, IMessageFilter, IMaterialControl
 	{
 
-		#region Internal Variables
+        [Browsable(false)]
+        public MaterialSkinManager SkinManager { get { return MaterialSkinManager.Instance; } }
+        [Browsable(false)]
+        public MouseState MouseState { get; set; }
+        [Browsable(false)]
+        public int Depth { get; set; }
 
-#if !FRAMEWORKMENUS
-		private PopupMenu			_mnuContext			= null;
-#endif
-		private int					_Scale;
+        #region Internal Variables
+
+        private int					_Scale;
 		private bool				_bDrawLine			= false;
 		private bool				_bInControl			= false;
 		private int					_iMousePosition		= 1;
@@ -152,7 +152,7 @@ namespace Lyquidity.UtilityLibrary.Controls
 
 		#region Constrcutors/Destructors
 
-		public RulerControl()
+		public MaterialRuler()
 		{
 			base.BackColor = System.Drawing.Color.White;
 			base.ForeColor = System.Drawing.Color.Black;
@@ -160,40 +160,13 @@ namespace Lyquidity.UtilityLibrary.Controls
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
-#if !FRAMEWORKMENUS
-
-			// Create the popup menu object
-			_mnuContext = new PopupMenu();
-
-			// Create the menu objects
-			MenuCommand mnuPoints = new MenuCommand("Points", new EventHandler(Popup_Click));
-			mnuPoints.Tag = enumScaleMode.smPoints;
-			MenuCommand mnuPixels = new MenuCommand("Pixels", new EventHandler(Popup_Click));
-			mnuPixels.Tag = enumScaleMode.smPixels;
-			MenuCommand mnuCentimetres = new MenuCommand("Centimetres", new EventHandler(Popup_Click));
-			mnuCentimetres.Tag = enumScaleMode.smCentimetres;
-			MenuCommand mnuInches = new MenuCommand("Inches", new EventHandler(Popup_Click));
-			mnuInches.Tag = enumScaleMode.smInches;
-			MenuCommand mnuInches = new MenuCommand("Millimetres", new EventHandler(Popup_Click));
-			mnuInches.Tag = enumScaleMode.smMillimetres;
-
-			// Define the list of menu commands
-			_mnuContext.MenuCommands.AddRange(new MenuCommand[]{mnuPoints, mnuPixels, mnuCentimetres, mnuInches});
-
-			// Define the properties to get appearance to match MenuControl
-			_mnuContext.Style = VisualStyle.IDE;
-
-#endif
-
-#if FRAMEWORKMENUS
-
-			System.Windows.Forms.MenuItem mnuPoints = new System.Windows.Forms.MenuItem("Points", new EventHandler(Popup_Click));
+			/*System.Windows.Forms.MenuItem mnuPoints = new System.Windows.Forms.MenuItem("Points", new EventHandler(Popup_Click));
 			System.Windows.Forms.MenuItem mnuPixels = new System.Windows.Forms.MenuItem("Pixels", new EventHandler(Popup_Click));
 			System.Windows.Forms.MenuItem mnuCentimetres = new System.Windows.Forms.MenuItem("Centimetres", new EventHandler(Popup_Click));
 			System.Windows.Forms.MenuItem mnuInches = new System.Windows.Forms.MenuItem("Inches", new EventHandler(Popup_Click));
 			System.Windows.Forms.MenuItem mnuMillimetres = new System.Windows.Forms.MenuItem("Millimetres", new EventHandler(Popup_Click));
-			ContextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {mnuPoints, mnuPixels, mnuCentimetres, mnuInches, mnuMillimetres});
-#endif
+			ContextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {mnuPoints, mnuPixels, mnuCentimetres, mnuInches, mnuMillimetres});*/
+
 			Graphics g = this.CreateGraphics();
 			_DpiX = g.DpiX;
 			ScaleMode = enumScaleMode.smPoints;
@@ -424,15 +397,10 @@ namespace Lyquidity.UtilityLibrary.Controls
 
 		private void RulerControl_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-#if FRAMEWORKMENUS
+
 			if ((Control.MouseButtons & MouseButtons.Right) != 0) 
 			{
 				this.ContextMenu.Show(this, PointToClient(Control.MousePosition));
-#else
-			if ((e.Button & MouseButtons.Right) != 0)
-			{
-				_mnuContext.TrackPopup(this.PointToScreen(new Point(e.X, e.Y)));
-#endif
 			}
 			else
 			{
@@ -443,13 +411,9 @@ namespace Lyquidity.UtilityLibrary.Controls
 
 		private void Popup_Click(object sender, EventArgs e)
 		{
-#if FRAMEWORKMENUS
 			System.Windows.Forms.MenuItem item = (System.Windows.Forms.MenuItem)sender;
 			ScaleMode = (enumScaleMode)item.Index;
-#else
-			MenuCommand item = (MenuCommand)sender;
-			ScaleMode = (enumScaleMode)item.Tag;
-#endif
+
 			_Bitmap = null;
 			Invalidate();
 		}
@@ -556,17 +520,14 @@ namespace Lyquidity.UtilityLibrary.Controls
 				// Use the current start value (if there is one)
 				this.StartValue = this._StartValue;
 
-				// Setup the menu
-				for(int i = 0; i <= 4; i++)
-#if FRAMEWORKMENUS
-					ContextMenu.MenuItems[i].Checked = false;
+                // Setup the menu
+                /*for (int i = 0; i <= 4; i++)
+                {
+                    ContextMenu.MenuItems[i].Checked = false;
+                }
 
-				ContextMenu.MenuItems[(int)value].Checked = true;
-#else
-					_mnuContext.MenuCommands[i].Checked = false;
+				ContextMenu.MenuItems[(int)value].Checked = true;*/
 
-				_mnuContext.MenuCommands[(int)value].Checked = true;
-#endif
 
 				ScaleModeChangedEventArgs e = new ScaleModeChangedEventArgs(value);
 				this.OnScaleModeChanged(e);

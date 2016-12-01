@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RulerControl">
+      <HintPath>..\..\Ruler_src\Demo\bin\Debug\RulerControl.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -84,6 +87,9 @@
     <Compile Include="Controls\MaterialProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\MaterialRuler.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DrawHelper.cs" />
     <Compile Include="IMaterialControl.cs" />
     <Compile Include="Controls\MaterialRaisedButton.cs">
@@ -98,6 +104,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\MaterialRuler.resx">
+      <DependentUpon>MaterialRuler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

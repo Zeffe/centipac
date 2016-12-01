@@ -39,9 +39,10 @@
             this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.materialProgressBar1 = new MaterialSkin.Controls.MaterialProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -121,6 +122,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.materialRuler1);
             this.tabPage3.Controls.Add(this.trackBar1);
             this.tabPage3.Controls.Add(this.materialProgressBar1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -131,11 +133,41 @@
             this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // materialRuler1
+            // 
+            this.materialRuler1.ActualSize = true;
+            this.materialRuler1.Depth = 0;
+            this.materialRuler1.DivisionMarkFactor = 2;
+            this.materialRuler1.Divisions = 3;
+            this.materialRuler1.ForeColor = System.Drawing.Color.Black;
+            this.materialRuler1.Location = new System.Drawing.Point(141, 98);
+            this.materialRuler1.MajorInterval = 6;
+            this.materialRuler1.MiddleMarkFactor = 2;
+            this.materialRuler1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRuler1.MouseTrackingOn = true;
+            this.materialRuler1.Name = "materialRuler1";
+            this.materialRuler1.Orientation = MaterialSkin.Controls.enumOrientation.orHorizontal;
+            this.materialRuler1.RulerAlignment = MaterialSkin.Controls.enumRulerAlignment.raBottomOrRight;
+            this.materialRuler1.ScaleMode = MaterialSkin.Controls.enumScaleMode.smMillimetres;
+            this.materialRuler1.Size = new System.Drawing.Size(389, 31);
+            this.materialRuler1.StartValue = 0D;
+            this.materialRuler1.TabIndex = 24;
+            this.materialRuler1.Text = "materialRuler1";
+            this.materialRuler1.VerticalNumbers = true;
+            this.materialRuler1.ZoomFactor = 6D;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(195, 20);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(291, 45);
+            this.trackBar1.TabIndex = 23;
+            // 
             // materialProgressBar1
             // 
             this.materialProgressBar1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.materialProgressBar1.Depth = 0;
-            this.materialProgressBar1.Location = new System.Drawing.Point(156, 92);
+            this.materialProgressBar1.Location = new System.Drawing.Point(141, 188);
             this.materialProgressBar1.Maximum = 390;
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
@@ -149,13 +181,6 @@
             // 
             this.timer1.Interval = 40;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(195, 20);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(291, 45);
-            this.trackBar1.TabIndex = 23;
             // 
             // managerForm
             // 
@@ -189,5 +214,6 @@
         private System.Windows.Forms.Timer timer1;
         private MaterialSkin.Controls.MaterialProgressBar materialProgressBar1;
         private System.Windows.Forms.TrackBar trackBar1;
+        private MaterialSkin.Controls.MaterialRuler materialRuler1;
     }
 }

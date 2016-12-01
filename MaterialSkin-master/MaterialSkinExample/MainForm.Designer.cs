@@ -83,6 +83,7 @@ namespace MaterialSkinExample
             this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialGroupBox1 = new MaterialSkin.Controls.MaterialGroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -387,6 +388,7 @@ namespace MaterialSkinExample
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.materialRuler1);
             this.tabPage1.Controls.Add(this.materialSingleLineTextField3);
             this.tabPage1.Controls.Add(this.materialRaisedButton1);
             this.tabPage1.Controls.Add(this.materialSingleLineTextField1);
@@ -776,6 +778,27 @@ namespace MaterialSkinExample
             this.timer1.Interval = 40;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // materialRuler1
+            // 
+            this.materialRuler1.ActualSize = true;
+            this.materialRuler1.DivisionMarkFactor = 5;
+            this.materialRuler1.Divisions = 10;
+            this.materialRuler1.ForeColor = System.Drawing.Color.Black;
+            this.materialRuler1.Location = new System.Drawing.Point(313, 38);
+            this.materialRuler1.MajorInterval = 100;
+            this.materialRuler1.MiddleMarkFactor = 3;
+            this.materialRuler1.MouseTrackingOn = true;
+            this.materialRuler1.Name = "materialRuler1";
+            this.materialRuler1.Orientation = MaterialSkin.Controls.enumOrientation.orHorizontal;
+            this.materialRuler1.RulerAlignment = MaterialSkin.Controls.enumRulerAlignment.raBottomOrRight;
+            this.materialRuler1.ScaleMode = MaterialSkin.Controls.enumScaleMode.smPoints;
+            this.materialRuler1.Size = new System.Drawing.Size(221, 44);
+            this.materialRuler1.StartValue = 0D;
+            this.materialRuler1.TabIndex = 22;
+            this.materialRuler1.Text = "materialRuler1";
+            this.materialRuler1.VerticalNumbers = true;
+            this.materialRuler1.ZoomFactor = 1D;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -859,5 +882,6 @@ namespace MaterialSkinExample
         private MaterialGroupBox materialGroupBox1;
         private MaterialProgressBar materialProgressBar2;
         private Timer timer1;
+        private MaterialRuler materialRuler1;
     }
 }

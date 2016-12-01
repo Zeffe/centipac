@@ -52,3 +52,4 @@ C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.settingsForm.resource
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.verifyForm.resources
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.csproj.GenerateResource.Cache
 C:\Users\Seth\Desktop\centipac\Centipac\bin\Debug\MaterialSkin.dll
+C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\MaterialSkin.dll
