@@ -53,6 +53,8 @@ namespace MaterialSkinExample
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.materialRuler2 = new MaterialSkin.Controls.MaterialRuler();
+            this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -83,7 +85,6 @@ namespace MaterialSkinExample
             this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialGroupBox1 = new MaterialSkin.Controls.MaterialGroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -388,6 +389,7 @@ namespace MaterialSkinExample
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.materialRuler2);
             this.tabPage1.Controls.Add(this.materialRuler1);
             this.tabPage1.Controls.Add(this.materialSingleLineTextField3);
             this.tabPage1.Controls.Add(this.materialRaisedButton1);
@@ -401,6 +403,54 @@ namespace MaterialSkinExample
             this.tabPage1.Size = new System.Drawing.Size(583, 230);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
+            // 
+            // materialRuler2
+            // 
+            this.materialRuler2.ActualSize = true;
+            this.materialRuler2.Depth = 0;
+            this.materialRuler2.DivisionMarkFactor = 2;
+            this.materialRuler2.Divisions = 3;
+            this.materialRuler2.ForeColor = System.Drawing.Color.Black;
+            this.materialRuler2.Location = new System.Drawing.Point(0, 117);
+            this.materialRuler2.MajorInterval = 1;
+            this.materialRuler2.MiddleMarkFactor = 2;
+            this.materialRuler2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRuler2.MouseTrackingOn = true;
+            this.materialRuler2.Name = "materialRuler2";
+            this.materialRuler2.Orientation = MaterialSkin.Controls.enumOrientation.orHorizontal;
+            this.materialRuler2.RulerAlignment = MaterialSkin.Controls.enumRulerAlignment.raBottomOrRight;
+            this.materialRuler2.ScaleMode = MaterialSkin.Controls.enumScaleMode.smMillimetres;
+            this.materialRuler2.Size = new System.Drawing.Size(564, 31);
+            this.materialRuler2.StartValue = -0.5D;
+            this.materialRuler2.TabIndex = 25;
+            this.materialRuler2.Text = "materialRuler2";
+            this.materialRuler2.UseTime = true;
+            this.materialRuler2.VerticalNumbers = false;
+            this.materialRuler2.ZoomFactor = 6D;
+            // 
+            // materialRuler1
+            // 
+            this.materialRuler1.ActualSize = true;
+            this.materialRuler1.Depth = 0;
+            this.materialRuler1.DivisionMarkFactor = 5;
+            this.materialRuler1.Divisions = 10;
+            this.materialRuler1.ForeColor = System.Drawing.Color.Black;
+            this.materialRuler1.Location = new System.Drawing.Point(313, 38);
+            this.materialRuler1.MajorInterval = 100;
+            this.materialRuler1.MiddleMarkFactor = 3;
+            this.materialRuler1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRuler1.MouseTrackingOn = true;
+            this.materialRuler1.Name = "materialRuler1";
+            this.materialRuler1.Orientation = MaterialSkin.Controls.enumOrientation.orHorizontal;
+            this.materialRuler1.RulerAlignment = MaterialSkin.Controls.enumRulerAlignment.raBottomOrRight;
+            this.materialRuler1.ScaleMode = MaterialSkin.Controls.enumScaleMode.smPoints;
+            this.materialRuler1.Size = new System.Drawing.Size(221, 44);
+            this.materialRuler1.StartValue = 0D;
+            this.materialRuler1.TabIndex = 22;
+            this.materialRuler1.Text = "materialRuler1";
+            this.materialRuler1.UseTime = false;
+            this.materialRuler1.VerticalNumbers = true;
+            this.materialRuler1.ZoomFactor = 1D;
             // 
             // materialSingleLineTextField3
             // 
@@ -778,27 +828,6 @@ namespace MaterialSkinExample
             this.timer1.Interval = 40;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // materialRuler1
-            // 
-            this.materialRuler1.ActualSize = true;
-            this.materialRuler1.DivisionMarkFactor = 5;
-            this.materialRuler1.Divisions = 10;
-            this.materialRuler1.ForeColor = System.Drawing.Color.Black;
-            this.materialRuler1.Location = new System.Drawing.Point(313, 38);
-            this.materialRuler1.MajorInterval = 100;
-            this.materialRuler1.MiddleMarkFactor = 3;
-            this.materialRuler1.MouseTrackingOn = true;
-            this.materialRuler1.Name = "materialRuler1";
-            this.materialRuler1.Orientation = MaterialSkin.Controls.enumOrientation.orHorizontal;
-            this.materialRuler1.RulerAlignment = MaterialSkin.Controls.enumRulerAlignment.raBottomOrRight;
-            this.materialRuler1.ScaleMode = MaterialSkin.Controls.enumScaleMode.smPoints;
-            this.materialRuler1.Size = new System.Drawing.Size(221, 44);
-            this.materialRuler1.StartValue = 0D;
-            this.materialRuler1.TabIndex = 22;
-            this.materialRuler1.Text = "materialRuler1";
-            this.materialRuler1.VerticalNumbers = true;
-            this.materialRuler1.ZoomFactor = 1D;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -883,5 +912,6 @@ namespace MaterialSkinExample
         private MaterialProgressBar materialProgressBar2;
         private Timer timer1;
         private MaterialRuler materialRuler1;
+        private MaterialRuler materialRuler2;
     }
 }

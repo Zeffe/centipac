@@ -56,7 +56,7 @@
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 64);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(562, 51);
+            this.materialTabSelector1.Size = new System.Drawing.Size(770, 51);
             this.materialTabSelector1.TabIndex = 0;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
@@ -70,7 +70,7 @@
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(562, 315);
+            this.materialTabControl1.Size = new System.Drawing.Size(770, 315);
             this.materialTabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -78,7 +78,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(554, 289);
+            this.tabPage1.Size = new System.Drawing.Size(762, 289);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer Data";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(554, 289);
+            this.tabPage2.Size = new System.Drawing.Size(762, 289);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Employee Data";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(554, 289);
+            this.tabPage3.Size = new System.Drawing.Size(762, 289);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -140,8 +140,8 @@
             this.materialRuler1.DivisionMarkFactor = 2;
             this.materialRuler1.Divisions = 3;
             this.materialRuler1.ForeColor = System.Drawing.Color.Black;
-            this.materialRuler1.Location = new System.Drawing.Point(141, 98);
-            this.materialRuler1.MajorInterval = 6;
+            this.materialRuler1.Location = new System.Drawing.Point(212, 71);
+            this.materialRuler1.MajorInterval = 1;
             this.materialRuler1.MiddleMarkFactor = 2;
             this.materialRuler1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRuler1.MouseTrackingOn = true;
@@ -149,12 +149,13 @@
             this.materialRuler1.Orientation = MaterialSkin.Controls.enumOrientation.orHorizontal;
             this.materialRuler1.RulerAlignment = MaterialSkin.Controls.enumRulerAlignment.raBottomOrRight;
             this.materialRuler1.ScaleMode = MaterialSkin.Controls.enumScaleMode.smMillimetres;
-            this.materialRuler1.Size = new System.Drawing.Size(389, 31);
-            this.materialRuler1.StartValue = 0D;
+            this.materialRuler1.Size = new System.Drawing.Size(540, 31);
+            this.materialRuler1.StartValue = -0.5D;
             this.materialRuler1.TabIndex = 24;
             this.materialRuler1.Text = "materialRuler1";
-            this.materialRuler1.VerticalNumbers = true;
-            this.materialRuler1.ZoomFactor = 6D;
+            this.materialRuler1.UseTime = true;
+            this.materialRuler1.VerticalNumbers = false;
+            this.materialRuler1.ZoomFactor = 4D;
             // 
             // trackBar1
             // 
@@ -167,12 +168,12 @@
             // 
             this.materialProgressBar1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.materialProgressBar1.Depth = 0;
-            this.materialProgressBar1.Location = new System.Drawing.Point(141, 188);
+            this.materialProgressBar1.Location = new System.Drawing.Point(225, 142);
             this.materialProgressBar1.Maximum = 390;
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
             this.materialProgressBar1.Offset = 0;
-            this.materialProgressBar1.Size = new System.Drawing.Size(390, 5);
+            this.materialProgressBar1.Size = new System.Drawing.Size(527, 5);
             this.materialProgressBar1.TabIndex = 22;
             this.materialProgressBar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.materialProgressBar1_MouseDown);
             this.materialProgressBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.materialProgressBar1_MouseUp);
@@ -186,7 +187,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 441);
+            this.ClientSize = new System.Drawing.Size(768, 441);
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.materialTabSelector1);
             this.MaximizeBox = false;

@@ -102,6 +102,7 @@ namespace MaterialSkin.Controls
 		private bool				_VerticalNumbers	= true;
 		private bool				_bActualSize		= true;
 		private float				_DpiX				= 96;
+        private bool                _TimeFormat         = false;
 
 		#endregion
 
@@ -482,7 +483,20 @@ namespace MaterialSkin.Controls
 			}
 		}
 
-		[Description("A value from which the ruler marking should be shown.  Default is zero.")]
+        [Description("Determines whether or not to repeat 1 - 12.")]
+        [Category("Ruler")]
+        public bool UseTime
+        {
+            get { return _TimeFormat; }
+            set
+            {
+                _TimeFormat = value;
+                _Bitmap = null;
+                Invalidate();
+            }
+        }
+
+        [Description("A value from which the ruler marking should be shown.  Default is zero.")]
 		[Category("Ruler")]
 		public double StartValue
 		{
@@ -1076,9 +1090,23 @@ namespace MaterialSkin.Controls
 				drawingPoint = new Point(iX, iY);
 			}
 
-			// The drawstring function is common to all operations
+            // The drawstring function is common to all operations
 
-			g.DrawString(iValue.ToString(), this.Font, new SolidBrush(this.ForeColor), drawingPoint, format);
+            string _markVal = "";
+
+            if (_TimeFormat)
+            {
+                _markVal = (iValue % 12).ToString();
+                if (_markVal == "0")
+                {
+                    _markVal = "12";
+                }
+            } else
+            {
+                _markVal = iValue.ToString();
+            }
+
+			g.DrawString(_markVal, this.Font, new SolidBrush(this.ForeColor), drawingPoint, format);
 		}
 
 		private void Line(Graphics g, int x1, int y1, int x2, int y2)
