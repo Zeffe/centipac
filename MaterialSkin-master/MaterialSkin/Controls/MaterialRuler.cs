@@ -1031,6 +1031,15 @@ namespace MaterialSkin.Controls
 			if (_VerticalNumbers)
 				format.FormatFlags |= StringFormatFlags.DirectionVertical;
 			
+            if (_TimeFormat)
+            {
+                iValue %= 12;
+                if (iValue == 0)
+                {
+                    iValue = 12;
+                }
+            }
+
 			SizeF size = g.MeasureString((iValue).ToString(), this.Font, iSpaceAvailable, format);
 
 			Point drawingPoint;
@@ -1092,21 +1101,8 @@ namespace MaterialSkin.Controls
 
             // The drawstring function is common to all operations
 
-            string _markVal = "";
 
-            if (_TimeFormat)
-            {
-                _markVal = (iValue % 12).ToString();
-                if (_markVal == "0")
-                {
-                    _markVal = "12";
-                }
-            } else
-            {
-                _markVal = iValue.ToString();
-            }
-
-			g.DrawString(_markVal, this.Font, new SolidBrush(this.ForeColor), drawingPoint, format);
+			g.DrawString(iValue.ToString(), this.Font, new SolidBrush(this.ForeColor), drawingPoint, format);
 		}
 
 		private void Line(Graphics g, int x1, int y1, int x2, int y2)

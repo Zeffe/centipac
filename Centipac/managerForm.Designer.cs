@@ -44,6 +44,7 @@
             this.materialProgressBar1 = new MaterialSkin.Controls.MaterialProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTipTime = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipTemp = new System.Windows.Forms.ToolTip(this.components);
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -190,6 +191,10 @@
             // 
             this.toolTipTime.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipTime_Popup);
             // 
+            // toolTipTemp
+            // 
+            this.toolTipTemp.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipTemp_Popup);
+            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,5 +230,6 @@
         private System.Windows.Forms.TrackBar trackBar1;
         private MaterialSkin.Controls.MaterialRuler materialRuler1;
         private System.Windows.Forms.ToolTip toolTipTime;
+        private System.Windows.Forms.ToolTip toolTipTemp;
     }
 }
