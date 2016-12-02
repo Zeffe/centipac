@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Ayy",
             "lmao"}, -1);
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
@@ -43,6 +43,7 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.materialProgressBar1 = new MaterialSkin.Controls.MaterialProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolTipTime = new System.Windows.Forms.ToolTip(this.components);
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -104,7 +105,7 @@
             this.materialListView1.FullRowSelect = true;
             this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.materialListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem3});
             this.materialListView1.Location = new System.Drawing.Point(223, 29);
             this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
@@ -183,6 +184,10 @@
             this.timer1.Interval = 40;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // toolTipTime
+            // 
+            this.toolTipTime.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTipTime_Popup);
+            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,6 +199,7 @@
             this.Name = "managerForm";
             this.Text = "Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.managerForm_FormClosing);
+            this.Load += new System.EventHandler(this.managerForm_Load);
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -216,5 +222,6 @@
         private MaterialSkin.Controls.MaterialProgressBar materialProgressBar1;
         private System.Windows.Forms.TrackBar trackBar1;
         private MaterialSkin.Controls.MaterialRuler materialRuler1;
+        private System.Windows.Forms.ToolTip toolTipTime;
     }
 }
