@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Ayy",
             "lmao"}, -1);
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
@@ -105,7 +105,7 @@
             this.materialListView1.FullRowSelect = true;
             this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.materialListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem2});
             this.materialListView1.Location = new System.Drawing.Point(223, 29);
             this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
@@ -141,7 +141,7 @@
             this.materialRuler1.DivisionMarkFactor = 2;
             this.materialRuler1.Divisions = 3;
             this.materialRuler1.ForeColor = System.Drawing.Color.Black;
-            this.materialRuler1.Location = new System.Drawing.Point(212, 71);
+            this.materialRuler1.Location = new System.Drawing.Point(153, 71);
             this.materialRuler1.MajorInterval = 1;
             this.materialRuler1.MiddleMarkFactor = 2;
             this.materialRuler1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -150,13 +150,13 @@
             this.materialRuler1.Orientation = MaterialSkin.Controls.enumOrientation.orHorizontal;
             this.materialRuler1.RulerAlignment = MaterialSkin.Controls.enumRulerAlignment.raBottomOrRight;
             this.materialRuler1.ScaleMode = MaterialSkin.Controls.enumScaleMode.smMillimetres;
-            this.materialRuler1.Size = new System.Drawing.Size(540, 31);
-            this.materialRuler1.StartValue = -0.5D;
+            this.materialRuler1.Size = new System.Drawing.Size(603, 31);
+            this.materialRuler1.StartValue = 0D;
             this.materialRuler1.TabIndex = 24;
             this.materialRuler1.Text = "materialRuler1";
             this.materialRuler1.UseTime = true;
             this.materialRuler1.VerticalNumbers = false;
-            this.materialRuler1.ZoomFactor = 4D;
+            this.materialRuler1.ZoomFactor = 4.6D;
             // 
             // trackBar1
             // 
@@ -169,14 +169,16 @@
             // 
             this.materialProgressBar1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.materialProgressBar1.Depth = 0;
-            this.materialProgressBar1.Location = new System.Drawing.Point(225, 142);
+            this.materialProgressBar1.Location = new System.Drawing.Point(153, 142);
             this.materialProgressBar1.Maximum = 390;
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
             this.materialProgressBar1.Offset = 0;
-            this.materialProgressBar1.Size = new System.Drawing.Size(527, 5);
+            this.materialProgressBar1.Size = new System.Drawing.Size(603, 5);
             this.materialProgressBar1.TabIndex = 22;
             this.materialProgressBar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.materialProgressBar1_MouseDown);
+            this.materialProgressBar1.MouseLeave += new System.EventHandler(this.materialProgressBar1_MouseLeave);
+            this.materialProgressBar1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.materialProgressBar1_MouseMove);
             this.materialProgressBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.materialProgressBar1_MouseUp);
             // 
             // timer1
