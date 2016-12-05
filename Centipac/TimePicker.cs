@@ -18,6 +18,16 @@ namespace Centipac
         private ToolTip tempDisplay = new ToolTip();
 
 
+        public string beginTime()
+        {
+            return initTime;
+        }
+
+        public string endTime()
+        {
+            return finalTime;
+        }
+
         public MaterialSkin.Controls.MaterialProgressBar CreateBar(Point location, int width, Form parent)
         {
             materialProgressBar = new MaterialSkin.Controls.MaterialProgressBar();
