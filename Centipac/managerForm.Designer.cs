@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Ayy",
             "lmao"}, -1);
@@ -39,11 +40,13 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.menuProgressBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -119,8 +122,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.materialDivider1);
             this.tabPage3.Controls.Add(this.materialRuler1);
-            this.tabPage3.Controls.Add(this.trackBar1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -136,7 +139,7 @@
             this.materialRuler1.DivisionMarkFactor = 2;
             this.materialRuler1.Divisions = 3;
             this.materialRuler1.ForeColor = System.Drawing.Color.Black;
-            this.materialRuler1.Location = new System.Drawing.Point(153, 71);
+            this.materialRuler1.Location = new System.Drawing.Point(153, 8);
             this.materialRuler1.MajorInterval = 1;
             this.materialRuler1.MiddleMarkFactor = 2;
             this.materialRuler1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -153,12 +156,29 @@
             this.materialRuler1.VerticalNumbers = false;
             this.materialRuler1.ZoomFactor = 4.6D;
             // 
-            // trackBar1
+            // menuProgressBar
             // 
-            this.trackBar1.Location = new System.Drawing.Point(195, 20);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(291, 45);
-            this.trackBar1.TabIndex = 23;
+            this.menuProgressBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.menuProgressBar.Name = "menuProgressBar";
+            this.menuProgressBar.Size = new System.Drawing.Size(108, 26);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // materialDivider1
+            // 
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider1.Depth = 0;
+            this.materialDivider1.Location = new System.Drawing.Point(140, 6);
+            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider1.Name = "materialDivider1";
+            this.materialDivider1.Size = new System.Drawing.Size(2, 275);
+            this.materialDivider1.TabIndex = 25;
+            this.materialDivider1.Text = "materialDivider1";
             // 
             // managerForm
             // 
@@ -175,8 +195,7 @@
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.menuProgressBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -190,7 +209,9 @@
         private System.Windows.Forms.TabPage tabPage3;
         private MaterialSkin.Controls.MaterialListView materialListView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.TrackBar trackBar1;
         private MaterialSkin.Controls.MaterialRuler materialRuler1;
+        private System.Windows.Forms.ContextMenuStrip menuProgressBar;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private MaterialSkin.Controls.MaterialDivider materialDivider1;
     }
 }

@@ -16,6 +16,7 @@ namespace Centipac
         private Timer timer = new Timer();
         private ToolTip label = new ToolTip();
         private ToolTip tempDisplay = new ToolTip();
+        private ContextMenuStrip menu = new ContextMenuStrip();
 
 
         public string beginTime()
@@ -28,13 +29,20 @@ namespace Centipac
             return finalTime;
         }
 
+        public MaterialSkin.Controls.MaterialProgressBar getBar()
+        {
+            return materialProgressBar;
+        }
+
         public MaterialSkin.Controls.MaterialProgressBar CreateBar(Point location, int width, Form parent)
         {
+            menu.Items.Add("Delete", null, menuDelete);
             materialProgressBar = new MaterialSkin.Controls.MaterialProgressBar();
             materialProgressBar.Location = location;
             materialProgressBar.Width = width;
             materialProgressBar.Maximum = width;
             materialProgressBar.Cursor = Cursors.SizeWE;
+            materialProgressBar.ContextMenuStrip = menu;
             parentForm = parent;
             materialProgressBar.MouseMove += new MouseEventHandler(mouseMove);
             materialProgressBar.MouseLeave += new EventHandler(mouseLeave);
@@ -42,8 +50,15 @@ namespace Centipac
             materialProgressBar.MouseUp += new MouseEventHandler(mouseUp);
             timer.Tick += new EventHandler(timerTick);
             label.Popup += new PopupEventHandler(popUp);
-
+            tempDisplay.Popup += new PopupEventHandler(popUpTemp);
+            
             return materialProgressBar;
+        }
+
+        private void menuDelete(object sender, EventArgs e)
+        {
+            materialProgressBar.Value = 0;
+            label.Hide(parentForm);
         }
 
         private int tempOffset = 0, tempValue = 0;
@@ -84,41 +99,44 @@ namespace Centipac
 
         private void mouseDown(object sender, MouseEventArgs e)
         {
-            if (materialProgressBar.Value > 0)
+            if (e.Button == MouseButtons.Left)
             {
-                if (parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X - materialProgressBar.Offset >
-                    materialProgressBar.Value / 2)
+                if (materialProgressBar.Value > 0)
                 {
-                    materialProgressBar.Value = parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X - materialProgressBar.Offset - materialProgressBar.Parent.Parent.Location.X;
+                    if (parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X - materialProgressBar.Offset >
+                        materialProgressBar.Value / 2)
+                    {
+                        materialProgressBar.Value = parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X - materialProgressBar.Offset - materialProgressBar.Parent.Parent.Location.X;
+                    }
+                    else
+                    {
+                        tempOffset = materialProgressBar.Offset; tempValue = materialProgressBar.Value;
+                        materialProgressBar.Offset = parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X;
+                        fromLeft = true;
+                    }
                 }
                 else
                 {
-                    tempOffset = materialProgressBar.Offset; tempValue = materialProgressBar.Value;
-                    materialProgressBar.Offset = parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X;
-                    fromLeft = true;
+                    materialProgressBar.Offset = parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X - materialProgressBar.Parent.Parent.Location.X;
                 }
-            }
-            else
-            {
-                materialProgressBar.Offset = parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X - materialProgressBar.Parent.Parent.Location.X;
-            }
 
-            timer.Start();
-            tempDisplay.Hide(parentForm);
-            selecting = true;
-            if (fromLeft)
-            {
-                initTime = progressBarTime(materialProgressBar.Width, materialProgressBar.Value + tempOffset);
+                timer.Start();
+                tempDisplay.Hide(parentForm);
+                selecting = true;
+                if (fromLeft)
+                {
+                    initTime = progressBarTime(materialProgressBar.Width, materialProgressBar.Value + tempOffset);
+                }
+                else if (materialProgressBar.Value > 0)
+                {
+                    initTime = progressBarTime(materialProgressBar.Width, materialProgressBar.Offset);
+                }
+                else
+                {
+                    initTime = progressBarTime(materialProgressBar.Width, parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X);
+                }
+                label.Show(initTime, parentForm, parentForm.PointToClient(Cursor.Position).X - 10, materialProgressBar.Location.Y + 10);
             }
-            else if (materialProgressBar.Value > 0)
-            {
-                initTime = progressBarTime(materialProgressBar.Width, materialProgressBar.Offset);
-            }
-            else
-            {
-                initTime = progressBarTime(materialProgressBar.Width, parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X);
-            }
-            label.Show(initTime, parentForm, parentForm.PointToClient(Cursor.Position).X - 10, materialProgressBar.Location.Y + 10);
         }
 
         private string progressBarTime(int progressBarWidth, int value)
@@ -150,6 +168,11 @@ namespace Centipac
         private void popUp(object sender, PopupEventArgs e)
         {
             toolTipWidth = e.ToolTipSize.Width;
+        }
+
+        private void popUpTemp(object sender, PopupEventArgs e)
+        {
+            toolTipWidthTemp = e.ToolTipSize.Width;
         }
 
         private void timerTick(object sender, EventArgs e)
