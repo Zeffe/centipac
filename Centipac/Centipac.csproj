@@ -95,6 +95,7 @@
     <Compile Include="settingsForm.Designer.cs">
       <DependentUpon>settingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TimePicker.cs" />
     <Compile Include="User.cs" />
     <Compile Include="verifyForm.cs">
       <SubType>Form</SubType>
