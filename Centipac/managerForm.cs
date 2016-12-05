@@ -110,6 +110,18 @@ namespace Centipac
                     this.PointToClient(Cursor.Position).X - (toolTipWidthTemp / 2),
                     materialProgressBar1.Location.Y - 25 + materialTabControl1.Location.Y);
             }
+
+            if (materialProgressBar1.Value > 0)
+            {
+                if (this.PointToClient(Cursor.Position).X > materialProgressBar1.Location.X + materialProgressBar1.Offset + materialTabControl1.Location.X &&
+                    this.PointToClient(Cursor.Position).X < materialProgressBar1.Location.X + materialProgressBar1.Offset + materialTabControl1.Location.X + materialProgressBar1.Value)
+                {
+                    materialProgressBar1.Cursor = Cursors.SizeWE;
+                } else
+                {
+                    materialProgressBar1.Cursor = Cursors.Default;
+                }              
+            }
         }
 
         private void materialProgressBar1_MouseLeave(object sender, EventArgs e)
