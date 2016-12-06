@@ -17,6 +17,7 @@ namespace Centipac
         private ToolTip label = new ToolTip();
         private ToolTip tempDisplay = new ToolTip();
         private ContextMenuStrip menu = new ContextMenuStrip();
+        private Label name = new Label();
 
 
         public string beginTime()
@@ -29,9 +30,21 @@ namespace Centipac
             return finalTime;
         }
 
+        public Label getLabel()
+        {
+            return name;
+        }
+
         public MaterialSkin.Controls.MaterialProgressBar getBar()
         {
             return materialProgressBar;
+        }
+
+        public Label CreateLabel(string firstName, string lastName)
+        {
+            name.Location = new Point(materialProgressBar.Location.X - 75, materialProgressBar.Location.Y - materialProgressBar.Height);
+            name.Text = lastName + ", " + firstName;
+            return name;
         }
 
         public MaterialSkin.Controls.MaterialProgressBar CreateBar(Point location, int width, Form parent)

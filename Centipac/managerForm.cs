@@ -34,6 +34,7 @@ namespace Centipac
         private void managerForm_Load(object sender, EventArgs e)
         {
             tabPage3.Controls.Add(a.CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + 60), materialRuler1.Width, this));
+            tabPage3.Controls.Add(a.CreateLabel("Seth", "Dixon"));
         }
     }
 }

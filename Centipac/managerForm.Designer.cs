@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Ayy",
             "lmao"}, -1);
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
@@ -39,10 +39,10 @@
             this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -56,7 +56,7 @@
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 64);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(770, 51);
+            this.materialTabSelector1.Size = new System.Drawing.Size(837, 51);
             this.materialTabSelector1.TabIndex = 0;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
@@ -70,7 +70,7 @@
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(770, 315);
+            this.materialTabControl1.Size = new System.Drawing.Size(837, 363);
             this.materialTabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -104,7 +104,7 @@
             this.materialListView1.FullRowSelect = true;
             this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.materialListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem3});
             this.materialListView1.Location = new System.Drawing.Point(223, 29);
             this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
@@ -127,10 +127,21 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(762, 289);
+            this.tabPage3.Size = new System.Drawing.Size(829, 337);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // materialDivider1
+            // 
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider1.Depth = 0;
+            this.materialDivider1.Location = new System.Drawing.Point(132, 6);
+            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider1.Name = "materialDivider1";
+            this.materialDivider1.Size = new System.Drawing.Size(2, 325);
+            this.materialDivider1.TabIndex = 25;
+            this.materialDivider1.Text = "materialDivider1";
             // 
             // materialRuler1
             // 
@@ -139,7 +150,7 @@
             this.materialRuler1.DivisionMarkFactor = 2;
             this.materialRuler1.Divisions = 3;
             this.materialRuler1.ForeColor = System.Drawing.Color.Black;
-            this.materialRuler1.Location = new System.Drawing.Point(153, 8);
+            this.materialRuler1.Location = new System.Drawing.Point(218, 6);
             this.materialRuler1.MajorInterval = 1;
             this.materialRuler1.MiddleMarkFactor = 2;
             this.materialRuler1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -169,22 +180,11 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
-            // materialDivider1
-            // 
-            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(140, 6);
-            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(2, 275);
-            this.materialDivider1.TabIndex = 25;
-            this.materialDivider1.Text = "materialDivider1";
-            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 441);
+            this.ClientSize = new System.Drawing.Size(837, 477);
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.materialTabSelector1);
             this.MaximizeBox = false;
