@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Ayy",
             "lmao"}, -1);
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
@@ -78,7 +78,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(762, 289);
+            this.tabPage1.Size = new System.Drawing.Size(829, 337);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer Data";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(762, 289);
+            this.tabPage2.Size = new System.Drawing.Size(829, 337);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Employee Data";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@
             this.materialListView1.FullRowSelect = true;
             this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.materialListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem1});
             this.materialListView1.Location = new System.Drawing.Point(223, 29);
             this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
@@ -122,6 +122,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.AutoScroll = true;
             this.tabPage3.Controls.Add(this.materialDivider1);
             this.tabPage3.Controls.Add(this.materialRuler1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -150,7 +151,7 @@
             this.materialRuler1.DivisionMarkFactor = 2;
             this.materialRuler1.Divisions = 3;
             this.materialRuler1.ForeColor = System.Drawing.Color.Black;
-            this.materialRuler1.Location = new System.Drawing.Point(218, 6);
+            this.materialRuler1.Location = new System.Drawing.Point(215, 6);
             this.materialRuler1.MajorInterval = 1;
             this.materialRuler1.MiddleMarkFactor = 2;
             this.materialRuler1.MouseState = MaterialSkin.MouseState.HOVER;
