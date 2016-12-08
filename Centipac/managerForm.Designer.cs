@@ -149,7 +149,7 @@
             this.materialRuler1.ActualSize = true;
             this.materialRuler1.Depth = 0;
             this.materialRuler1.DivisionMarkFactor = 2;
-            this.materialRuler1.Divisions = 3;
+            this.materialRuler1.Divisions = 2;
             this.materialRuler1.ForeColor = System.Drawing.Color.Black;
             this.materialRuler1.Location = new System.Drawing.Point(215, 6);
             this.materialRuler1.MajorInterval = 1;
