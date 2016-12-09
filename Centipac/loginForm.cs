@@ -41,6 +41,7 @@ namespace Centipac
             {
                 //  Update the user based on server response.
                 activeUser.updateToken(result);
+                activeUser.updateName();
 
                 //  Require user to create new account if it is the first time logging in.
                 if (txtUser.Text == "admin")

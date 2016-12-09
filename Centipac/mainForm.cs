@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using MaterialSkin;
+using ExtensionMethods;
 
 namespace Centipac
 {
@@ -47,12 +48,10 @@ namespace Centipac
                 hideManager();
             }
 
-            string username = activeUser.getUser();
-
             MaterialSkin.Controls.MaterialFlatButton user = new MaterialSkin.Controls.MaterialFlatButton();
             user.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
             user.ForeColor = Color.White;
-            user.Text = username;
+            user.Text = activeUser.name;
             user.Name = "btnUser";
             user.useBackColor = true;
             user.useForeColor = true;
@@ -90,8 +89,11 @@ namespace Centipac
             loginForm logOut = new loginForm();
             logOut.Show();
             logout = true;
-            settings.Close();
-            settings = null;
+            if (settings != null)
+            {
+                settings.Close();
+                settings = null;
+            }
             this.Close();
         }
 
@@ -139,6 +141,11 @@ namespace Centipac
                 manage.BringToFront();
             }
             groupUserOptions.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Server.getName(activeUser));
         }
     }
 }

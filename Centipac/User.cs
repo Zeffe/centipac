@@ -15,12 +15,24 @@ namespace Centipac
         //  Data contained within the token in format: "SYSTEMTIME_username-permission"
         public string data { get; set; }
 
+        public string name { get; set; }
+
         //  Deserializes the json object returned by the server.
         public void updateToken(string json)
         {
             User temp = JsonConvert.DeserializeObject<User>(json);
             this.token = temp.token;
             this.data = temp.data;
+        }
+
+        public void updateName()
+        {
+            name = Server.getName(this);
+        }
+
+        public string getName()
+        {
+            return name;
         }
 
         public int getPerms()
