@@ -43,6 +43,17 @@ namespace Centipac
             return Server.postPHP(url, postData.ToString());
         }
 
+        public static string /*Employee[]*/ getEmployees(User currentUser)
+        {
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            string url = "https://conveyable-wrenches.000webhostapp.com/getEmployees.php";
+
+            //return new Employee[1];
+            return Server.postPHP(url, postData.ToString());
+        }
+
         public static string getName(User currentUser)
         {
             StringBuilder postData = new StringBuilder();
