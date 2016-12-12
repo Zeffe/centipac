@@ -145,7 +145,7 @@ namespace Centipac
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Server.getEmployees(activeUser));
+            Server.getEmployees(activeUser);
         }
     }
 }

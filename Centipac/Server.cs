@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace Centipac
 {
@@ -43,15 +44,15 @@ namespace Centipac
             return Server.postPHP(url, postData.ToString());
         }
 
-        public static string /*Employee[]*/ getEmployees(User currentUser)
+        public static Employee[] getEmployees(User currentUser)
         {
             StringBuilder postData = new StringBuilder();
             postData.AppendUrlEncoded("token", currentUser.token);
             postData.AppendUrlEncoded("data", currentUser.data);
             string url = "https://conveyable-wrenches.000webhostapp.com/getEmployees.php";
+            string jsonData = Server.postPHP(url, postData.ToString());
 
-            //return new Employee[1];
-            return Server.postPHP(url, postData.ToString());
+            return JsonConvert.DeserializeObject<Employee[]>(jsonData);
         }
 
         public static string getName(User currentUser)

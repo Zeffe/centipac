@@ -27,21 +27,45 @@ namespace Centipac
         private void managerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             mainForm.manage = null;
-        }    
+        }
 
-        TimePicker a = new TimePicker();
-        TimePicker b = new TimePicker();
-        TimePicker c = new TimePicker();
+        TimePicker[] timepickers;
        
 
         private void managerForm_Load(object sender, EventArgs e)
         {
-            tabPage3.Controls.Add(a.CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + 60), materialRuler1.Width, this));
-            tabPage3.Controls.Add(a.CreateLabel("Seth", "Dixon"));
-            tabPage3.Controls.Add(b.CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + 120), materialRuler1.Width, this));
-            tabPage3.Controls.Add(b.CreateLabel("Donald", "Trump"));
-            tabPage3.Controls.Add(c.CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + 180), materialRuler1.Width, this));
-            tabPage3.Controls.Add(c.CreateLabel("Kanye", "West"));
+            Employee[] employees = Server.getEmployees(activeUser);
+            timepickers = new TimePicker[employees.Length];
+
+            for (int i = 0; i < employees.Length; i++)
+            {
+                var tempItem = new[] { employees[i].name, employees[i].username, employees[i].perm };
+                var item = new ListViewItem(tempItem);
+                materialListView1.Items.Add(item);
+
+                timepickers[i] = new TimePicker();
+
+                tabPage3.Controls.Add(timepickers[i].CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + (60 * i)), materialRuler1.Width, this));
+                tabPage3.Controls.Add(timepickers[i].CreateLabel(employees[i].name));
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (materialTabControl1.SelectedIndex)
+            {
+                case 1: 
+                    foreach (TimePicker timepicker in timepickers)
+                    {
+                        timepicker.getDisplay().Hide(this);
+                    }
+                    break;
+            }
         }
     }
 }

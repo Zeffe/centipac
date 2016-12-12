@@ -35,15 +35,20 @@ namespace Centipac
             return name;
         }
 
+        public ToolTip getDisplay()
+        {
+            return label;
+        }
+
         public MaterialSkin.Controls.MaterialProgressBar getBar()
         {
             return materialProgressBar;
         }
 
-        public Label CreateLabel(string firstName, string lastName)
+        public Label CreateLabel(string _name)
         {
             name.Location = new Point(materialProgressBar.Location.X - 75, materialProgressBar.Location.Y - materialProgressBar.Height);
-            name.Text = lastName + ", " + firstName;
+            name.Text = _name;
             return name;
         }
 
