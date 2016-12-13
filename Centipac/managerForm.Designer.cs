@@ -33,6 +33,15 @@
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnNext = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.listRanks = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblTitle = new MaterialSkin.Controls.MaterialLabel();
+            this.lblUsername = new MaterialSkin.Controls.MaterialLabel();
+            this.lblName = new MaterialSkin.Controls.MaterialLabel();
+            this.lblHeader = new MaterialSkin.Controls.MaterialLabel();
             this.btnDelete = new MaterialSkin.Controls.MaterialFlatButton();
             this.listEmployees = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,15 +52,6 @@
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.lblName = new MaterialSkin.Controls.MaterialLabel();
-            this.lblUsername = new MaterialSkin.Controls.MaterialLabel();
-            this.lblTitle = new MaterialSkin.Controls.MaterialLabel();
-            this.listRanks = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.btnNext = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -101,7 +101,7 @@
             this.tabPage2.Controls.Add(this.lblTitle);
             this.tabPage2.Controls.Add(this.lblUsername);
             this.tabPage2.Controls.Add(this.lblName);
-            this.tabPage2.Controls.Add(this.materialLabel1);
+            this.tabPage2.Controls.Add(this.lblHeader);
             this.tabPage2.Controls.Add(this.btnDelete);
             this.tabPage2.Controls.Add(this.listEmployees);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -111,6 +111,127 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Employee Data";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnNext
+            // 
+            this.btnNext.AutoSize = true;
+            this.btnNext.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnNext.Depth = 0;
+            this.btnNext.Enabled = false;
+            this.btnNext.Icon = null;
+            this.btnNext.Location = new System.Drawing.Point(302, 112);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnNext.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Primary = false;
+            this.btnNext.Size = new System.Drawing.Size(55, 36);
+            this.btnNext.TabIndex = 8;
+            this.btnNext.Text = "Next";
+            this.btnNext.useBackColor = false;
+            this.btnNext.useForeColor = false;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // materialFlatButton1
+            // 
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.Enabled = false;
+            this.materialFlatButton1.Icon = null;
+            this.materialFlatButton1.Location = new System.Drawing.Point(52, 290);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(98, 36);
+            this.materialFlatButton1.TabIndex = 7;
+            this.materialFlatButton1.Text = "Edit Ranks";
+            this.materialFlatButton1.useBackColor = false;
+            this.materialFlatButton1.useForeColor = false;
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            // 
+            // listRanks
+            // 
+            this.listRanks.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listRanks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8});
+            this.listRanks.Depth = 0;
+            this.listRanks.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.listRanks.FullRowSelect = true;
+            this.listRanks.Location = new System.Drawing.Point(13, 157);
+            this.listRanks.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listRanks.MouseState = MaterialSkin.MouseState.OUT;
+            this.listRanks.Name = "listRanks";
+            this.listRanks.OwnerDraw = true;
+            this.listRanks.Size = new System.Drawing.Size(173, 124);
+            this.listRanks.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listRanks.TabIndex = 6;
+            this.listRanks.UseCompatibleStateImageBehavior = false;
+            this.listRanks.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Rank";
+            this.columnHeader7.Width = 92;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Title";
+            this.columnHeader8.Width = 77;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Depth = 0;
+            this.lblTitle.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTitle.Location = new System.Drawing.Point(47, 120);
+            this.lblTitle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(47, 19);
+            this.lblTitle.TabIndex = 5;
+            this.lblTitle.Text = "Title: ";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Depth = 0;
+            this.lblUsername.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblUsername.Location = new System.Drawing.Point(9, 87);
+            this.lblUsername.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(85, 19);
+            this.lblUsername.TabIndex = 4;
+            this.lblUsername.Text = "Username: ";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Depth = 0;
+            this.lblName.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblName.Location = new System.Drawing.Point(9, 53);
+            this.lblName.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(85, 19);
+            this.lblName.TabIndex = 3;
+            this.lblName.Text = "Full Name: ";
+            // 
+            // lblHeader
+            // 
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.Depth = 0;
+            this.lblHeader.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblHeader.Location = new System.Drawing.Point(8, 12);
+            this.lblHeader.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(145, 19);
+            this.lblHeader.TabIndex = 2;
+            this.lblHeader.Text = "Selected Employee: ";
             // 
             // btnDelete
             // 
@@ -231,127 +352,6 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(8, 12);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(213, 26);
-            this.materialLabel1.TabIndex = 2;
-            this.materialLabel1.Text = "Selected Employee: ";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Depth = 0;
-            this.lblName.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblName.Location = new System.Drawing.Point(9, 53);
-            this.lblName.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(85, 19);
-            this.lblName.TabIndex = 3;
-            this.lblName.Text = "Full Name: ";
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Depth = 0;
-            this.lblUsername.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblUsername.Location = new System.Drawing.Point(9, 87);
-            this.lblUsername.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(85, 19);
-            this.lblUsername.TabIndex = 4;
-            this.lblUsername.Text = "Username: ";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Depth = 0;
-            this.lblTitle.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(47, 120);
-            this.lblTitle.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(47, 19);
-            this.lblTitle.TabIndex = 5;
-            this.lblTitle.Text = "Title: ";
-            // 
-            // listRanks
-            // 
-            this.listRanks.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listRanks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader7,
-            this.columnHeader8});
-            this.listRanks.Depth = 0;
-            this.listRanks.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.listRanks.FullRowSelect = true;
-            this.listRanks.Location = new System.Drawing.Point(13, 157);
-            this.listRanks.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.listRanks.MouseState = MaterialSkin.MouseState.OUT;
-            this.listRanks.Name = "listRanks";
-            this.listRanks.OwnerDraw = true;
-            this.listRanks.Size = new System.Drawing.Size(173, 124);
-            this.listRanks.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listRanks.TabIndex = 6;
-            this.listRanks.UseCompatibleStateImageBehavior = false;
-            this.listRanks.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Rank";
-            this.columnHeader7.Width = 92;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Title";
-            this.columnHeader8.Width = 77;
-            // 
-            // materialFlatButton1
-            // 
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Enabled = false;
-            this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(52, 290);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(98, 36);
-            this.materialFlatButton1.TabIndex = 7;
-            this.materialFlatButton1.Text = "Edit Ranks";
-            this.materialFlatButton1.useBackColor = false;
-            this.materialFlatButton1.useForeColor = false;
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.AutoSize = true;
-            this.btnNext.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnNext.Depth = 0;
-            this.btnNext.Enabled = false;
-            this.btnNext.Icon = null;
-            this.btnNext.Location = new System.Drawing.Point(302, 112);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnNext.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Primary = false;
-            this.btnNext.Size = new System.Drawing.Size(55, 36);
-            this.btnNext.TabIndex = 8;
-            this.btnNext.Text = "Next";
-            this.btnNext.useBackColor = false;
-            this.btnNext.useForeColor = false;
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,7 +397,7 @@
         private MaterialSkin.Controls.MaterialLabel lblTitle;
         private MaterialSkin.Controls.MaterialLabel lblUsername;
         private MaterialSkin.Controls.MaterialLabel lblName;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel lblHeader;
         private MaterialSkin.Controls.MaterialFlatButton btnNext;
     }
 }

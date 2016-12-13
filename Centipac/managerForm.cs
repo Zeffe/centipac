@@ -38,6 +38,12 @@ namespace Centipac
             Employee[] employees = Server.getEmployees(activeUser);
             timepickers = new TimePicker[employees.Length];
 
+            lblHeader.Font = MaterialSkinManager.Instance.ROBOTO_MEDIUM_12;
+            lblHeader.ForeColor = MaterialSkinManager.Instance.GetSecondaryTextColor();
+            lblName.ForeColor = MaterialSkinManager.Instance.GetPrimaryTextColor();
+            lblUsername.ForeColor = MaterialSkinManager.Instance.GetPrimaryTextColor();
+            lblTitle.ForeColor = MaterialSkinManager.Instance.GetPrimaryTextColor();
+
             for (int i = 0; i < employees.Length; i++)
             {
                 var tempItem = new[] { employees[i].name, employees[i].username, employees[i].perm };
