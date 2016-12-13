@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System.Drawing;
+using System.Collections;
 
 namespace MaterialSkinExample
 {
@@ -110,6 +111,35 @@ namespace MaterialSkinExample
         private void materialProgressBar2_MouseUp(object sender, MouseEventArgs e)
         {
             timer1.Stop();
+        }
+
+        class ListViewItemComparer : IComparer
+        {
+            private int col;
+
+            public ListViewItemComparer()
+            {
+                col = 0;
+            }
+
+            public ListViewItemComparer(int column)
+            {
+                col = column;
+            }
+
+            public int Compare(object x, object y)
+            {
+                int returnVal = -1;
+                returnVal = String.Compare(((ListViewItem)x).SubItems[col].Text,
+                    ((ListViewItem)y).SubItems[col].Text);
+                return returnVal;
+            }
+        }
+
+        private void materialListView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            materialListView1.ListViewItemSorter = new ListViewItemComparer(e.Column);
+            materialListView1.Sort();
         }
     }
 }

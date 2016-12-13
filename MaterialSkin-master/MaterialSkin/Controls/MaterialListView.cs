@@ -27,7 +27,7 @@ namespace MaterialSkin.Controls
 		{
 			GridLines = false;
 			FullRowSelect = true;
-			HeaderStyle = ColumnHeaderStyle.Nonclickable;
+			HeaderStyle = ColumnHeaderStyle.Clickable;
 			View = View.Details;
 			OwnerDraw = true;
 			ResizeRedraw = true;

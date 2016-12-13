@@ -32,13 +32,13 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupUserOptions = new MaterialSkin.Controls.MaterialGroupBox();
             this.btnManager = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnLogOut = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.timerUI = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupUserOptions.SuspendLayout();
@@ -78,6 +78,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Color Scheme";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(34, 23);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(86, 58);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabPage2
             // 
@@ -157,16 +167,6 @@
             // 
             this.timerUI.Tick += new System.EventHandler(this.timerUI_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(34, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 58);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,6 +178,7 @@
             this.Controls.Add(this.materialTabSelector1);
             this.MaximizeBox = false;
             this.Name = "mainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Centipac";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);

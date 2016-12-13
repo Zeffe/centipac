@@ -35,9 +35,14 @@ namespace Centipac
             return name;
         }
 
-        public ToolTip getDisplay()
+        public void showToolTip()
         {
-            return label;
+            label.Show(labelText, parentForm, labelPosX, labelPosY);
+        }
+
+        public void hideToolTip()
+        {
+            label.Hide(parentForm);
         }
 
         public MaterialSkin.Controls.MaterialProgressBar getBar()
@@ -182,6 +187,7 @@ namespace Centipac
 
         private int labelPosX, labelPosY;
         private int toolTipWidth = 0, toolTipWidthTemp = 0;
+        private string labelText;
 
         private void popUp(object sender, PopupEventArgs e)
         {
@@ -190,7 +196,7 @@ namespace Centipac
 
         private void popUpTemp(object sender, PopupEventArgs e)
         {
-            toolTipWidthTemp = e.ToolTipSize.Width;
+            toolTipWidthTemp = e.ToolTipSize.Width;            
         }
 
         private void timerTick(object sender, EventArgs e)
@@ -206,6 +212,7 @@ namespace Centipac
                     parentForm,
                     labelPosX,
                     labelPosY);
+                labelText = finalTime + " - " + initTime;
             }
             else
             {
@@ -215,6 +222,7 @@ namespace Centipac
                 parentForm,
                 labelPosX,
                 labelPosY);
+                labelText = initTime + " - " + finalTime;
             }
         }
 

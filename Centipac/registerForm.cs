@@ -43,22 +43,11 @@ namespace Centipac
         {
             if (txtPass.Text == txtPass2.Text && txtUser.Text.Length > 4 && txtPass.Text.Length > 4)
             {
-                StringBuilder postData = new StringBuilder();
-                postData.AppendUrlEncoded("token", activeUser.token);
-                postData.AppendUrlEncoded("data", activeUser.data);
-                postData.AppendUrlEncoded("newUser", txtUser.Text);
-                postData.AppendUrlEncoded("newPass", txtPass.Text);
-                postData.AppendUrlEncoded("newPerm", "1");
-
-                string result = Server.addUser(activeUser, postData);
+                string result = Server.addUser(activeUser, txtUser.Text, txtPass.Text, "1");
 
                 if (result.Contains("token"))
-                {
-                    postData.Clear();
-                    postData.AppendUrlEncoded("token", activeUser.token);
-                    postData.AppendUrlEncoded("data", activeUser.data);
-                    postData.AppendUrlEncoded("deleteUser", "admin");
-                    Server.deleteUser(activeUser, postData);
+                {                   
+                    Server.deleteUser(activeUser, "admin");
                     activeUser.updateToken(result);
                     loginForm newLogin = new loginForm();
                     newLogin.Show();

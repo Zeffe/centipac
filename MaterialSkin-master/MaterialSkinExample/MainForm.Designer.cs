@@ -328,11 +328,11 @@ namespace MaterialSkinExample
             this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialButton1.Depth = 0;
             this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(207, 128);
+            this.materialButton1.Location = new System.Drawing.Point(207, 184);
             this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
             this.materialButton1.Primary = true;
-            this.materialButton1.Size = new System.Drawing.Size(189, 92);
+            this.materialButton1.Size = new System.Drawing.Size(189, 36);
             this.materialButton1.TabIndex = 0;
             this.materialButton1.Text = "Change Theme";
             this.materialButton1.UseVisualStyleBackColor = true;
@@ -559,6 +559,7 @@ namespace MaterialSkinExample
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.materialListView1);
+            this.tabPage4.Controls.Add(this.materialGroupBox1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -579,7 +580,6 @@ namespace MaterialSkinExample
             this.materialListView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.materialListView1.Location = new System.Drawing.Point(3, 3);
             this.materialListView1.MouseLocation = new System.Drawing.Point(0, 0);
             this.materialListView1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -589,6 +589,7 @@ namespace MaterialSkinExample
             this.materialListView1.TabIndex = 0;
             this.materialListView1.UseCompatibleStateImageBehavior = false;
             this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.materialListView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.materialListView1_ColumnClick);
             // 
             // columnHeader1
             // 
@@ -815,7 +816,7 @@ namespace MaterialSkinExample
             this.materialGroupBox1.BackColor = System.Drawing.Color.Transparent;
             this.materialGroupBox1.Depth = 0;
             this.materialGroupBox1.DiamondPos = 16;
-            this.materialGroupBox1.Location = new System.Drawing.Point(502, 49);
+            this.materialGroupBox1.Location = new System.Drawing.Point(433, 84);
             this.materialGroupBox1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialGroupBox1.Name = "materialGroupBox1";
             this.materialGroupBox1.Size = new System.Drawing.Size(50, 63);
@@ -835,7 +836,6 @@ namespace MaterialSkinExample
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(617, 429);
             this.ContextMenuStrip = this.materialContextMenuStrip1;
-            this.Controls.Add(this.materialGroupBox1);
             this.Controls.Add(this.materialFlatButton3);
             this.Controls.Add(this.materialFlatButton2);
             this.Controls.Add(this.materialTabSelector1);

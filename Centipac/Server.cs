@@ -66,9 +66,15 @@ namespace Centipac
         }
 
         //  With proper authentication, adds a user to the user database.
-        public static string addUser(User currentUser, StringBuilder postData)
+        public static string addUser(User currentUser, string newUser, string newPass, string newPerm)
         {
             string url = "https://conveyable-wrenches.000webhostapp.com/add.php";
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("newUser", newUser);
+            postData.AppendUrlEncoded("newPass", newPass);
+            postData.AppendUrlEncoded("newPerm", newPerm);
 
             string result = Server.postPHP(url, postData.ToString());
 
@@ -86,9 +92,13 @@ namespace Centipac
 
 
         //  With proper authentication, delets a user from the user database.
-        public static string deleteUser(User currentUser, StringBuilder postData)
+        public static string deleteUser(User currentUser, string userToDelete) 
         {
             string url = "https://conveyable-wrenches.000webhostapp.com/delete.php";
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("deleteUser", userToDelete);
 
             string result = Server.postPHP(url, postData.ToString());
 

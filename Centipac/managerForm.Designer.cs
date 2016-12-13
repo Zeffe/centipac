@@ -33,8 +33,7 @@
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.listEmployees = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,6 +42,7 @@
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDelete = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -86,8 +86,8 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.materialListView1);
+            this.tabPage2.Controls.Add(this.btnDelete);
+            this.tabPage2.Controls.Add(this.listEmployees);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -96,36 +96,28 @@
             this.tabPage2.Text = "Employee Data";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // listEmployees
             // 
-            this.button1.Location = new System.Drawing.Point(69, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(256, 142);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // materialListView1
-            // 
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listEmployees.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.Location = new System.Drawing.Point(372, 6);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(449, 323);
-            this.materialListView1.TabIndex = 0;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.listEmployees.Depth = 0;
+            this.listEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.listEmployees.FullRowSelect = true;
+            this.listEmployees.Location = new System.Drawing.Point(372, 6);
+            this.listEmployees.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listEmployees.MouseState = MaterialSkin.MouseState.OUT;
+            this.listEmployees.Name = "listEmployees";
+            this.listEmployees.OwnerDraw = true;
+            this.listEmployees.Size = new System.Drawing.Size(449, 323);
+            this.listEmployees.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listEmployees.TabIndex = 0;
+            this.listEmployees.UseCompatibleStateImageBehavior = false;
+            this.listEmployees.View = System.Windows.Forms.View.Details;
+            this.listEmployees.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listEmployees_ColumnClick);
+            this.listEmployees.SelectedIndexChanged += new System.EventHandler(this.listEmployees_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -203,6 +195,26 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.Depth = 0;
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Icon = null;
+            this.btnDelete.Location = new System.Drawing.Point(296, 290);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Primary = false;
+            this.btnDelete.Size = new System.Drawing.Size(69, 36);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.useBackColor = false;
+            this.btnDelete.useForeColor = false;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,11 +224,13 @@
             this.Controls.Add(this.materialTabSelector1);
             this.MaximizeBox = false;
             this.Name = "managerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.managerForm_FormClosing);
             this.Load += new System.EventHandler(this.managerForm_Load);
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.menuProgressBar.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -230,7 +244,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
+        private MaterialSkin.Controls.MaterialListView listEmployees;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private MaterialSkin.Controls.MaterialRuler materialRuler1;
         private System.Windows.Forms.ContextMenuStrip menuProgressBar;
@@ -238,6 +252,6 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Button button1;
+        private MaterialSkin.Controls.MaterialFlatButton btnDelete;
     }
 }
