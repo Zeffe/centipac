@@ -49,7 +49,6 @@ namespace Centipac
                 msgOut += "\n";
             }
             lblMessage.Text = msgOut;
-            lblMessage.Font = this.Font;
             this.Text = title;
             this.Width = lblMessage.Width + 20;
             switch (type)

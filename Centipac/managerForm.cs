@@ -100,6 +100,7 @@ namespace Centipac
         }
 
         private int sortColumn = -1;
+        private int employeeDisplay;
 
         private void listEmployees_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -131,18 +132,39 @@ namespace Centipac
                 case 0: btnDelete.Enabled = false; break;
                 default: btnDelete.Enabled = true; break;
             }
+
+            btnNext.Enabled = (listEmployees.SelectedItems.Count > 1);
+            employeeDisplay = 0;
+            displayEmployeeInfo(employeeDisplay);  
+        }
+
+        void displayEmployeeInfo(int count)
+        {
+            try
+            {
+                lblName.Text = "Full Name: " + listEmployees.SelectedItems[count].SubItems[0].Text;
+                lblUsername.Text = "Username: " + listEmployees.SelectedItems[count].SubItems[1].Text;
+                lblTitle.Text = "Title: " + listEmployees.SelectedItems[count].SubItems[2].Text;
+            }
+            catch { }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string userToDelete = listEmployees.SelectedItems[0].SubItems[1].Text;
+            string userToDelete = listEmployees.SelectedItems[employeeDisplay % listEmployees.SelectedItems.Count].SubItems[1].Text;
             msgbox confirm = new msgbox("Are you sure you want to delete the user '" + userToDelete + "'. This cannot be undone.",
                 "Are you sure?", 2);
             if (confirm.ShowDialog() == DialogResult.Yes)
             {
                 Server.deleteUser(activeUser, userToDelete);
-                listEmployees.SelectedItems[0].Remove();
+                listEmployees.SelectedItems[employeeDisplay % listEmployees.SelectedItems.Count].Remove();
             }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            employeeDisplay++;
+            displayEmployeeInfo(employeeDisplay % listEmployees.SelectedItems.Count);
         }
     }
 }
