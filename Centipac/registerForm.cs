@@ -41,9 +41,9 @@ namespace Centipac
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtPass.Text == txtPass2.Text && txtUser.Text.Length > 4 && txtPass.Text.Length > 4)
+            if (txtPass.Text == txtPass2.Text && txtUser.Text.Length > 4 && txtPass.Text.Length > 4 && txtName.Text != String.Empty)
             {
-                string result = Server.addUser(activeUser, txtUser.Text, txtPass.Text, "1");
+                string result = Server.addUser(activeUser, txtUser.Text, txtPass.Text, "1", txtName.Text);
 
                 if (result.Contains("token"))
                 {                   

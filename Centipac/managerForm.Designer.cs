@@ -33,6 +33,8 @@
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnEdit = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnAdd = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnNext = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.listRanks = new MaterialSkin.Controls.MaterialListView();
@@ -52,6 +54,7 @@
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRefresh = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -95,6 +98,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnRefresh);
+            this.tabPage2.Controls.Add(this.btnEdit);
+            this.tabPage2.Controls.Add(this.btnAdd);
             this.tabPage2.Controls.Add(this.btnNext);
             this.tabPage2.Controls.Add(this.materialFlatButton1);
             this.tabPage2.Controls.Add(this.listRanks);
@@ -112,6 +118,45 @@
             this.tabPage2.Text = "Employee Data";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.AutoSize = true;
+            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEdit.Depth = 0;
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Icon = null;
+            this.btnEdit.Location = new System.Drawing.Point(315, 245);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEdit.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Primary = false;
+            this.btnEdit.Size = new System.Drawing.Size(50, 36);
+            this.btnEdit.TabIndex = 10;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.useBackColor = false;
+            this.btnEdit.useForeColor = false;
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.AutoSize = true;
+            this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAdd.Depth = 0;
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAdd.Icon = null;
+            this.btnAdd.Location = new System.Drawing.Point(317, 197);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAdd.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Primary = false;
+            this.btnAdd.Size = new System.Drawing.Size(48, 36);
+            this.btnAdd.TabIndex = 9;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.useBackColor = false;
+            this.btnAdd.useForeColor = false;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // btnNext
             // 
             this.btnNext.AutoSize = true;
@@ -119,7 +164,7 @@
             this.btnNext.Depth = 0;
             this.btnNext.Enabled = false;
             this.btnNext.Icon = null;
-            this.btnNext.Location = new System.Drawing.Point(302, 112);
+            this.btnNext.Location = new System.Drawing.Point(310, 112);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnNext.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNext.Name = "btnNext";
@@ -268,7 +313,7 @@
             this.listEmployees.MouseState = MaterialSkin.MouseState.OUT;
             this.listEmployees.Name = "listEmployees";
             this.listEmployees.OwnerDraw = true;
-            this.listEmployees.Size = new System.Drawing.Size(449, 323);
+            this.listEmployees.Size = new System.Drawing.Size(449, 275);
             this.listEmployees.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listEmployees.TabIndex = 0;
             this.listEmployees.UseCompatibleStateImageBehavior = false;
@@ -352,6 +397,26 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.AutoSize = true;
+            this.btnRefresh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRefresh.Depth = 0;
+            this.btnRefresh.Enabled = false;
+            this.btnRefresh.Icon = null;
+            this.btnRefresh.Location = new System.Drawing.Point(553, 290);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRefresh.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Primary = false;
+            this.btnRefresh.Size = new System.Drawing.Size(79, 36);
+            this.btnRefresh.TabIndex = 11;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.useBackColor = false;
+            this.btnRefresh.useForeColor = false;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,5 +464,8 @@
         private MaterialSkin.Controls.MaterialLabel lblName;
         private MaterialSkin.Controls.MaterialLabel lblHeader;
         private MaterialSkin.Controls.MaterialFlatButton btnNext;
+        private MaterialSkin.Controls.MaterialFlatButton btnEdit;
+        private MaterialSkin.Controls.MaterialFlatButton btnAdd;
+        private MaterialSkin.Controls.MaterialFlatButton btnRefresh;
     }
 }

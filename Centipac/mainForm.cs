@@ -30,7 +30,7 @@ namespace Centipac
 
         void hideManager()
         {
-            groupUserOptions.Height = 101;
+            groupUserOptions.Height = 99;
         }
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)

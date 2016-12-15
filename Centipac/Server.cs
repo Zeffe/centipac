@@ -13,6 +13,8 @@ namespace Centipac
 {
     public class Server
     {
+        private const string baseUrl = "https://conveyable-wrenches.000webhostapp.com/";
+
         //  Used to post data to the PHP and returns response.
         public static string postPHP(string url, string postData)
         {
@@ -39,7 +41,7 @@ namespace Centipac
             StringBuilder postData = new StringBuilder();
             postData.AppendUrlEncoded("username", user);
             postData.AppendUrlEncoded("password", pass);
-            string url = "https://conveyable-wrenches.000webhostapp.com/login.php";
+            string url = baseUrl + "login.php";
 
             return Server.postPHP(url, postData.ToString());
         }
@@ -49,10 +51,21 @@ namespace Centipac
             StringBuilder postData = new StringBuilder();
             postData.AppendUrlEncoded("token", currentUser.token);
             postData.AppendUrlEncoded("data", currentUser.data);
-            string url = "https://conveyable-wrenches.000webhostapp.com/getEmployees.php";
+            string url = baseUrl + "getEmployees.php";
             string jsonData = Server.postPHP(url, postData.ToString());
 
             return JsonConvert.DeserializeObject<Employee[]>(jsonData);
+        }
+
+        public static string checkUser(User currentUser, string userToCheck)
+        {
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("userToCheck", userToCheck);
+            string url = baseUrl + "checkUser.php";
+
+            return Server.postPHP(url, postData.ToString());
         }
 
         public static string getName(User currentUser)
@@ -60,21 +73,22 @@ namespace Centipac
             StringBuilder postData = new StringBuilder();
             postData.AppendUrlEncoded("token", currentUser.token);
             postData.AppendUrlEncoded("data", currentUser.data);
-            string url = "https://conveyable-wrenches.000webhostapp.com/getName.php";
+            string url = baseUrl + "getName.php";
 
             return Server.postPHP(url, postData.ToString());
         }
 
         //  With proper authentication, adds a user to the user database.
-        public static string addUser(User currentUser, string newUser, string newPass, string newPerm)
+        public static string addUser(User currentUser, string newUser, string newPass, string newPerm, string newName)
         {
-            string url = "https://conveyable-wrenches.000webhostapp.com/add.php";
+            string url = baseUrl + "add.php";
             StringBuilder postData = new StringBuilder();
             postData.AppendUrlEncoded("token", currentUser.token);
             postData.AppendUrlEncoded("data", currentUser.data);
             postData.AppendUrlEncoded("newUser", newUser);
             postData.AppendUrlEncoded("newPass", newPass);
             postData.AppendUrlEncoded("newPerm", newPerm);
+            postData.AppendUrlEncoded("newName", newName);
 
             string result = Server.postPHP(url, postData.ToString());
 

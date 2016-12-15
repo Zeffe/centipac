@@ -135,8 +135,8 @@ namespace Centipac
         {
             switch (listEmployees.SelectedIndices.Count)
             {
-                case 0: btnDelete.Enabled = false; break;
-                default: btnDelete.Enabled = true; break;
+                case 0: btnDelete.Enabled = false; btnEdit.Enabled = false; break;
+                default: btnDelete.Enabled = true; btnEdit.Enabled = true; break;
             }
 
             btnNext.Enabled = (listEmployees.SelectedItems.Count > 1);
@@ -171,6 +171,33 @@ namespace Centipac
         {
             employeeDisplay++;
             displayEmployeeInfo(employeeDisplay % listEmployees.SelectedItems.Count);
+        }
+
+        public static addForm add = null;
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (add == null)
+            {
+                add = new addForm(activeUser);
+                add.Show();
+            } else
+            {
+                add.BringToFront();
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            listEmployees.Clear();
+            Employee[] employees = Server.getEmployees(activeUser);
+
+            for (int i = 0; i < employees.Length; i++)
+            {
+                var tempItem = new[] { employees[i].name, employees[i].username, employees[i].perm };
+                var item = new ListViewItem(tempItem);
+                listEmployees.Items.Add(item);
+            }
         }
     }
 }
