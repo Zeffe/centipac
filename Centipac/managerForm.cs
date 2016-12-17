@@ -189,7 +189,7 @@ namespace Centipac
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            listEmployees.Clear();
+            listEmployees.Items.Clear();
             Employee[] employees = Server.getEmployees(activeUser);
 
             for (int i = 0; i < employees.Length; i++)

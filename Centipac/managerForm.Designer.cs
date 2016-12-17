@@ -33,6 +33,7 @@
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnRefresh = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnEdit = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnAdd = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnNext = new MaterialSkin.Controls.MaterialFlatButton();
@@ -54,7 +55,6 @@
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRefresh = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -117,6 +117,25 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Employee Data";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.AutoSize = true;
+            this.btnRefresh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRefresh.Depth = 0;
+            this.btnRefresh.Icon = null;
+            this.btnRefresh.Location = new System.Drawing.Point(553, 290);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRefresh.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Primary = false;
+            this.btnRefresh.Size = new System.Drawing.Size(79, 36);
+            this.btnRefresh.TabIndex = 11;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.useBackColor = false;
+            this.btnRefresh.useForeColor = false;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnEdit
             // 
@@ -224,7 +243,7 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "Title";
-            this.columnHeader8.Width = 77;
+            this.columnHeader8.Width = 81;
             // 
             // lblTitle
             // 
@@ -396,26 +415,6 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.AutoSize = true;
-            this.btnRefresh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnRefresh.Depth = 0;
-            this.btnRefresh.Enabled = false;
-            this.btnRefresh.Icon = null;
-            this.btnRefresh.Location = new System.Drawing.Point(553, 290);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnRefresh.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Primary = false;
-            this.btnRefresh.Size = new System.Drawing.Size(79, 36);
-            this.btnRefresh.TabIndex = 11;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.useBackColor = false;
-            this.btnRefresh.useForeColor = false;
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // managerForm
             // 
