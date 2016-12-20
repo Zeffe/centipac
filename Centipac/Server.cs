@@ -57,6 +57,17 @@ namespace Centipac
             return JsonConvert.DeserializeObject<Employee[]>(jsonData);
         }
 
+        public static Rank[] getRanks(User currentUser)
+        {
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            string url = baseUrl + "getRanks.php";
+            string jsonData = Server.postPHP(url, postData.ToString());
+
+            return JsonConvert.DeserializeObject<Rank[]>(jsonData);
+        }
+
         public static string checkUser(User currentUser, string userToCheck)
         {
             StringBuilder postData = new StringBuilder();
@@ -108,7 +119,7 @@ namespace Centipac
         //  With proper authentication, delets a user from the user database.
         public static string deleteUser(User currentUser, string userToDelete) 
         {
-            string url = "https://conveyable-wrenches.000webhostapp.com/delete.php";
+            string url = baseUrl + "delete.php";
             StringBuilder postData = new StringBuilder();
             postData.AppendUrlEncoded("token", currentUser.token);
             postData.AppendUrlEncoded("data", currentUser.data);

@@ -14,7 +14,7 @@ namespace Centipac
 {
     public partial class mainForm : MaterialSkin.Controls.MaterialForm
     {
-
+        public static Rank[] titles;
         User activeUser;
         bool logout = false;
 
@@ -47,6 +47,8 @@ namespace Centipac
             {
                 hideManager();
             }
+
+            titles = Server.getRanks(activeUser);
 
             MaterialSkin.Controls.MaterialFlatButton user = new MaterialSkin.Controls.MaterialFlatButton();
             user.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;

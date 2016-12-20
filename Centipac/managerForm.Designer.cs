@@ -203,7 +203,7 @@
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.Enabled = false;
             this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(52, 290);
+            this.materialFlatButton1.Location = new System.Drawing.Point(51, 290);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -217,6 +217,7 @@
             // 
             // listRanks
             // 
+            this.listRanks.AutoArrange = false;
             this.listRanks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listRanks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader7,
@@ -224,12 +225,13 @@
             this.listRanks.Depth = 0;
             this.listRanks.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.listRanks.FullRowSelect = true;
+            this.listRanks.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listRanks.Location = new System.Drawing.Point(13, 157);
             this.listRanks.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listRanks.MouseState = MaterialSkin.MouseState.OUT;
             this.listRanks.Name = "listRanks";
             this.listRanks.OwnerDraw = true;
-            this.listRanks.Size = new System.Drawing.Size(173, 124);
+            this.listRanks.Size = new System.Drawing.Size(168, 124);
             this.listRanks.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listRanks.TabIndex = 6;
             this.listRanks.UseCompatibleStateImageBehavior = false;

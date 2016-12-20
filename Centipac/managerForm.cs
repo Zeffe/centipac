@@ -44,6 +44,13 @@ namespace Centipac
             lblUsername.ForeColor = MaterialSkinManager.Instance.GetPrimaryTextColor();
             lblTitle.ForeColor = MaterialSkinManager.Instance.GetPrimaryTextColor();
 
+            for (int i = 0; i < mainForm.titles.Length; i++)
+            {
+                var tempItem = new[] { mainForm.titles[i].permission.ToString(), mainForm.titles[i].title };
+                var item = new ListViewItem(tempItem);
+                listRanks.Items.Add(item);
+            }
+
             for (int i = 0; i < employees.Length; i++)
             {
                 var tempItem = new[] { employees[i].name, employees[i].username, employees[i].perm };
@@ -52,7 +59,7 @@ namespace Centipac
 
                 timepickers[i] = new TimePicker();
 
-                tabPage3.Controls.Add(timepickers[i].CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + (60 * i)), materialRuler1.Width, this));
+                tabPage3.Controls.Add(timepickers[i].CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + (60 * (i + 1))), materialRuler1.Width, this));
                 tabPage3.Controls.Add(timepickers[i].CreateLabel(employees[i].name));
             }
         }
