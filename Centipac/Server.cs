@@ -13,7 +13,7 @@ namespace Centipac
 {
     public class Server
     {
-        private const string baseUrl = "https://conveyable-wrenches.000webhostapp.com/";
+        private const string baseUrl = "http://centipacapp.azurewebsites.net/";
 
         //  Used to post data to the PHP and returns response.
         public static string postPHP(string url, string postData)
