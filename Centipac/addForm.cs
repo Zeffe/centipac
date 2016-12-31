@@ -14,6 +14,9 @@ namespace Centipac
     public partial class addForm : MaterialSkin.Controls.MaterialForm
     {
         User activeUser;
+        string tempUser, tempName;
+        int tempRank;
+        bool isEdit = false;
 
         public addForm(User active)
         {
@@ -22,6 +25,18 @@ namespace Centipac
             var materialSkinManager = Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
 
             activeUser = active;
+        }
+
+        public addForm(User active, string user, string name, int rank)
+        {
+            InitializeComponent();
+
+            var materialSkinManager = Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
+
+            activeUser = active;
+            tempUser = user; tempName = name; tempRank = rank;
+            this.Text = "Editing " + user;
+            isEdit = true;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

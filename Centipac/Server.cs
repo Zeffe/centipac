@@ -13,7 +13,7 @@ namespace Centipac
 {
     public class Server
     {
-        private const string baseUrl = "http://centipacapp.azurewebsites.net/";
+        private const string baseUrl = "http://centipacapp.azurewebsites.net/Centipac/";
 
         //  Used to post data to the PHP and returns response.
         public static string postPHP(string url, string postData)
@@ -87,6 +87,12 @@ namespace Centipac
             string url = baseUrl + "getName.php";
 
             return Server.postPHP(url, postData.ToString());
+        }
+
+        public static string test()
+        {
+            string url = baseUrl + "help.php";
+            return Server.postPHP(url, "");
         }
 
         //  With proper authentication, adds a user to the user database.
