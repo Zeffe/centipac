@@ -44,6 +44,13 @@ namespace Centipac
             lblUsername.ForeColor = MaterialSkinManager.Instance.GetPrimaryTextColor();
             lblTitle.ForeColor = MaterialSkinManager.Instance.GetPrimaryTextColor();
 
+            DateTime today = DateTime.Today;
+            int daysUntilMonday = ((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7;
+            DateTime nextMonday = today.AddDays(daysUntilMonday);
+
+            lblStartDate.Text = today.ToShortDateString() + " - ";
+            lblEndDate.Text = (today.AddDays(6)).ToShortDateString();
+
             for (int i = 0; i < mainForm.titles.Length; i++)
             {
                 var tempItem = new[] { mainForm.titles[i].permission.ToString(), mainForm.titles[i].title };
@@ -218,6 +225,11 @@ namespace Centipac
                 tp.Load(cmbDay.SelectedItem.ToString());
             }
             previousSelect = cmbDay.SelectedItem.ToString();
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(timepickers[0].getJsonDayTimes() + " @@ " + timepickers[0].getJsonDayTexts());
         }
     }
 }

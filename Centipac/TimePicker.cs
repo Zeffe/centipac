@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using System.Drawing;
+using Newtonsoft.Json;
 
 namespace Centipac
 {
@@ -18,6 +19,8 @@ namespace Centipac
         private ToolTip tempDisplay = new ToolTip();
         private ContextMenuStrip menu = new ContextMenuStrip();
         private Label name = new Label();
+
+        //public class dayTimes CREATE CLASS TO SUBSTITUTE DICTIONARIES @@@@
 
         Dictionary<string, KeyValuePair<int, int>> dayTimes = new Dictionary<string, KeyValuePair<int, int>>();
         Dictionary<string, string> dayTexts = new Dictionary<string, string>();
@@ -33,6 +36,16 @@ namespace Centipac
                 dayTimes[key] = new KeyValuePair<int, int>(materialProgressBar.Value, materialProgressBar.Offset);
                 dayTexts[key] = labelText;
             }
+        }
+
+        public string getJsonDayTimes()
+        {
+            return JsonConvert.SerializeObject(dayTimes);
+        }
+
+        public string getJsonDayTexts()
+        {
+            return JsonConvert.SerializeObject(dayTexts);
         }
 
         public void Load(string key)
