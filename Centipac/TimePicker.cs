@@ -20,7 +20,6 @@ namespace Centipac
         private Label name = new Label();
 
         Dictionary<string, KeyValuePair<int, int>> dayTimes = new Dictionary<string, KeyValuePair<int, int>>();
-        List<KeyValuePair<string,KeyValuePair<int,int>>> _dayTimes = new List<KeyValuePair<string, KeyValuePair<int, int>>>();
         Dictionary<string, string> dayTexts = new Dictionary<string, string>();
 
         public void Save(string key)
