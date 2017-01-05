@@ -206,5 +206,18 @@ namespace Centipac
                 listEmployees.Items.Add(item);
             }
         }
+
+        string previousSelect = "Monday";
+
+        private void cmbDay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach(TimePicker tp in timepickers)
+            {
+                tp.Save(previousSelect);
+                tp.Clear();
+                tp.Load(cmbDay.SelectedItem.ToString());
+            }
+            previousSelect = cmbDay.SelectedItem.ToString();
+        }
     }
 }

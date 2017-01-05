@@ -19,6 +19,48 @@ namespace Centipac
         private ContextMenuStrip menu = new ContextMenuStrip();
         private Label name = new Label();
 
+        Dictionary<string, KeyValuePair<int, int>> dayTimes = new Dictionary<string, KeyValuePair<int, int>>();
+        List<KeyValuePair<string,KeyValuePair<int,int>>> _dayTimes = new List<KeyValuePair<string, KeyValuePair<int, int>>>();
+        Dictionary<string, string> dayTexts = new Dictionary<string, string>();
+
+        public void Save(string key)
+        {
+            if (!dayTexts.ContainsKey(key))
+            {
+                dayTimes.Add(key, new KeyValuePair<int, int>(materialProgressBar.Value, materialProgressBar.Offset));
+                dayTexts.Add(key, labelText);
+            } else
+            {
+                dayTimes[key] = new KeyValuePair<int, int>(materialProgressBar.Value, materialProgressBar.Offset);
+                dayTexts[key] = labelText;
+            }
+        }
+
+        public void Load(string key)
+        {
+            try
+            {
+                materialProgressBar.Value = dayTimes[key].Key;
+                materialProgressBar.Offset = dayTimes[key].Value;
+                labelPosX = materialProgressBar.Location.X + materialProgressBar.Offset + (materialProgressBar.Value / 2) - (toolTipWidth / 2);
+                labelPosY = materialProgressBar.Location.Y - 25 + materialProgressBar.Parent.Parent.Location.Y;
+                if (materialProgressBar.Value != 0)
+                {
+                    label.Show(dayTexts[key],
+                        parentForm,
+                        labelPosX,
+                        labelPosY);
+                }
+            }
+            catch { }
+        }
+
+        public void Clear()
+        {
+            materialProgressBar.Value = 0;
+            materialProgressBar.Offset = 0;
+            label.Hide(parentForm);
+        }
 
         public string beginTime()
         {

@@ -55,6 +55,7 @@
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmbDay = new System.Windows.Forms.ComboBox();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -360,6 +361,7 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.cmbDay);
             this.tabPage3.Controls.Add(this.materialDivider1);
             this.tabPage3.Controls.Add(this.materialRuler1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -418,6 +420,24 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
+            // cmbDay
+            // 
+            this.cmbDay.FormattingEnabled = true;
+            this.cmbDay.Items.AddRange(new object[] {
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"});
+            this.cmbDay.Location = new System.Drawing.Point(3, 16);
+            this.cmbDay.Name = "cmbDay";
+            this.cmbDay.Size = new System.Drawing.Size(123, 21);
+            this.cmbDay.TabIndex = 26;
+            this.cmbDay.Text = "Monday";
+            this.cmbDay.SelectedIndexChanged += new System.EventHandler(this.cmbDay_SelectedIndexChanged);
+            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,5 +488,6 @@
         private MaterialSkin.Controls.MaterialFlatButton btnEdit;
         private MaterialSkin.Controls.MaterialFlatButton btnAdd;
         private MaterialSkin.Controls.MaterialFlatButton btnRefresh;
+        private System.Windows.Forms.ComboBox cmbDay;
     }
 }
