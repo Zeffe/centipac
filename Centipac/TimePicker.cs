@@ -20,45 +20,49 @@ namespace Centipac
         private ContextMenuStrip menu = new ContextMenuStrip();
         private Label name = new Label();
 
-        //public class dayTimes CREATE CLASS TO SUBSTITUTE DICTIONARIES @@@@
+        public class dayValue
+        {
+            public int offset;
+            public int value;
+            public string text;
 
-        Dictionary<string, KeyValuePair<int, int>> dayTimes = new Dictionary<string, KeyValuePair<int, int>>();
-        Dictionary<string, string> dayTexts = new Dictionary<string, string>();
+            public dayValue(int _offset, int _value, string _text)
+            {
+                offset = _offset; value = _value; text = _text;
+            }      
+        }
+
+        Dictionary<string, dayValue> dayData = new Dictionary<string, dayValue>();
 
         public void Save(string key)
         {
-            if (!dayTexts.ContainsKey(key))
+            if (!dayData.ContainsKey(key))
             {
-                dayTimes.Add(key, new KeyValuePair<int, int>(materialProgressBar.Value, materialProgressBar.Offset));
-                dayTexts.Add(key, labelText);
+                dayData.Add(key, new dayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText));
             } else
             {
-                dayTimes[key] = new KeyValuePair<int, int>(materialProgressBar.Value, materialProgressBar.Offset);
-                dayTexts[key] = labelText;
+                dayData[key] = new dayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText);
             }
         }
 
-        public string getJsonDayTimes()
+        public string getJsonData()
         {
-            return JsonConvert.SerializeObject(dayTimes);
-        }
-
-        public string getJsonDayTexts()
-        {
-            return JsonConvert.SerializeObject(dayTexts);
+            Dictionary<string, Dictionary<string, dayValue>> jsonFormat = new Dictionary<string, Dictionary<string, dayValue>>();
+            jsonFormat.Add(name.Text, dayData);
+            return JsonConvert.SerializeObject(jsonFormat);
         }
 
         public void Load(string key)
         {
             try
             {
-                materialProgressBar.Value = dayTimes[key].Key;
-                materialProgressBar.Offset = dayTimes[key].Value;
+                materialProgressBar.Value = dayData[key].value;
+                materialProgressBar.Offset = dayData[key].offset;
                 labelPosX = materialProgressBar.Location.X + materialProgressBar.Offset + (materialProgressBar.Value / 2) - (toolTipWidth / 2);
                 labelPosY = materialProgressBar.Location.Y - 25 + materialProgressBar.Parent.Parent.Location.Y;
                 if (materialProgressBar.Value != 0)
                 {
-                    label.Show(dayTexts[key],
+                    label.Show(dayData[key].text,
                         parentForm,
                         labelPosX,
                         labelPosY);

@@ -229,7 +229,7 @@ namespace Centipac
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(timepickers[0].getJsonDayTimes() + " @@ " + timepickers[0].getJsonDayTexts());
+            MessageBox.Show(timepickers[0].getJsonData());
         }
     }
 }
