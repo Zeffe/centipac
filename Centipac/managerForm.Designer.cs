@@ -51,18 +51,30 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblEndDate = new System.Windows.Forms.Label();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cmbDay = new System.Windows.Forms.ComboBox();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
             this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.lblStartDate = new System.Windows.Forms.Label();
-            this.lblEndDate = new System.Windows.Forms.Label();
+            this.pnlSliderSelect = new System.Windows.Forms.Panel();
+            this.pnlTableSelect = new System.Windows.Forms.Panel();
+            this.lblSlider = new System.Windows.Forms.Label();
+            this.lblTable = new System.Windows.Forms.Label();
+            this.pnlTable = new System.Windows.Forms.Panel();
+            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.menuProgressBar.SuspendLayout();
+            this.pnlSliderSelect.SuspendLayout();
+            this.pnlTableSelect.SuspendLayout();
+            this.pnlTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -364,12 +376,15 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.pnlTableSelect);
+            this.tabPage3.Controls.Add(this.pnlSliderSelect);
             this.tabPage3.Controls.Add(this.lblEndDate);
             this.tabPage3.Controls.Add(this.lblStartDate);
             this.tabPage3.Controls.Add(this.materialRaisedButton1);
             this.tabPage3.Controls.Add(this.cmbDay);
             this.tabPage3.Controls.Add(this.materialDivider1);
             this.tabPage3.Controls.Add(this.materialRuler1);
+            this.tabPage3.Controls.Add(this.pnlTable);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -377,6 +392,39 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lblEndDate
+            // 
+            this.lblEndDate.AutoSize = true;
+            this.lblEndDate.Location = new System.Drawing.Point(6, 26);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(26, 13);
+            this.lblEndDate.TabIndex = 29;
+            this.lblEndDate.Text = "End";
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.Location = new System.Drawing.Point(6, 6);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(29, 13);
+            this.lblStartDate.TabIndex = 28;
+            this.lblStartDate.Text = "Start";
+            // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Icon = null;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(3, 306);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(122, 23);
+            this.materialRaisedButton1.TabIndex = 27;
+            this.materialRaisedButton1.Text = "Save";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
             // 
             // cmbDay
             // 
@@ -444,38 +492,86 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
-            // materialRaisedButton1
+            // pnlSliderSelect
             // 
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(25, 306);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(75, 23);
-            this.materialRaisedButton1.TabIndex = 27;
-            this.materialRaisedButton1.Text = "Save";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            this.pnlSliderSelect.BackColor = System.Drawing.Color.DodgerBlue;
+            this.pnlSliderSelect.Controls.Add(this.lblSlider);
+            this.pnlSliderSelect.Location = new System.Drawing.Point(3, 276);
+            this.pnlSliderSelect.Name = "pnlSliderSelect";
+            this.pnlSliderSelect.Size = new System.Drawing.Size(61, 24);
+            this.pnlSliderSelect.TabIndex = 30;
             // 
-            // lblStartDate
+            // pnlTableSelect
             // 
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(6, 6);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(29, 13);
-            this.lblStartDate.TabIndex = 28;
-            this.lblStartDate.Text = "Start";
+            this.pnlTableSelect.BackColor = System.Drawing.Color.Transparent;
+            this.pnlTableSelect.Controls.Add(this.lblTable);
+            this.pnlTableSelect.Location = new System.Drawing.Point(64, 276);
+            this.pnlTableSelect.Name = "pnlTableSelect";
+            this.pnlTableSelect.Size = new System.Drawing.Size(61, 24);
+            this.pnlTableSelect.TabIndex = 31;
             // 
-            // lblEndDate
+            // lblSlider
             // 
-            this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(6, 26);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(26, 13);
-            this.lblEndDate.TabIndex = 29;
-            this.lblEndDate.Text = "End";
+            this.lblSlider.AutoSize = true;
+            this.lblSlider.Location = new System.Drawing.Point(12, 5);
+            this.lblSlider.Name = "lblSlider";
+            this.lblSlider.Size = new System.Drawing.Size(38, 13);
+            this.lblSlider.TabIndex = 0;
+            this.lblSlider.Text = "Sliders";
+            // 
+            // lblTable
+            // 
+            this.lblTable.AutoSize = true;
+            this.lblTable.Location = new System.Drawing.Point(12, 5);
+            this.lblTable.Name = "lblTable";
+            this.lblTable.Size = new System.Drawing.Size(34, 13);
+            this.lblTable.TabIndex = 1;
+            this.lblTable.Text = "Table";
+            // 
+            // pnlTable
+            // 
+            this.pnlTable.Controls.Add(this.materialListView1);
+            this.pnlTable.Location = new System.Drawing.Point(140, 3);
+            this.pnlTable.Name = "pnlTable";
+            this.pnlTable.Size = new System.Drawing.Size(683, 328);
+            this.pnlTable.TabIndex = 32;
+            this.pnlTable.Visible = false;
+            // 
+            // materialListView1
+            // 
+            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.materialListView1.Depth = 0;
+            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.materialListView1.FullRowSelect = true;
+            this.materialListView1.Location = new System.Drawing.Point(117, 27);
+            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialListView1.Name = "materialListView1";
+            this.materialListView1.OwnerDraw = true;
+            this.materialListView1.Size = new System.Drawing.Size(449, 275);
+            this.materialListView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.materialListView1.TabIndex = 1;
+            this.materialListView1.UseCompatibleStateImageBehavior = false;
+            this.materialListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Full Name";
+            this.columnHeader4.Width = 186;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Username";
+            this.columnHeader5.Width = 163;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Rank";
+            this.columnHeader6.Width = 95;
             // 
             // managerForm
             // 
@@ -496,6 +592,11 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.menuProgressBar.ResumeLayout(false);
+            this.pnlSliderSelect.ResumeLayout(false);
+            this.pnlSliderSelect.PerformLayout();
+            this.pnlTableSelect.ResumeLayout(false);
+            this.pnlTableSelect.PerformLayout();
+            this.pnlTable.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -532,5 +633,14 @@
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Label lblStartDate;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private System.Windows.Forms.Panel pnlTableSelect;
+        private System.Windows.Forms.Label lblTable;
+        private System.Windows.Forms.Panel pnlSliderSelect;
+        private System.Windows.Forms.Label lblSlider;
+        private System.Windows.Forms.Panel pnlTable;
+        private MaterialSkin.Controls.MaterialListView materialListView1;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

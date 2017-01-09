@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using System.Collections;
+using Newtonsoft.Json;
 
 namespace Centipac
 {
     public partial class managerForm : MaterialSkin.Controls.MaterialForm
     {
         User activeUser;
+        bool slider = true;
 
         public managerForm(User active)
         {
@@ -37,6 +39,11 @@ namespace Centipac
         {
             Employee[] employees = Server.getEmployees(activeUser);
             timepickers = new TimePicker[employees.Length];
+
+            lblSlider.Click += new System.EventHandler(scheduleSlider);
+            lblTable.Click += new System.EventHandler(scheduleTable);
+            pnlSliderSelect.Click += new System.EventHandler(scheduleSlider);
+            pnlTableSelect.Click += new System.EventHandler(scheduleTable);
 
             lblHeader.Font = MaterialSkinManager.Instance.ROBOTO_MEDIUM_12;
             lblHeader.ForeColor = MaterialSkinManager.Instance.GetSecondaryTextColor();
@@ -68,6 +75,37 @@ namespace Centipac
 
                 tabPage3.Controls.Add(timepickers[i].CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + (60 * (i + 1))), materialRuler1.Width, this));
                 tabPage3.Controls.Add(timepickers[i].CreateLabel(employees[i].name));
+            }
+        }
+
+        private void scheduleTable(object sender, EventArgs e)
+        {
+            if (slider)
+            {
+                pnlTableSelect.BackColor = Color.DodgerBlue;
+                pnlSliderSelect.BackColor = Color.Transparent;
+                pnlTable.Visible = true;
+                pnlTable.BringToFront();
+                foreach (TimePicker timepicker in timepickers)
+                {
+                    timepicker.hideToolTip();
+                }
+                slider = !slider;
+            }
+        }
+
+        private void scheduleSlider(object sender, EventArgs e)
+        {
+            if (!slider)
+            {
+                pnlSliderSelect.BackColor = Color.DodgerBlue;
+                pnlTableSelect.BackColor = Color.Transparent;
+                pnlTable.Visible = false;
+                foreach (TimePicker timepicker in timepickers)
+                {
+                    timepicker.showToolTip();
+                }
+                slider = !slider;
             }
         }
 
@@ -176,7 +214,7 @@ namespace Centipac
                 "Are you sure?", 2);
             if (confirm.ShowDialog() == DialogResult.Yes)
             {
-                Server.deleteUser(activeUser, userToDelete);
+                MessageBox.Show(Server.deleteUser(activeUser, userToDelete));
                 listEmployees.SelectedItems[employeeDisplay % listEmployees.SelectedItems.Count].Remove();
             }
         }
@@ -229,7 +267,12 @@ namespace Centipac
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(timepickers[0].getJsonData());
+            List<string> times = new List<string>();            
+            foreach (TimePicker timepicker in timepickers)
+            {
+                times.Add(timepicker.getJsonData());
+            }
+            MessageBox.Show(JsonConvert.SerializeObject(times));
         }
     }
 }

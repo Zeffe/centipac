@@ -133,13 +133,7 @@ namespace Centipac
 
             string result = Server.postPHP(url, postData.ToString());
 
-            if (result.Contains("token"))
-            {
-                return result;
-            } else
-            {
-                return result;
-            }
+            return result;
         }
 
     }

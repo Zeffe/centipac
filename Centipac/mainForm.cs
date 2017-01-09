@@ -17,6 +17,7 @@ namespace Centipac
         public static Rank[] titles;
         User activeUser;
         bool logout = false;
+        bool exit = true;
 
 
         public mainForm(User user)
@@ -35,9 +36,18 @@ namespace Centipac
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!logout)
+            if (!logout && exit)
             {
-                Application.Exit();
+                msgbox confirm = new msgbox("Are you sure you wish to exit Centipac?",
+                "Are you sure?", 2);
+                if (confirm.ShowDialog() == DialogResult.Yes)
+                {
+                    exit = false;
+                    Application.Exit();                
+                } else
+                {
+                    e.Cancel = true;
+                }
             }
         }
 
