@@ -53,7 +53,7 @@ namespace Centipac
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            if (activeUser.getPerms() > 2)
+            if (activeUser.getPerms() > 1)
             {
                 hideManager();
             }
@@ -146,7 +146,7 @@ namespace Centipac
             if (manage == null)
             {
                 manage = new Centipac.managerForm(activeUser);
-                verifyForm verify = new verifyForm(activeUser, manage);
+                verifyForm verify = new verifyForm(activeUser, manage, 1);
                 verify.Show();
             } else
             {
