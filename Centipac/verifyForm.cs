@@ -56,7 +56,6 @@ namespace Centipac
             }
             else
             {
-                MessageBox.Show(activeUser.getPerms().ToString());
                 if (permReq < activeUser.getPerms()) 
                 {
                     msgbox msg = new msgbox("Access Denied.", "Error", 1);

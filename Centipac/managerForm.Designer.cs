@@ -51,30 +51,35 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pnlTableSelect = new System.Windows.Forms.Panel();
+            this.lblTable = new System.Windows.Forms.Label();
+            this.pnlSliderSelect = new System.Windows.Forms.Panel();
+            this.lblSlider = new System.Windows.Forms.Label();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cmbDay = new System.Windows.Forms.ComboBox();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
+            this.pnlTable = new System.Windows.Forms.Panel();
+            this.listSchedule = new MaterialSkin.Controls.MaterialListView();
+            this.cName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cMonday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cTuesday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlSliderSelect = new System.Windows.Forms.Panel();
-            this.pnlTableSelect = new System.Windows.Forms.Panel();
-            this.lblSlider = new System.Windows.Forms.Label();
-            this.lblTable = new System.Windows.Forms.Label();
-            this.pnlTable = new System.Windows.Forms.Panel();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cWednesday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cThursday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cFriday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cSaturday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cSunday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.menuProgressBar.SuspendLayout();
-            this.pnlSliderSelect.SuspendLayout();
             this.pnlTableSelect.SuspendLayout();
+            this.pnlSliderSelect.SuspendLayout();
             this.pnlTable.SuspendLayout();
+            this.menuProgressBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -393,6 +398,42 @@
             this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // pnlTableSelect
+            // 
+            this.pnlTableSelect.BackColor = System.Drawing.Color.Transparent;
+            this.pnlTableSelect.Controls.Add(this.lblTable);
+            this.pnlTableSelect.Location = new System.Drawing.Point(64, 276);
+            this.pnlTableSelect.Name = "pnlTableSelect";
+            this.pnlTableSelect.Size = new System.Drawing.Size(61, 24);
+            this.pnlTableSelect.TabIndex = 31;
+            // 
+            // lblTable
+            // 
+            this.lblTable.AutoSize = true;
+            this.lblTable.Location = new System.Drawing.Point(12, 5);
+            this.lblTable.Name = "lblTable";
+            this.lblTable.Size = new System.Drawing.Size(34, 13);
+            this.lblTable.TabIndex = 1;
+            this.lblTable.Text = "Table";
+            // 
+            // pnlSliderSelect
+            // 
+            this.pnlSliderSelect.BackColor = System.Drawing.Color.DodgerBlue;
+            this.pnlSliderSelect.Controls.Add(this.lblSlider);
+            this.pnlSliderSelect.Location = new System.Drawing.Point(3, 276);
+            this.pnlSliderSelect.Name = "pnlSliderSelect";
+            this.pnlSliderSelect.Size = new System.Drawing.Size(61, 24);
+            this.pnlSliderSelect.TabIndex = 30;
+            // 
+            // lblSlider
+            // 
+            this.lblSlider.AutoSize = true;
+            this.lblSlider.Location = new System.Drawing.Point(12, 5);
+            this.lblSlider.Name = "lblSlider";
+            this.lblSlider.Size = new System.Drawing.Size(38, 13);
+            this.lblSlider.TabIndex = 0;
+            this.lblSlider.Text = "Sliders";
+            // 
             // lblEndDate
             // 
             this.lblEndDate.AutoSize = true;
@@ -479,6 +520,56 @@
             this.materialRuler1.VerticalNumbers = false;
             this.materialRuler1.ZoomFactor = 4.6D;
             // 
+            // pnlTable
+            // 
+            this.pnlTable.Controls.Add(this.listSchedule);
+            this.pnlTable.Location = new System.Drawing.Point(139, 3);
+            this.pnlTable.Name = "pnlTable";
+            this.pnlTable.Size = new System.Drawing.Size(683, 328);
+            this.pnlTable.TabIndex = 32;
+            this.pnlTable.Visible = false;
+            // 
+            // listSchedule
+            // 
+            this.listSchedule.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listSchedule.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.cName,
+            this.cMonday,
+            this.cTuesday,
+            this.cWednesday,
+            this.cThursday,
+            this.cFriday,
+            this.cSaturday,
+            this.cSunday});
+            this.listSchedule.Depth = 0;
+            this.listSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.listSchedule.FullRowSelect = true;
+            this.listSchedule.Location = new System.Drawing.Point(43, 23);
+            this.listSchedule.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listSchedule.MouseState = MaterialSkin.MouseState.OUT;
+            this.listSchedule.Name = "listSchedule";
+            this.listSchedule.OwnerDraw = true;
+            this.listSchedule.Size = new System.Drawing.Size(613, 275);
+            this.listSchedule.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listSchedule.TabIndex = 1;
+            this.listSchedule.UseCompatibleStateImageBehavior = false;
+            this.listSchedule.View = System.Windows.Forms.View.Details;
+            // 
+            // cName
+            // 
+            this.cName.Text = "Name";
+            this.cName.Width = 109;
+            // 
+            // cMonday
+            // 
+            this.cMonday.Text = "Mon";
+            this.cMonday.Width = 75;
+            // 
+            // cTuesday
+            // 
+            this.cTuesday.Text = "Tue";
+            this.cTuesday.Width = 73;
+            // 
             // menuProgressBar
             // 
             this.menuProgressBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -492,86 +583,28 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
-            // pnlSliderSelect
+            // cWednesday
             // 
-            this.pnlSliderSelect.BackColor = System.Drawing.Color.DodgerBlue;
-            this.pnlSliderSelect.Controls.Add(this.lblSlider);
-            this.pnlSliderSelect.Location = new System.Drawing.Point(3, 276);
-            this.pnlSliderSelect.Name = "pnlSliderSelect";
-            this.pnlSliderSelect.Size = new System.Drawing.Size(61, 24);
-            this.pnlSliderSelect.TabIndex = 30;
+            this.cWednesday.Text = "Wed";
+            this.cWednesday.Width = 78;
             // 
-            // pnlTableSelect
+            // cThursday
             // 
-            this.pnlTableSelect.BackColor = System.Drawing.Color.Transparent;
-            this.pnlTableSelect.Controls.Add(this.lblTable);
-            this.pnlTableSelect.Location = new System.Drawing.Point(64, 276);
-            this.pnlTableSelect.Name = "pnlTableSelect";
-            this.pnlTableSelect.Size = new System.Drawing.Size(61, 24);
-            this.pnlTableSelect.TabIndex = 31;
+            this.cThursday.Text = "Thu";
+            this.cThursday.Width = 75;
             // 
-            // lblSlider
+            // cFriday
             // 
-            this.lblSlider.AutoSize = true;
-            this.lblSlider.Location = new System.Drawing.Point(12, 5);
-            this.lblSlider.Name = "lblSlider";
-            this.lblSlider.Size = new System.Drawing.Size(38, 13);
-            this.lblSlider.TabIndex = 0;
-            this.lblSlider.Text = "Sliders";
+            this.cFriday.Text = "Fri";
             // 
-            // lblTable
+            // cSaturday
             // 
-            this.lblTable.AutoSize = true;
-            this.lblTable.Location = new System.Drawing.Point(12, 5);
-            this.lblTable.Name = "lblTable";
-            this.lblTable.Size = new System.Drawing.Size(34, 13);
-            this.lblTable.TabIndex = 1;
-            this.lblTable.Text = "Table";
+            this.cSaturday.Text = "Sat";
             // 
-            // pnlTable
+            // cSunday
             // 
-            this.pnlTable.Controls.Add(this.materialListView1);
-            this.pnlTable.Location = new System.Drawing.Point(140, 3);
-            this.pnlTable.Name = "pnlTable";
-            this.pnlTable.Size = new System.Drawing.Size(683, 328);
-            this.pnlTable.TabIndex = 32;
-            this.pnlTable.Visible = false;
-            // 
-            // materialListView1
-            // 
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.Location = new System.Drawing.Point(117, 27);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(449, 275);
-            this.materialListView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.materialListView1.TabIndex = 1;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Full Name";
-            this.columnHeader4.Width = 186;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Username";
-            this.columnHeader5.Width = 163;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Rank";
-            this.columnHeader6.Width = 95;
+            this.cSunday.Text = "Sun";
+            this.cSunday.Width = 77;
             // 
             // managerForm
             // 
@@ -591,12 +624,12 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.menuProgressBar.ResumeLayout(false);
-            this.pnlSliderSelect.ResumeLayout(false);
-            this.pnlSliderSelect.PerformLayout();
             this.pnlTableSelect.ResumeLayout(false);
             this.pnlTableSelect.PerformLayout();
+            this.pnlSliderSelect.ResumeLayout(false);
+            this.pnlSliderSelect.PerformLayout();
             this.pnlTable.ResumeLayout(false);
+            this.menuProgressBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -638,9 +671,14 @@
         private System.Windows.Forms.Panel pnlSliderSelect;
         private System.Windows.Forms.Label lblSlider;
         private System.Windows.Forms.Panel pnlTable;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private MaterialSkin.Controls.MaterialListView listSchedule;
+        private System.Windows.Forms.ColumnHeader cName;
+        private System.Windows.Forms.ColumnHeader cMonday;
+        private System.Windows.Forms.ColumnHeader cTuesday;
+        private System.Windows.Forms.ColumnHeader cWednesday;
+        private System.Windows.Forms.ColumnHeader cThursday;
+        private System.Windows.Forms.ColumnHeader cFriday;
+        private System.Windows.Forms.ColumnHeader cSaturday;
+        private System.Windows.Forms.ColumnHeader cSunday;
     }
 }

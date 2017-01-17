@@ -17,6 +17,7 @@ namespace Centipac
     {
         User activeUser;
         bool slider = true;
+        List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>();
 
         public managerForm(User active)
         {
@@ -71,11 +72,15 @@ namespace Centipac
                 var item = new ListViewItem(tempItem);
                 listEmployees.Items.Add(item);
 
+                listEmployeeSchedules.Add(new EmployeeSchedule(employees[i].name));
+
                 timepickers[i] = new TimePicker();
 
                 tabPage3.Controls.Add(timepickers[i].CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + (60 * (i + 1))), materialRuler1.Width, this));
                 tabPage3.Controls.Add(timepickers[i].CreateLabel(employees[i].name));
             }
+
+            employeeScheduleToTable(listEmployeeSchedules.ToArray());
         }
 
         private void scheduleTable(object sender, EventArgs e)
@@ -263,6 +268,33 @@ namespace Centipac
                 tp.Load(cmbDay.SelectedItem.ToString());
             }
             previousSelect = cmbDay.SelectedItem.ToString();
+        }
+
+        public class EmployeeSchedule
+        {
+            public string name;
+            public string Monday = "";
+            public string Tuesday = "";
+            public string Wednesday = "";
+            public string Thursday = "";
+            public string Friday = "";
+            public string Saturday = "";
+            public string Sunday = "";
+
+            public EmployeeSchedule(string _name)
+            {
+                this.name = _name;
+            }
+        }
+
+        void employeeScheduleToTable(EmployeeSchedule[] employeeSchedules)
+        {
+            foreach (EmployeeSchedule emp in employeeSchedules)
+            {
+                var tempItem = new[] { emp.name, emp.Monday, emp.Tuesday, emp.Wednesday, emp.Thursday, emp.Friday, emp.Saturday, emp.Sunday };
+                var item = new ListViewItem(tempItem);
+                listSchedule.Items.Add(item);
+            }
         }
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)

@@ -52,6 +52,13 @@ namespace Centipac
             return JsonConvert.SerializeObject(jsonFormat);
         }
 
+        public object getJsonObj()
+        {
+            Dictionary<string, Dictionary<string, dayValue>> jsonFormat = new Dictionary<string, Dictionary<string, dayValue>>();
+            jsonFormat.Add(name.Text, dayData);
+            return jsonFormat;
+        }
+
         public void Load(string key)
         {
             try
