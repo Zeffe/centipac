@@ -18,43 +18,31 @@ namespace Centipac
         private ToolTip label = new ToolTip();
         private ToolTip tempDisplay = new ToolTip();
         private ContextMenuStrip menu = new ContextMenuStrip();
-        private Label name = new Label();
+        private Label name = new Label();        
 
-        public class dayValue
-        {
-            public int offset;
-            public int value;
-            public string text;
-
-            public dayValue(int _offset, int _value, string _text)
-            {
-                offset = _offset; value = _value; text = _text;
-            }      
-        }
-
-        Dictionary<string, dayValue> dayData = new Dictionary<string, dayValue>();
+        Dictionary<string, DayValue> dayData = new Dictionary<string, DayValue>();
 
         public void Save(string key)
         {
             if (!dayData.ContainsKey(key))
             {
-                dayData.Add(key, new dayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText));
+                dayData.Add(key, new DayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText));
             } else
             {
-                dayData[key] = new dayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText);
+                dayData[key] = new DayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText);
             }
         }
 
         public string getJsonData()
         {
-            Dictionary<string, Dictionary<string, dayValue>> jsonFormat = new Dictionary<string, Dictionary<string, dayValue>>();
+            Dictionary<string, Dictionary<string, DayValue>> jsonFormat = new Dictionary<string, Dictionary<string, DayValue>>();
             jsonFormat.Add(name.Text, dayData);
             return JsonConvert.SerializeObject(jsonFormat);
         }
 
         public object getJsonObj()
         {
-            Dictionary<string, Dictionary<string, dayValue>> jsonFormat = new Dictionary<string, Dictionary<string, dayValue>>();
+            Dictionary<string, Dictionary<string, DayValue>> jsonFormat = new Dictionary<string, Dictionary<string, DayValue>>();
             jsonFormat.Add(name.Text, dayData);
             return jsonFormat;
         }

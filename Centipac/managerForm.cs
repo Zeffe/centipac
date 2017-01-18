@@ -93,10 +93,42 @@ namespace Centipac
                 pnlTable.BringToFront();
                 foreach (TimePicker timepicker in timepickers)
                 {
+                    Dictionary<string, Dictionary<string, DayValue>> tempData = new Dictionary<string, Dictionary<string, DayValue>>();
+                    tempData = timepicker.getJsonObj() as Dictionary<string, Dictionary<string, DayValue>>;
+
+                    foreach (var item in tempData)
+                    {
+                        int index = getEmployeeIndex(item.Key);
+                        if (index == -1) break;
+                        foreach (var item2 in item.Value)
+                        {
+                            switch(item2.Key)
+                            {
+                                case "Monday": listEmployeeSchedules[index].Monday = item2.Value.text; break;
+                                case "Tuesday": listEmployeeSchedules[index].Tuesday = item2.Value.text; break;
+                                case "Wednesday": listEmployeeSchedules[index].Wednesday = item2.Value.text; break;
+                                case "Thursday": listEmployeeSchedules[index].Thursday = item2.Value.text; break;
+                                case "Friday": listEmployeeSchedules[index].Friday = item2.Value.text; break;
+                                case "Saturday": listEmployeeSchedules[index].Saturday = item2.Value.text; break;
+                                case "Sunday": listEmployeeSchedules[index].Sunday = item2.Value.text; break;
+                            }                           
+                        }
+                    }
+
                     timepicker.hideToolTip();
                 }
+                employeeScheduleToTable(listEmployeeSchedules.ToArray());
                 slider = !slider;
             }
+        }
+
+        int getEmployeeIndex(string name)
+        {
+            for(int i = 0; i < listEmployeeSchedules.Count; i++)
+            {
+                if (listEmployeeSchedules[i].name == name) return i;
+            }
+            return -1;
         }
 
         private void scheduleSlider(object sender, EventArgs e)
@@ -289,6 +321,7 @@ namespace Centipac
 
         void employeeScheduleToTable(EmployeeSchedule[] employeeSchedules)
         {
+            listSchedule.Items.Clear();
             foreach (EmployeeSchedule emp in employeeSchedules)
             {
                 var tempItem = new[] { emp.name, emp.Monday, emp.Tuesday, emp.Wednesday, emp.Thursday, emp.Friday, emp.Saturday, emp.Sunday };
