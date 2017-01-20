@@ -24,12 +24,16 @@ namespace Centipac
 
         public void Save(string key)
         {
-            if (!dayData.ContainsKey(key))
+            if (materialProgressBar.Value != 0 && materialProgressBar.Offset != 0 && labelText != null)
             {
-                dayData.Add(key, new DayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText));
-            } else
-            {
-                dayData[key] = new DayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText);
+                if (!dayData.ContainsKey(key))
+                {
+                    dayData.Add(key, new DayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText));
+                }
+                else
+                {
+                    dayData[key] = new DayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText);
+                }
             }
         }
 

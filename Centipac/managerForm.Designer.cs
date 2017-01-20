@@ -66,13 +66,13 @@
             this.cName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cMonday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cTuesday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cWednesday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cThursday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cFriday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cSaturday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cSunday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -544,12 +544,12 @@
             this.listSchedule.Depth = 0;
             this.listSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.listSchedule.FullRowSelect = true;
-            this.listSchedule.Location = new System.Drawing.Point(43, 23);
+            this.listSchedule.Location = new System.Drawing.Point(3, 10);
             this.listSchedule.MouseLocation = new System.Drawing.Point(-1, -1);
             this.listSchedule.MouseState = MaterialSkin.MouseState.OUT;
             this.listSchedule.Name = "listSchedule";
             this.listSchedule.OwnerDraw = true;
-            this.listSchedule.Size = new System.Drawing.Size(613, 275);
+            this.listSchedule.Size = new System.Drawing.Size(676, 322);
             this.listSchedule.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listSchedule.TabIndex = 1;
             this.listSchedule.UseCompatibleStateImageBehavior = false;
@@ -563,12 +563,37 @@
             // cMonday
             // 
             this.cMonday.Text = "Mon";
-            this.cMonday.Width = 75;
+            this.cMonday.Width = 81;
             // 
             // cTuesday
             // 
             this.cTuesday.Text = "Tue";
-            this.cTuesday.Width = 73;
+            this.cTuesday.Width = 86;
+            // 
+            // cWednesday
+            // 
+            this.cWednesday.Text = "Wed";
+            this.cWednesday.Width = 87;
+            // 
+            // cThursday
+            // 
+            this.cThursday.Text = "Thu";
+            this.cThursday.Width = 88;
+            // 
+            // cFriday
+            // 
+            this.cFriday.Text = "Fri";
+            this.cFriday.Width = 67;
+            // 
+            // cSaturday
+            // 
+            this.cSaturday.Text = "Sat";
+            this.cSaturday.Width = 70;
+            // 
+            // cSunday
+            // 
+            this.cSunday.Text = "Sun";
+            this.cSunday.Width = 85;
             // 
             // menuProgressBar
             // 
@@ -582,29 +607,6 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // cWednesday
-            // 
-            this.cWednesday.Text = "Wed";
-            this.cWednesday.Width = 78;
-            // 
-            // cThursday
-            // 
-            this.cThursday.Text = "Thu";
-            this.cThursday.Width = 75;
-            // 
-            // cFriday
-            // 
-            this.cFriday.Text = "Fri";
-            // 
-            // cSaturday
-            // 
-            this.cSaturday.Text = "Sat";
-            // 
-            // cSunday
-            // 
-            this.cSunday.Text = "Sun";
-            this.cSunday.Width = 77;
             // 
             // managerForm
             // 
