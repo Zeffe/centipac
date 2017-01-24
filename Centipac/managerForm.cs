@@ -87,6 +87,7 @@ namespace Centipac
         {
             if (slider)
             {
+                updateSchedules();
                 pnlTableSelect.BackColor = Color.DodgerBlue;
                 pnlSliderSelect.BackColor = Color.Transparent;
                 pnlTable.Visible = true;
@@ -293,13 +294,18 @@ namespace Centipac
 
         private void cmbDay_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach(TimePicker tp in timepickers)
+            updateSchedules();
+            previousSelect = cmbDay.SelectedItem.ToString();
+        }
+
+        void updateSchedules()
+        {
+            foreach (TimePicker tp in timepickers)
             {
                 tp.Save(previousSelect);
                 tp.Clear();
                 tp.Load(cmbDay.SelectedItem.ToString());
             }
-            previousSelect = cmbDay.SelectedItem.ToString();
         }
 
         public class EmployeeSchedule
