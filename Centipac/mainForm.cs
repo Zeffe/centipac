@@ -9,6 +9,8 @@ using System.Threading;
 using System.Windows.Forms;
 using MaterialSkin;
 using ExtensionMethods;
+using System.Drawing.Text;
+using System.Runtime.InteropServices;
 
 namespace Centipac
 {
@@ -18,7 +20,6 @@ namespace Centipac
         User activeUser;
         bool logout = false;
         bool exit = true;
-
 
         public mainForm(User user)
         {

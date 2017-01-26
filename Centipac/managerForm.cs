@@ -17,7 +17,8 @@ namespace Centipac
     {
         User activeUser;
         bool slider = true;
-        List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>();
+        string previousSelect = "Monday";                   // Stores the previously selected day on schedule page for saving purposes.
+        List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>(); 
 
         public managerForm(User active)
         {
@@ -33,8 +34,7 @@ namespace Centipac
             mainForm.manage = null;
         }
 
-        TimePicker[] timepickers;
-       
+        TimePicker[] timepickers; 
 
         private void managerForm_Load(object sender, EventArgs e)
         {
@@ -83,6 +83,7 @@ namespace Centipac
             employeeScheduleToTable(listEmployeeSchedules.ToArray());
         }
 
+        #region Schedule
         private void scheduleTable(object sender, EventArgs e)
         {
             if (slider)
@@ -122,16 +123,14 @@ namespace Centipac
                 slider = !slider;
             }
         }
-
         int getEmployeeIndex(string name)
         {
-            for(int i = 0; i < listEmployeeSchedules.Count; i++)
+            for (int i = 0; i < listEmployeeSchedules.Count; i++)
             {
                 if (listEmployeeSchedules[i].name == name) return i;
             }
             return -1;
         }
-
         private void scheduleSlider(object sender, EventArgs e)
         {
             if (!slider)
@@ -146,6 +145,61 @@ namespace Centipac
                 slider = !slider;
             }
         }
+
+        public class EmployeeSchedule
+        {
+            public string name;
+            public string Monday = "";
+            public string Tuesday = "";
+            public string Wednesday = "";
+            public string Thursday = "";
+            public string Friday = "";
+            public string Saturday = "";
+            public string Sunday = "";
+
+            public EmployeeSchedule(string _name)
+            {
+                this.name = _name;
+            }
+        }
+
+        void employeeScheduleToTable(EmployeeSchedule[] employeeSchedules)
+        {
+            listSchedule.Items.Clear();
+            foreach (EmployeeSchedule emp in employeeSchedules)
+            {
+                var tempItem = new[] { emp.name, emp.Monday, emp.Tuesday, emp.Wednesday, emp.Thursday, emp.Friday, emp.Saturday, emp.Sunday };
+                var item = new ListViewItem(tempItem);
+                listSchedule.Items.Add(item);
+            }
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            List<string> times = new List<string>();
+            foreach (TimePicker timepicker in timepickers)
+            {
+                times.Add(timepicker.getJsonData());
+            }
+            MessageBox.Show(JsonConvert.SerializeObject(times));
+        }
+
+        private void cmbDay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateSchedules();
+            previousSelect = cmbDay.SelectedItem.ToString();
+        }
+
+        void updateSchedules()
+        {
+            foreach (TimePicker tp in timepickers)
+            {
+                tp.Save(previousSelect);
+                tp.Clear();
+                tp.Load(cmbDay.SelectedItem.ToString());
+            }
+        }
+        #endregion
 
         private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -288,62 +342,6 @@ namespace Centipac
                 var item = new ListViewItem(tempItem);
                 listEmployees.Items.Add(item);
             }
-        }
-
-        string previousSelect = "Monday";
-
-        private void cmbDay_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            updateSchedules();
-            previousSelect = cmbDay.SelectedItem.ToString();
-        }
-
-        void updateSchedules()
-        {
-            foreach (TimePicker tp in timepickers)
-            {
-                tp.Save(previousSelect);
-                tp.Clear();
-                tp.Load(cmbDay.SelectedItem.ToString());
-            }
-        }
-
-        public class EmployeeSchedule
-        {
-            public string name;
-            public string Monday = "";
-            public string Tuesday = "";
-            public string Wednesday = "";
-            public string Thursday = "";
-            public string Friday = "";
-            public string Saturday = "";
-            public string Sunday = "";
-
-            public EmployeeSchedule(string _name)
-            {
-                this.name = _name;
-            }
-        }
-
-        void employeeScheduleToTable(EmployeeSchedule[] employeeSchedules)
-        {
-            listSchedule.Items.Clear();
-            foreach (EmployeeSchedule emp in employeeSchedules)
-            {
-                var tempItem = new[] { emp.name, emp.Monday, emp.Tuesday, emp.Wednesday, emp.Thursday, emp.Friday, emp.Saturday, emp.Sunday };
-                var item = new ListViewItem(tempItem);
-                listSchedule.Items.Add(item);
-            }
-        }
-
-        private void materialRaisedButton1_Click(object sender, EventArgs e)
-        {
-            List<string> times = new List<string>();            
-            foreach (TimePicker timepicker in timepickers)
-            {
-                times.Add(timepicker.getJsonData());
-            }
-            MessageBox.Show(JsonConvert.SerializeObject(times));
         }
     }
 }
