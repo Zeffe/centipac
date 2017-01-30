@@ -117,19 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnClock.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJ
-        TUUH4QEeFTQJRHFBUwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFsSURBVEhL
-        tZa7TQNBFEVXwrSwmXMsiqAAElfgmA4cGRJXRAuQEJmOlnuGu8CI2TdvhTjSleb97tjez3iImKZplO6l
-        J+lZulisyVEb3Z5HQxvpJL1JZ2kvbV2mvnWOGj30blyOUeNOepGO0pXTBcU3yGGBHvcys3O6jRoO0qt0
-        61SF8g/IYQUznj04VaMCn5yGa6d+odriBsCsPepvogS/OV+x+clnVA83ADzs9X1NFHCRjg4XUU93A8AL
-        zzngVuROqC5oC/VkN+DC4zkScC+fXQtRX2oDwBNvFjwwe+dDMEcOQ/DEmwVP5ddDFIE5chiCJ94sLs51
-        WbMBFO/WBso9Su8LunNbF/WWDdI/0RrwxJtF+iKvAU+8WaRv0zXgiTeL9IOWBS97fp4VWqReFVnwwtNh
-        SaRedhnwsFd9ACnRfV33YNYe7YNHhfDAiWDGs+0DZ0YNi0dmC3rcy0x8ZM6o8f8O/Z9o6I9/W4bhA6HM
-        SGyX0OLSAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

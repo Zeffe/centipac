@@ -94,6 +94,21 @@ namespace Centipac
         private void loginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-        }      
+        }
+
+        private void loginForm_Load(object sender, EventArgs e)
+        {
+            btnClock.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
+        }
+
+        private void btnClock_MouseEnter(object sender, EventArgs e)
+        {
+            btnClock.Image = Properties.Resources.clockU;
+        }
+
+        private void btnClock_MouseLeave(object sender, EventArgs e)
+        {
+            btnClock.Image = Properties.Resources.clock;
+        }
     }
 }

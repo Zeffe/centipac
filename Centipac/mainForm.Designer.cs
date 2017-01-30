@@ -32,16 +32,18 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupUserOptions = new MaterialSkin.Controls.MaterialGroupBox();
             this.btnManager = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnLogOut = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.timerUI = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnClock = new System.Windows.Forms.PictureBox();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupUserOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClock)).BeginInit();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -78,6 +80,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Color Scheme";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 44);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabPage2
             // 
@@ -157,15 +169,17 @@
             // 
             this.timerUI.Tick += new System.EventHandler(this.timerUI_Tick);
             // 
-            // button1
+            // btnClock
             // 
-            this.button1.Location = new System.Drawing.Point(23, 44);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnClock.BackColor = System.Drawing.Color.Black;
+            this.btnClock.Image = global::Centipac.Properties.Resources.clock;
+            this.btnClock.Location = new System.Drawing.Point(143, 33);
+            this.btnClock.Name = "btnClock";
+            this.btnClock.Size = new System.Drawing.Size(24, 26);
+            this.btnClock.TabIndex = 6;
+            this.btnClock.TabStop = false;
+            this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
+            this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
             // 
             // mainForm
             // 
@@ -173,6 +187,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(300, 300);
+            this.Controls.Add(this.btnClock);
             this.Controls.Add(this.groupUserOptions);
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.materialTabSelector1);
@@ -186,6 +201,7 @@
             this.tabPage1.ResumeLayout(false);
             this.groupUserOptions.ResumeLayout(false);
             this.groupUserOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -201,6 +217,7 @@
         private System.Windows.Forms.Timer timerUI;
         private MaterialSkin.Controls.MaterialRaisedButton btnManager;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox btnClock;
     }
 }
 

@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginForm));
             this.txtUser = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtPass = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnLogin = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblStatus = new MaterialSkin.Controls.MaterialLabel();
+            this.btnClock = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClock)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUser
@@ -98,11 +101,24 @@
             this.lblStatus.TabIndex = 3;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnClock
+            // 
+            this.btnClock.BackColor = System.Drawing.Color.Black;
+            this.btnClock.Image = ((System.Drawing.Image)(resources.GetObject("btnClock.Image")));
+            this.btnClock.Location = new System.Drawing.Point(227, 31);
+            this.btnClock.Name = "btnClock";
+            this.btnClock.Size = new System.Drawing.Size(24, 26);
+            this.btnClock.TabIndex = 7;
+            this.btnClock.TabStop = false;
+            this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
+            this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
+            // 
             // loginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(258, 203);
+            this.Controls.Add(this.btnClock);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPass);
@@ -112,6 +128,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.loginForm_FormClosing);
+            this.Load += new System.EventHandler(this.loginForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.btnClock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -122,5 +140,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPass;
         private MaterialSkin.Controls.MaterialRaisedButton btnLogin;
         private MaterialSkin.Controls.MaterialLabel lblStatus;
+        private System.Windows.Forms.PictureBox btnClock;
     }
 }

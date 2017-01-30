@@ -73,6 +73,9 @@ namespace Centipac
             user.Click += new EventHandler(this.onUserClick);       
             this.Controls.Add(user);
 
+            btnClock.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
+            btnClock.Location = new Point(user.Location.X - 30, user.Location.Y + 5);
+
             groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
             groupUserOptions.Location = new Point(this.Width - groupUserOptions.Width - 3, user.Location.Y + user.Size.Height);
             groupUserOptions.DiamondPos = user.Location.X - groupUserOptions.Location.X + (user.Width / 2) - 9;
@@ -159,6 +162,16 @@ namespace Centipac
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Server.test());
+        }
+
+        private void btnClock_MouseEnter(object sender, EventArgs e)
+        {
+            btnClock.Image = Properties.Resources.clockU;
+        }
+
+        private void btnClock_MouseLeave(object sender, EventArgs e)
+        {
+            btnClock.Image = Properties.Resources.clock;
         }
     }
 }
