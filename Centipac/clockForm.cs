@@ -20,5 +20,10 @@ namespace Centipac
             var materialSkinManager = Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
 
         }
+
+        private void clockForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            loginForm.timeclockForm = null;
+        }
     }
 }

@@ -37,7 +37,8 @@
             this.ClientSize = new System.Drawing.Size(300, 300);
             this.MaximizeBox = false;
             this.Name = "clockForm";
-            this.Text = "clockForm";
+            this.Text = "Time Clock";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.clockForm_FormClosing);
             this.ResumeLayout(false);
 
         }

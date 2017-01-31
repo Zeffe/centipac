@@ -173,5 +173,17 @@ namespace Centipac
         {
             btnClock.Image = Properties.Resources.clock;
         }
+
+        private void btnClock_Click(object sender, EventArgs e)
+        {
+            if (loginForm.timeclockForm == null)
+            {
+                loginForm.timeclockForm = new clockForm();
+                loginForm.timeclockForm.Show();
+            } else
+            {
+                loginForm.timeclockForm.BringToFront();
+            }
+        }
     }
 }

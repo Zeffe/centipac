@@ -43,6 +43,8 @@ namespace Centipac
             Properties.Settings.Default["THEME"] = theme;
             Properties.Settings.Default.Save();
 
+            form.Icon = Properties.Resources.iconC;
+
             return materialSkinManager;
         }  
     }

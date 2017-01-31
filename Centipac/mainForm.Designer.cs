@@ -178,6 +178,7 @@
             this.btnClock.Size = new System.Drawing.Size(24, 26);
             this.btnClock.TabIndex = 6;
             this.btnClock.TabStop = false;
+            this.btnClock.Click += new System.EventHandler(this.btnClock_Click);
             this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
             this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
             // 

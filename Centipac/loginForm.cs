@@ -26,6 +26,7 @@ namespace Centipac
             Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
         }
 
+        public static clockForm timeclockForm = null;
 
         void login()
         {
@@ -109,6 +110,18 @@ namespace Centipac
         private void btnClock_MouseLeave(object sender, EventArgs e)
         {
             btnClock.Image = Properties.Resources.clock;
+        }
+
+        private void btnClock_Click(object sender, EventArgs e)
+        {
+            if (timeclockForm == null)
+            {
+                timeclockForm = new clockForm();
+                timeclockForm.Show();
+            } else
+            {
+                timeclockForm.BringToFront();
+            }
         }
     }
 }
