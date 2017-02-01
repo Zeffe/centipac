@@ -32,16 +32,14 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupUserOptions = new MaterialSkin.Controls.MaterialGroupBox();
             this.btnManager = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnLogOut = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.timerUI = new System.Windows.Forms.Timer(this.components);
             this.btnClock = new System.Windows.Forms.PictureBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.materialTabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.groupUserOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).BeginInit();
             this.SuspendLayout();
@@ -53,53 +51,32 @@
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 63);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(300, 35);
+            this.materialTabSelector1.Size = new System.Drawing.Size(586, 35);
             this.materialTabSelector1.TabIndex = 2;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
             // materialTabControl1
             // 
             this.materialTabControl1.Controls.Add(this.tabPage1);
-            this.materialTabControl1.Controls.Add(this.tabPage2);
+            this.materialTabControl1.Controls.Add(this.tabPage3);
             this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(12, 104);
+            this.materialTabControl1.Location = new System.Drawing.Point(0, 100);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(276, 152);
+            this.materialTabControl1.Size = new System.Drawing.Size(586, 326);
             this.materialTabControl1.TabIndex = 3;
             this.materialTabControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.materialTabControl1_MouseClick);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(268, 126);
+            this.tabPage1.Size = new System.Drawing.Size(578, 300);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Color Scheme";
+            this.tabPage1.Text = "Home";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(23, 44);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(268, 126);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Theme";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupUserOptions
             // 
@@ -173,7 +150,7 @@
             // 
             this.btnClock.BackColor = System.Drawing.Color.Black;
             this.btnClock.Image = global::Centipac.Properties.Resources.clock;
-            this.btnClock.Location = new System.Drawing.Point(143, 33);
+            this.btnClock.Location = new System.Drawing.Point(143, 34);
             this.btnClock.Name = "btnClock";
             this.btnClock.Size = new System.Drawing.Size(24, 26);
             this.btnClock.TabIndex = 6;
@@ -182,12 +159,21 @@
             this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
             this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(578, 183);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "Today\'s Customers";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.ClientSize = new System.Drawing.Size(585, 425);
             this.Controls.Add(this.btnClock);
             this.Controls.Add(this.groupUserOptions);
             this.Controls.Add(this.materialTabControl1);
@@ -199,7 +185,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.materialTabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.groupUserOptions.ResumeLayout(false);
             this.groupUserOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).EndInit();
@@ -211,14 +196,13 @@
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private MaterialSkin.Controls.MaterialGroupBox groupUserOptions;
         private MaterialSkin.Controls.MaterialRaisedButton btnLogOut;
         private MaterialSkin.Controls.MaterialRaisedButton btnSettings;
         private System.Windows.Forms.Timer timerUI;
         private MaterialSkin.Controls.MaterialRaisedButton btnManager;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox btnClock;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
 
