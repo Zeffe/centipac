@@ -22,6 +22,7 @@ namespace Centipac
         bool exit = true;
         bool customNum = false;
         int adults = 0, children = 0;
+        Control[] newCustomerControls;
 
         public mainForm(User user)
         {
@@ -61,6 +62,13 @@ namespace Centipac
                 hideManager();
             }
 
+            newCustomerControls = new Control[] { txtEmail, txtRegistrant, txtPhone, cmbAdults, cmbChildren, btnFinish };
+
+            foreach (Control ctrl in newCustomerControls)
+            {
+                ctrl.Enabled = false;
+            }
+
             titles = Server.getRanks(activeUser);
 
             MaterialSkin.Controls.MaterialFlatButton user = new MaterialSkin.Controls.MaterialFlatButton();
@@ -77,6 +85,8 @@ namespace Centipac
 
             cmbChildren.AccentColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
             cmbAdults.AccentColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
+            cmbChildren.SelectedIndex = 0;
+            cmbAdults.SelectedIndex = 0;
 
             btnClock.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
             btnClock.Location = new Point(user.Location.X - 30, user.Location.Y + 5);
@@ -199,7 +209,7 @@ namespace Centipac
             lblDate.Text = DateTime.Now.ToShortDateString();
             lblTime.Text = DateTime.Now.ToShortTimeString();
             lblAdults.Text = "Adults ($10): 1";
-            adults++;
+            adults = 1; children = 0;
             lblPrice.Text = "Price: $" + (children * 7 + adults * 10).ToString();
         }
 

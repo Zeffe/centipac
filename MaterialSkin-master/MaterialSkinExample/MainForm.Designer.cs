@@ -67,6 +67,7 @@ namespace MaterialSkinExample
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.materialGroupBox1 = new MaterialSkin.Controls.MaterialGroupBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.materialProgressBar2 = new MaterialSkin.Controls.MaterialProgressBar();
             this.materialFlatButton5 = new MaterialSkin.Controls.MaterialFlatButton();
@@ -83,8 +84,8 @@ namespace MaterialSkinExample
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.item3ToolStripMenuItem = new MaterialSkin.Controls.MaterialToolStripMenuItem();
             this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialGroupBox1 = new MaterialSkin.Controls.MaterialGroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.materialSingleLineTextField4 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -389,6 +390,7 @@ namespace MaterialSkinExample
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.materialSingleLineTextField4);
             this.tabPage1.Controls.Add(this.materialRuler2);
             this.tabPage1.Controls.Add(this.materialRuler1);
             this.tabPage1.Controls.Add(this.materialSingleLineTextField3);
@@ -611,6 +613,19 @@ namespace MaterialSkinExample
             this.columnHeader4.Text = "Protein (g)";
             this.columnHeader4.Width = 154;
             // 
+            // materialGroupBox1
+            // 
+            this.materialGroupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.materialGroupBox1.Depth = 0;
+            this.materialGroupBox1.DiamondPos = 16;
+            this.materialGroupBox1.Location = new System.Drawing.Point(433, 84);
+            this.materialGroupBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialGroupBox1.Name = "materialGroupBox1";
+            this.materialGroupBox1.Size = new System.Drawing.Size(50, 63);
+            this.materialGroupBox1.TabIndex = 20;
+            this.materialGroupBox1.TabStop = false;
+            this.materialGroupBox1.Text = "materialGroupBox1";
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.materialProgressBar2);
@@ -811,23 +826,28 @@ namespace MaterialSkinExample
             this.materialFlatButton3.useForeColor = false;
             this.materialFlatButton3.UseVisualStyleBackColor = true;
             // 
-            // materialGroupBox1
-            // 
-            this.materialGroupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.materialGroupBox1.Depth = 0;
-            this.materialGroupBox1.DiamondPos = 16;
-            this.materialGroupBox1.Location = new System.Drawing.Point(433, 84);
-            this.materialGroupBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialGroupBox1.Name = "materialGroupBox1";
-            this.materialGroupBox1.Size = new System.Drawing.Size(50, 63);
-            this.materialGroupBox1.TabIndex = 20;
-            this.materialGroupBox1.TabStop = false;
-            this.materialGroupBox1.Text = "materialGroupBox1";
-            // 
             // timer1
             // 
             this.timer1.Interval = 40;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // materialSingleLineTextField4
+            // 
+            this.materialSingleLineTextField4.Depth = 0;
+            this.materialSingleLineTextField4.Hint = "";
+            this.materialSingleLineTextField4.Location = new System.Drawing.Point(226, 7);
+            this.materialSingleLineTextField4.MaxLength = 32767;
+            this.materialSingleLineTextField4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField4.Name = "materialSingleLineTextField4";
+            this.materialSingleLineTextField4.PasswordChar = '\0';
+            this.materialSingleLineTextField4.SelectedText = "";
+            this.materialSingleLineTextField4.SelectionLength = 0;
+            this.materialSingleLineTextField4.SelectionStart = 0;
+            this.materialSingleLineTextField4.Size = new System.Drawing.Size(75, 23);
+            this.materialSingleLineTextField4.TabIndex = 26;
+            this.materialSingleLineTextField4.TabStop = false;
+            this.materialSingleLineTextField4.Text = "materialSingleLineTextField4";
+            this.materialSingleLineTextField4.UseSystemPasswordChar = false;
             // 
             // MainForm
             // 
@@ -913,5 +933,6 @@ namespace MaterialSkinExample
         private Timer timer1;
         private MaterialRuler materialRuler1;
         private MaterialRuler materialRuler2;
+        private MaterialSingleLineTextField materialSingleLineTextField4;
     }
 }
