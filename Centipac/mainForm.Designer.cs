@@ -32,14 +32,35 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupUserOptions = new MaterialSkin.Controls.MaterialGroupBox();
             this.btnManager = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnLogOut = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.timerUI = new System.Windows.Forms.Timer(this.components);
             this.btnClock = new System.Windows.Forms.PictureBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.btnFinish = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnNewCustomer = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnCancel = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtRegistrant = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.lblDate = new MaterialSkin.Controls.MaterialLabel();
+            this.lblTime = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialDivider2 = new MaterialSkin.Controls.MaterialDivider();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.cmbChildren = new Xenon.ThirteenComboBox();
+            this.cmbAdults = new Xenon.ThirteenComboBox();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialDivider3 = new MaterialSkin.Controls.MaterialDivider();
+            this.lblPrice = new MaterialSkin.Controls.MaterialLabel();
+            this.lblAdults = new MaterialSkin.Controls.MaterialLabel();
+            this.lblChildren = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.groupUserOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).BeginInit();
             this.SuspendLayout();
@@ -70,6 +91,26 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lblChildren);
+            this.tabPage1.Controls.Add(this.lblAdults);
+            this.tabPage1.Controls.Add(this.lblPrice);
+            this.tabPage1.Controls.Add(this.materialDivider3);
+            this.tabPage1.Controls.Add(this.materialLabel4);
+            this.tabPage1.Controls.Add(this.cmbAdults);
+            this.tabPage1.Controls.Add(this.cmbChildren);
+            this.tabPage1.Controls.Add(this.materialLabel3);
+            this.tabPage1.Controls.Add(this.materialDivider2);
+            this.tabPage1.Controls.Add(this.materialLabel2);
+            this.tabPage1.Controls.Add(this.lblTime);
+            this.tabPage1.Controls.Add(this.lblDate);
+            this.tabPage1.Controls.Add(this.materialLabel1);
+            this.tabPage1.Controls.Add(this.materialSingleLineTextField2);
+            this.tabPage1.Controls.Add(this.materialSingleLineTextField1);
+            this.tabPage1.Controls.Add(this.txtRegistrant);
+            this.tabPage1.Controls.Add(this.btnCancel);
+            this.tabPage1.Controls.Add(this.btnNewCustomer);
+            this.tabPage1.Controls.Add(this.btnFinish);
+            this.tabPage1.Controls.Add(this.materialDivider1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -77,6 +118,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(578, 300);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "Today\'s Customers";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupUserOptions
             // 
@@ -159,14 +209,305 @@
             this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
             this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
             // 
-            // tabPage3
+            // materialDivider1
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(578, 183);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "Today\'s Customers";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider1.Depth = 0;
+            this.materialDivider1.Location = new System.Drawing.Point(114, 3);
+            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider1.Name = "materialDivider1";
+            this.materialDivider1.Size = new System.Drawing.Size(2, 291);
+            this.materialDivider1.TabIndex = 26;
+            this.materialDivider1.Text = "materialDivider1";
+            // 
+            // btnFinish
+            // 
+            this.btnFinish.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnFinish.Depth = 0;
+            this.btnFinish.Icon = null;
+            this.btnFinish.Location = new System.Drawing.Point(437, 272);
+            this.btnFinish.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnFinish.Name = "btnFinish";
+            this.btnFinish.Primary = true;
+            this.btnFinish.Size = new System.Drawing.Size(102, 19);
+            this.btnFinish.TabIndex = 27;
+            this.btnFinish.Text = "Finish";
+            this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
+            // 
+            // btnNewCustomer
+            // 
+            this.btnNewCustomer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnNewCustomer.Depth = 0;
+            this.btnNewCustomer.Icon = null;
+            this.btnNewCustomer.Location = new System.Drawing.Point(6, 6);
+            this.btnNewCustomer.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnNewCustomer.Name = "btnNewCustomer";
+            this.btnNewCustomer.Primary = true;
+            this.btnNewCustomer.Size = new System.Drawing.Size(102, 36);
+            this.btnNewCustomer.TabIndex = 28;
+            this.btnNewCustomer.Text = "New Customer";
+            this.btnNewCustomer.UseVisualStyleBackColor = true;
+            this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCancel.Depth = 0;
+            this.btnCancel.Icon = null;
+            this.btnCancel.Location = new System.Drawing.Point(6, 272);
+            this.btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Primary = true;
+            this.btnCancel.Size = new System.Drawing.Size(102, 19);
+            this.btnCancel.TabIndex = 29;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // txtRegistrant
+            // 
+            this.txtRegistrant.Depth = 0;
+            this.txtRegistrant.Hint = "Registrant Full Name";
+            this.txtRegistrant.Location = new System.Drawing.Point(139, 34);
+            this.txtRegistrant.MaxLength = 32767;
+            this.txtRegistrant.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtRegistrant.Name = "txtRegistrant";
+            this.txtRegistrant.PasswordChar = '\0';
+            this.txtRegistrant.SelectedText = "";
+            this.txtRegistrant.SelectionLength = 0;
+            this.txtRegistrant.SelectionStart = 0;
+            this.txtRegistrant.Size = new System.Drawing.Size(240, 23);
+            this.txtRegistrant.TabIndex = 7;
+            this.txtRegistrant.TabStop = false;
+            this.txtRegistrant.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField1
+            // 
+            this.materialSingleLineTextField1.Depth = 0;
+            this.materialSingleLineTextField1.Hint = "Registrant Email (optional)";
+            this.materialSingleLineTextField1.Location = new System.Drawing.Point(139, 63);
+            this.materialSingleLineTextField1.MaxLength = 32767;
+            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
+            this.materialSingleLineTextField1.PasswordChar = '\0';
+            this.materialSingleLineTextField1.SelectedText = "";
+            this.materialSingleLineTextField1.SelectionLength = 0;
+            this.materialSingleLineTextField1.SelectionStart = 0;
+            this.materialSingleLineTextField1.Size = new System.Drawing.Size(240, 23);
+            this.materialSingleLineTextField1.TabIndex = 8;
+            this.materialSingleLineTextField1.TabStop = false;
+            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField2
+            // 
+            this.materialSingleLineTextField2.Depth = 0;
+            this.materialSingleLineTextField2.Hint = "Registrant Phone (optional)";
+            this.materialSingleLineTextField2.Location = new System.Drawing.Point(139, 92);
+            this.materialSingleLineTextField2.MaxLength = 32767;
+            this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
+            this.materialSingleLineTextField2.PasswordChar = '\0';
+            this.materialSingleLineTextField2.SelectedText = "";
+            this.materialSingleLineTextField2.SelectionLength = 0;
+            this.materialSingleLineTextField2.SelectionStart = 0;
+            this.materialSingleLineTextField2.Size = new System.Drawing.Size(240, 23);
+            this.materialSingleLineTextField2.TabIndex = 8;
+            this.materialSingleLineTextField2.TabStop = false;
+            this.materialSingleLineTextField2.UseSystemPasswordChar = false;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(418, 36);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(110, 19);
+            this.materialLabel1.TabIndex = 30;
+            this.materialLabel1.Text = "Date and Time:";
+            // 
+            // lblDate
+            // 
+            this.lblDate.Depth = 0;
+            this.lblDate.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblDate.Location = new System.Drawing.Point(375, 63);
+            this.lblDate.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(194, 23);
+            this.lblDate.TabIndex = 31;
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblTime
+            // 
+            this.lblTime.Depth = 0;
+            this.lblTime.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTime.Location = new System.Drawing.Point(375, 89);
+            this.lblTime.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(194, 23);
+            this.lblTime.TabIndex = 32;
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(135, 7);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(81, 19);
+            this.materialLabel2.TabIndex = 33;
+            this.materialLabel2.Text = "Registrant:";
+            // 
+            // materialDivider2
+            // 
+            this.materialDivider2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider2.Depth = 0;
+            this.materialDivider2.Location = new System.Drawing.Point(122, 130);
+            this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider2.Name = "materialDivider2";
+            this.materialDivider2.Size = new System.Drawing.Size(453, 2);
+            this.materialDivider2.TabIndex = 34;
+            this.materialDivider2.Text = "materialDivider2";
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(150, 146);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(198, 19);
+            this.materialLabel3.TabIndex = 35;
+            this.materialLabel3.Text = "Adults (Without Registrant): ";
+            // 
+            // cmbChildren
+            // 
+            this.cmbChildren.AccentColor = System.Drawing.Color.DodgerBlue;
+            this.cmbChildren.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbChildren.ColorScheme = Xenon.ThirteenComboBox.ColorSchemes.Light;
+            this.cmbChildren.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbChildren.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChildren.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
+            this.cmbChildren.ForeColor = System.Drawing.Color.White;
+            this.cmbChildren.FormattingEnabled = true;
+            this.cmbChildren.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10+"});
+            this.cmbChildren.Location = new System.Drawing.Point(154, 254);
+            this.cmbChildren.Name = "cmbChildren";
+            this.cmbChildren.Size = new System.Drawing.Size(194, 26);
+            this.cmbChildren.TabIndex = 36;
+            this.cmbChildren.SelectedIndexChanged += new System.EventHandler(this.cmbChildren_SelectedIndexChanged);
+            // 
+            // cmbAdults
+            // 
+            this.cmbAdults.AccentColor = System.Drawing.Color.DodgerBlue;
+            this.cmbAdults.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.cmbAdults.ColorScheme = Xenon.ThirteenComboBox.ColorSchemes.Light;
+            this.cmbAdults.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbAdults.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAdults.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
+            this.cmbAdults.ForeColor = System.Drawing.Color.White;
+            this.cmbAdults.FormatString = "N0";
+            this.cmbAdults.FormattingEnabled = true;
+            this.cmbAdults.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10+"});
+            this.cmbAdults.Location = new System.Drawing.Point(154, 177);
+            this.cmbAdults.Name = "cmbAdults";
+            this.cmbAdults.Size = new System.Drawing.Size(194, 26);
+            this.cmbAdults.TabIndex = 37;
+            this.cmbAdults.SelectedIndexChanged += new System.EventHandler(this.cmbAdults_SelectedIndexChanged);
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(150, 232);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(72, 19);
+            this.materialLabel4.TabIndex = 38;
+            this.materialLabel4.Text = "Children: ";
+            // 
+            // materialDivider3
+            // 
+            this.materialDivider3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider3.Depth = 0;
+            this.materialDivider3.Location = new System.Drawing.Point(389, 138);
+            this.materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider3.Name = "materialDivider3";
+            this.materialDivider3.Size = new System.Drawing.Size(2, 153);
+            this.materialDivider3.TabIndex = 39;
+            this.materialDivider3.Text = "materialDivider3";
+            // 
+            // lblPrice
+            // 
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Depth = 0;
+            this.lblPrice.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblPrice.Location = new System.Drawing.Point(397, 229);
+            this.lblPrice.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(67, 19);
+            this.lblPrice.TabIndex = 40;
+            this.lblPrice.Text = "Price: $0";
+            // 
+            // lblAdults
+            // 
+            this.lblAdults.AutoSize = true;
+            this.lblAdults.Depth = 0;
+            this.lblAdults.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblAdults.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblAdults.Location = new System.Drawing.Point(397, 154);
+            this.lblAdults.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblAdults.Name = "lblAdults";
+            this.lblAdults.Size = new System.Drawing.Size(106, 19);
+            this.lblAdults.TabIndex = 41;
+            this.lblAdults.Text = "Adults ($10): 0";
+            // 
+            // lblChildren
+            // 
+            this.lblChildren.AutoSize = true;
+            this.lblChildren.Depth = 0;
+            this.lblChildren.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblChildren.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblChildren.Location = new System.Drawing.Point(397, 192);
+            this.lblChildren.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblChildren.Name = "lblChildren";
+            this.lblChildren.Size = new System.Drawing.Size(110, 19);
+            this.lblChildren.TabIndex = 42;
+            this.lblChildren.Text = "Children ($7): 0";
             // 
             // mainForm
             // 
@@ -175,9 +516,9 @@
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(585, 425);
             this.Controls.Add(this.btnClock);
-            this.Controls.Add(this.groupUserOptions);
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.materialTabSelector1);
+            this.Controls.Add(this.groupUserOptions);
             this.MaximizeBox = false;
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -185,6 +526,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.materialTabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.groupUserOptions.ResumeLayout(false);
             this.groupUserOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).EndInit();
@@ -203,6 +546,26 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnManager;
         private System.Windows.Forms.PictureBox btnClock;
         private System.Windows.Forms.TabPage tabPage3;
+        private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private MaterialSkin.Controls.MaterialRaisedButton btnNewCustomer;
+        private MaterialSkin.Controls.MaterialRaisedButton btnFinish;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCancel;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtRegistrant;
+        private MaterialSkin.Controls.MaterialLabel lblTime;
+        private MaterialSkin.Controls.MaterialLabel lblDate;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private Xenon.ThirteenComboBox cmbChildren;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialDivider materialDivider2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private Xenon.ThirteenComboBox cmbAdults;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel lblChildren;
+        private MaterialSkin.Controls.MaterialLabel lblAdults;
+        private MaterialSkin.Controls.MaterialLabel lblPrice;
+        private MaterialSkin.Controls.MaterialDivider materialDivider3;
     }
 }
 

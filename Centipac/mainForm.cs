@@ -20,6 +20,8 @@ namespace Centipac
         User activeUser;
         bool logout = false;
         bool exit = true;
+        bool customNum = false;
+        int adults = 0, children = 0;
 
         public mainForm(User user)
         {
@@ -73,12 +75,16 @@ namespace Centipac
             user.Click += new EventHandler(this.onUserClick);       
             this.Controls.Add(user);
 
+            cmbChildren.AccentColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
+            cmbAdults.AccentColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
+
             btnClock.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
             btnClock.Location = new Point(user.Location.X - 30, user.Location.Y + 5);
 
             groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
             groupUserOptions.Location = new Point(this.Width - groupUserOptions.Width - 3, user.Location.Y + user.Size.Height);
             groupUserOptions.DiamondPos = user.Location.X - groupUserOptions.Location.X + (user.Width / 2) - 9;
+            groupUserOptions.BringToFront();
         }
 
         private void onUserClick(object sender, EventArgs e)
@@ -137,6 +143,8 @@ namespace Centipac
                 MaterialSkin.Controls.MaterialFlatButton userBtn = this.Controls.Find("btnUser", false)[0] as MaterialSkin.Controls.MaterialFlatButton;
                 userBtn.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
                 groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
+                btnClock.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
+                cmbAdults.AccentColor = cmbChildren.AccentColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
             } else if (settings == null)
             {
                 timerUI.Stop();
@@ -184,6 +192,103 @@ namespace Centipac
             {
                 loginForm.timeclockForm.BringToFront();
             }
+        }
+
+        private void btnNewCustomer_Click(object sender, EventArgs e)
+        {
+            lblDate.Text = DateTime.Now.ToShortDateString();
+            lblTime.Text = DateTime.Now.ToShortTimeString();
+            lblAdults.Text = "Adults ($10): 1";
+            adults++;
+            lblPrice.Text = "Price: $" + (children * 7 + adults * 10).ToString();
+        }
+
+        private void cmbAdults_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbAdults.Text == "10+")
+            {
+                msgbox input = new msgbox("Enter the amount of adults: ", "Adults", 3);
+                int num;
+
+                if (input.ShowDialog(this) == DialogResult.OK && int.TryParse(input.txtInput.Text, out num))
+                {
+                    if (num < 10 && num > 0)
+                    {
+                        cmbAdults.SelectedIndex = num - 1;
+                    }
+                    else if (num < 1)
+                    {
+                        cmbAdults.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cmbAdults.Items.Add(input.txtInput.Text);
+                        customNum = true;
+                        cmbAdults.SelectedIndex = cmbAdults.Items.Count - 1;                       
+                    }
+                } else if (!int.TryParse(input.txtInput.Text, out num) && input.txtInput.Text != "")
+                {
+                    msgbox error = new msgbox("Please enter a numeric value.", "Error", 1);
+                    cmbAdults.SelectedIndex = 0;
+                    error.Show();
+                } else
+                {
+                    cmbAdults.SelectedIndex = 0;
+                }
+
+                input.Dispose();
+            }
+
+            lblAdults.Text = "Adults ($10): " + (Convert.ToInt32(cmbAdults.SelectedItem) + 1).ToString();
+            adults = Convert.ToInt32(cmbAdults.SelectedItem) + 1;
+            lblPrice.Text = "Price: $" + (children * 7 + adults * 10).ToString();
+        }
+
+        private void btnFinish_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbChildren_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbChildren.Text == "10+")
+            {
+                msgbox input = new msgbox("Enter the amount of children: ", "Children", 3);
+                int num;
+
+                if (input.ShowDialog(this) == DialogResult.OK && int.TryParse(input.txtInput.Text, out num))
+                {
+                    if (num < 10 && num > 0)
+                    {
+                        cmbChildren.SelectedIndex = num - 1;
+                    }
+                    else if (num < 1)
+                    {
+                        cmbChildren.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cmbChildren.Items.Add(input.txtInput.Text);
+                        customNum = true;
+                        cmbChildren.SelectedIndex = cmbChildren.Items.Count - 1;                        
+                    }
+                }
+                else if (!int.TryParse(input.txtInput.Text, out num) && input.txtInput.Text != "")
+                {
+                    msgbox error = new msgbox("Please enter a numeric value.", "Error", 1);
+                    cmbChildren.SelectedIndex = 0;
+                    error.Show();
+                }
+                else
+                {
+                    cmbChildren.SelectedIndex = 0;
+                }
+
+                input.Dispose();
+            }
+            lblChildren.Text = "Children ($7): " + cmbChildren.Text;
+            children = Convert.ToInt32(cmbChildren.Text);
+            lblPrice.Text = "Price: $" + (children * 7 + adults * 10).ToString();
         }
     }
 }

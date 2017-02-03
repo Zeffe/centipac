@@ -66,6 +66,13 @@ namespace Centipac
                     btnNo.Location = new System.Drawing.Point(this.Width - btnNo.Width - 10, this.Height - btnNo.Height - 10);
                     btnYes.Location = new System.Drawing.Point(btnNo.Location.X - btnYes.Width - 5, btnNo.Location.Y);
                     break;
+                // Input Dialog
+                case 3:
+                    this.Height += lblMessage.Height + 15 + txtInput.Height; btnOk.Visible = true; txtInput.Visible = true; btnOk.Text = "Submit";
+                    txtInput.Width = this.Width - 10; btnOk.Width += 5;
+                    txtInput.Location = new Point(this.Width / 2 - txtInput.Width / 2, this.Height - 15 - btnOk.Height - txtInput.Height);
+                    btnOk.Location = new System.Drawing.Point(this.Width / 2 - btnOk.Width / 2, this.Height - 30);
+                    break;
             }
         }
 

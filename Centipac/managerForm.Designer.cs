@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -57,7 +56,7 @@
             this.lblSlider = new System.Windows.Forms.Label();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblStartDate = new System.Windows.Forms.Label();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnSave = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cmbDay = new System.Windows.Forms.ComboBox();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.materialRuler1 = new MaterialSkin.Controls.MaterialRuler();
@@ -71,15 +70,12 @@
             this.cFriday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cSaturday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cSunday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.menuProgressBar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.pnlTableSelect.SuspendLayout();
             this.pnlSliderSelect.SuspendLayout();
             this.pnlTable.SuspendLayout();
-            this.menuProgressBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -385,7 +381,7 @@
             this.tabPage3.Controls.Add(this.pnlSliderSelect);
             this.tabPage3.Controls.Add(this.lblEndDate);
             this.tabPage3.Controls.Add(this.lblStartDate);
-            this.tabPage3.Controls.Add(this.materialRaisedButton1);
+            this.tabPage3.Controls.Add(this.btnSave);
             this.tabPage3.Controls.Add(this.cmbDay);
             this.tabPage3.Controls.Add(this.materialDivider1);
             this.tabPage3.Controls.Add(this.materialRuler1);
@@ -452,20 +448,20 @@
             this.lblStartDate.TabIndex = 28;
             this.lblStartDate.Text = "Start";
             // 
-            // materialRaisedButton1
+            // btnSave
             // 
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(3, 306);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(122, 23);
-            this.materialRaisedButton1.TabIndex = 27;
-            this.materialRaisedButton1.Text = "Save";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSave.Depth = 0;
+            this.btnSave.Icon = null;
+            this.btnSave.Location = new System.Drawing.Point(3, 306);
+            this.btnSave.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Primary = true;
+            this.btnSave.Size = new System.Drawing.Size(122, 23);
+            this.btnSave.TabIndex = 27;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.materialRaisedButton1_Click);
             // 
             // cmbDay
             // 
@@ -595,19 +591,6 @@
             this.cSunday.Text = "Sun";
             this.cSunday.Width = 85;
             // 
-            // menuProgressBar
-            // 
-            this.menuProgressBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem});
-            this.menuProgressBar.Name = "menuProgressBar";
-            this.menuProgressBar.Size = new System.Drawing.Size(108, 26);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,7 +614,6 @@
             this.pnlSliderSelect.ResumeLayout(false);
             this.pnlSliderSelect.PerformLayout();
             this.pnlTable.ResumeLayout(false);
-            this.menuProgressBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -646,8 +628,6 @@
         private MaterialSkin.Controls.MaterialListView listEmployees;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private MaterialSkin.Controls.MaterialRuler materialRuler1;
-        private System.Windows.Forms.ContextMenuStrip menuProgressBar;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -667,7 +647,7 @@
         private System.Windows.Forms.ComboBox cmbDay;
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Label lblStartDate;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton btnSave;
         private System.Windows.Forms.Panel pnlTableSelect;
         private System.Windows.Forms.Label lblTable;
         private System.Windows.Forms.Panel pnlSliderSelect;

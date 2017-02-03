@@ -32,6 +32,7 @@
             this.btnNo = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnYes = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnOk = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtInput = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.SuspendLayout();
             // 
             // lblMessage
@@ -50,8 +51,10 @@
             // 
             // btnNo
             // 
+            this.btnNo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnNo.Depth = 0;
             this.btnNo.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.btnNo.Icon = null;
             this.btnNo.Location = new System.Drawing.Point(42, 74);
             this.btnNo.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNo.Name = "btnNo";
@@ -65,8 +68,10 @@
             // 
             // btnYes
             // 
+            this.btnYes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnYes.Depth = 0;
             this.btnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.btnYes.Icon = null;
             this.btnYes.Location = new System.Drawing.Point(12, 73);
             this.btnYes.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnYes.Name = "btnYes";
@@ -80,8 +85,10 @@
             // 
             // btnOk
             // 
+            this.btnOk.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnOk.Depth = 0;
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOk.Icon = null;
             this.btnOk.Location = new System.Drawing.Point(69, 73);
             this.btnOk.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnOk.Name = "btnOk";
@@ -93,12 +100,31 @@
             this.btnOk.Visible = false;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // txtInput
+            // 
+            this.txtInput.Depth = 0;
+            this.txtInput.Hint = "";
+            this.txtInput.Location = new System.Drawing.Point(14, 73);
+            this.txtInput.MaxLength = 32767;
+            this.txtInput.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtInput.Name = "txtInput";
+            this.txtInput.PasswordChar = '\0';
+            this.txtInput.SelectedText = "";
+            this.txtInput.SelectionLength = 0;
+            this.txtInput.SelectionStart = 0;
+            this.txtInput.Size = new System.Drawing.Size(75, 23);
+            this.txtInput.TabIndex = 4;
+            this.txtInput.TabStop = false;
+            this.txtInput.UseSystemPasswordChar = false;
+            this.txtInput.Visible = false;
+            // 
             // msgbox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(102, 108);
+            this.Controls.Add(this.txtInput);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btnYes);
             this.Controls.Add(this.btnOk);
@@ -118,5 +144,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnNo;
         private MaterialSkin.Controls.MaterialRaisedButton btnYes;
         private MaterialSkin.Controls.MaterialRaisedButton btnOk;
+        public MaterialSkin.Controls.MaterialSingleLineTextField txtInput;
     }
 }

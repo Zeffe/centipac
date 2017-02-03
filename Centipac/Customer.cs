@@ -12,6 +12,9 @@ namespace Centipac
         public int adults { get; set; }
         public int children { get; set; }
         public string date { get; set; }
+        public string phone { get; set; }
+        public string email { get; set; }
+        public int amountPayed { get; set; }
 
     }
 }

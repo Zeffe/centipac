@@ -17,7 +17,7 @@ namespace Centipac
         private Timer timer = new Timer();
         private ToolTip label = new ToolTip();
         private ToolTip tempDisplay = new ToolTip();
-        private ContextMenuStrip menu = new ContextMenuStrip();
+        private MaterialSkin.Controls.MaterialContextMenuStrip menu = new MaterialSkin.Controls.MaterialContextMenuStrip();
         private Label name = new Label();        
 
         Dictionary<string, DayValue> dayData = new Dictionary<string, DayValue>();
