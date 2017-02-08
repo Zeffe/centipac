@@ -20,9 +20,7 @@ namespace Centipac
         User activeUser;
         bool logout = false;
         bool exit = true;
-        bool customNum = false;
         int adults = 0, children = 0;
-        Control[] newCustomerControls;
 
         public mainForm(User user)
         {
@@ -62,12 +60,7 @@ namespace Centipac
                 hideManager();
             }
 
-            newCustomerControls = new Control[] { txtEmail, txtRegistrant, txtPhone, cmbAdults, cmbChildren, btnFinish };
-
-            foreach (Control ctrl in newCustomerControls)
-            {
-                ctrl.Enabled = false;
-            }
+            panel1.BringToFront();
 
             titles = Server.getRanks(activeUser);
 
@@ -206,6 +199,11 @@ namespace Centipac
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
+            panel1.SendToBack(); panel1.BackColor = Color.White;
+
+            txtRegistrant.Clear(); txtEmail.Clear(); txtPhone.Clear();
+
+            cmbAdults.SelectedIndex = 0; cmbChildren.SelectedIndex = 0;
             lblDate.Text = DateTime.Now.ToShortDateString();
             lblTime.Text = DateTime.Now.ToShortTimeString();
             lblAdults.Text = "Adults ($10): 1";
@@ -233,7 +231,6 @@ namespace Centipac
                     else
                     {
                         cmbAdults.Items.Add(input.txtInput.Text);
-                        customNum = true;
                         cmbAdults.SelectedIndex = cmbAdults.Items.Count - 1;                       
                     }
                 } else if (!int.TryParse(input.txtInput.Text, out num) && input.txtInput.Text != "")
@@ -256,7 +253,29 @@ namespace Centipac
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
+            if (txtRegistrant.Text != "") { 
+                msgbox conf = new msgbox("Add " + txtRegistrant.Text, txtRegistrant.Text, 2);
+                if (conf.ShowDialog() == DialogResult.Yes)
+                {
+                    // DO ADD CUSTOMER STUFF HERE
+                    panel1.BackColor = Color.LightGray;
+                    panel1.BringToFront();
+                }
+            } else
+            {
+                msgbox err = new msgbox("You must enter a registrant in order to continue.", "Error", 1);
+                err.Show();
+            }
+        }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            msgbox conf = new msgbox("Are you sure you wish to cancel, all data will be erased.", "Are You Sure?", 2);
+            if (conf.ShowDialog() == DialogResult.Yes)
+            {
+                panel1.BackColor = Color.LightGray;
+                panel1.BringToFront();
+            }
         }
 
         private void cmbChildren_SelectedIndexChanged(object sender, EventArgs e)
@@ -279,7 +298,6 @@ namespace Centipac
                     else
                     {
                         cmbChildren.Items.Add(input.txtInput.Text);
-                        customNum = true;
                         cmbChildren.SelectedIndex = cmbChildren.Items.Count - 1;                        
                     }
                 }

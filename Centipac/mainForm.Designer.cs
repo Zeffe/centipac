@@ -52,6 +52,7 @@
             this.txtEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtRegistrant = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupUserOptions = new MaterialSkin.Controls.MaterialGroupBox();
             this.btnManager = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -112,6 +113,7 @@
             this.tabPage1.Controls.Add(this.txtEmail);
             this.tabPage1.Controls.Add(this.txtRegistrant);
             this.tabPage1.Controls.Add(this.materialDivider1);
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -189,7 +191,7 @@
             this.cmbAdults.ColorScheme = Xenon.ThirteenComboBox.ColorSchemes.Light;
             this.cmbAdults.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbAdults.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAdults.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
+            this.cmbAdults.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cmbAdults.ForeColor = System.Drawing.Color.White;
             this.cmbAdults.FormatString = "N0";
             this.cmbAdults.FormattingEnabled = true;
@@ -207,7 +209,7 @@
             "10+"});
             this.cmbAdults.Location = new System.Drawing.Point(154, 177);
             this.cmbAdults.Name = "cmbAdults";
-            this.cmbAdults.Size = new System.Drawing.Size(194, 26);
+            this.cmbAdults.Size = new System.Drawing.Size(194, 23);
             this.cmbAdults.TabIndex = 37;
             this.cmbAdults.SelectedIndexChanged += new System.EventHandler(this.cmbAdults_SelectedIndexChanged);
             // 
@@ -218,7 +220,7 @@
             this.cmbChildren.ColorScheme = Xenon.ThirteenComboBox.ColorSchemes.Light;
             this.cmbChildren.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbChildren.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbChildren.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
+            this.cmbChildren.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.cmbChildren.ForeColor = System.Drawing.Color.White;
             this.cmbChildren.FormattingEnabled = true;
             this.cmbChildren.Items.AddRange(new object[] {
@@ -235,7 +237,7 @@
             "10+"});
             this.cmbChildren.Location = new System.Drawing.Point(154, 254);
             this.cmbChildren.Name = "cmbChildren";
-            this.cmbChildren.Size = new System.Drawing.Size(194, 26);
+            this.cmbChildren.Size = new System.Drawing.Size(194, 23);
             this.cmbChildren.TabIndex = 36;
             this.cmbChildren.SelectedIndexChanged += new System.EventHandler(this.cmbChildren_SelectedIndexChanged);
             // 
@@ -343,6 +345,7 @@
             this.btnCancel.TabIndex = 29;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnNewCustomer
             // 
@@ -418,6 +421,14 @@
             this.materialDivider1.Size = new System.Drawing.Size(2, 291);
             this.materialDivider1.TabIndex = 26;
             this.materialDivider1.Text = "materialDivider1";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Location = new System.Drawing.Point(120, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(455, 291);
+            this.panel1.TabIndex = 43;
             // 
             // tabPage3
             // 
@@ -566,6 +577,7 @@
         private MaterialSkin.Controls.MaterialLabel lblAdults;
         private MaterialSkin.Controls.MaterialLabel lblPrice;
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
