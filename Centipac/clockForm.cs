@@ -25,5 +25,39 @@ namespace Centipac
         {
             loginForm.timeclockForm = null;
         }
+
+        private void clockForm_Load(object sender, EventArgs e)
+        {
+            btnLogIn.Parent = this;
+            pnlTime.Visible = false;
+            btnLogIn.Location = new Point(btnLogIn.Location.X, txtUser.Location.Y + btnLogIn.Height + 10);          
+        }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+            btnLogIn.Visible = false;
+            pnlTime.Visible = true;
+            txtUser.Enabled = false;
+        }
+
+        private void btnIn_MouseEnter(object sender, EventArgs e)
+        {
+            btnIn.BackColor = Color.LightGray;
+        }
+
+        private void btnIn_MouseLeave(object sender, EventArgs e)
+        {
+            btnIn.BackColor = Color.White;
+        }
+
+        private void btnOut_MouseEnter(object sender, EventArgs e)
+        {
+            btnOut.BackColor = Color.LightGray;
+        }
+
+        private void btnOut_MouseLeave(object sender, EventArgs e)
+        {
+            btnOut.BackColor = Color.White;
+        }
     }
 }
