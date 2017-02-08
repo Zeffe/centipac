@@ -254,7 +254,7 @@ namespace Centipac
         private void btnFinish_Click(object sender, EventArgs e)
         {
             if (txtRegistrant.Text != "") { 
-                msgbox conf = new msgbox("Add " + txtRegistrant.Text, txtRegistrant.Text, 2);
+                msgbox conf = new msgbox("Are you sure you want to add " + txtRegistrant.Text + "?", txtRegistrant.Text, 2);
                 if (conf.ShowDialog() == DialogResult.Yes)
                 {
                     // DO ADD CUSTOMER STUFF HERE
