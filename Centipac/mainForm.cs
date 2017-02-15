@@ -274,7 +274,8 @@ namespace Centipac
                         dateCreated.ToUnixTime(),
                         txtPhone.Text,
                         txtEmail.Text,
-                        price);
+                        price,
+                        activeUser.name);
 
                     todaysCustomers.Add(tempCustomer);
                     addCustomerToList(tempCustomer);
@@ -374,9 +375,9 @@ namespace Centipac
             DateTime custTime = cust.date.UnixTimeStampToDateTime();
             var tempItem = new[] {
                 cust.Registrant,                            // Registrant
-                (cust.adults + cust.children).ToString(),   // Party Size
+                cust.employee,                              // Employee
                 custTime.ToShortTimeString(),               // Time
-                "$" + cust.amountPaid.ToString() };               // Amount paid
+                "$" + cust.amountPaid.ToString() };         // Amount paid
             var item = new ListViewItem(tempItem);
 
             listCustomers.Items.Add(item);

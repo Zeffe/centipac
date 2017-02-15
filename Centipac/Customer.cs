@@ -15,11 +15,13 @@ namespace Centipac
         public string phone { get; set; }
         public string email { get; set; }
         public int amountPaid { get; set; }
+        public string employee { get; set; }
 
-        public Customer(string registrant, int adults, int children, long date, string phone, string email, int amountPaid)
+        public Customer(string registrant, int adults, int children, long date, string phone, string email, int amountPaid, string employee)
         {
             this.Registrant = registrant; this.adults = adults; this.children = children;
             this.date = date; this.phone = phone; this.email = email; this.amountPaid = amountPaid;
+            this.employee = employee;
         }
 
     }

@@ -54,28 +54,28 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.listCustomers = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuTabControl = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.closeExtraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupUserOptions = new MaterialSkin.Controls.MaterialGroupBox();
             this.btnManager = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnLogOut = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.timerUI = new System.Windows.Forms.Timer(this.components);
             this.btnClock = new System.Windows.Forms.PictureBox();
-            this.listCustomers = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuTabPage = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTabControl = new MaterialSkin.Controls.MaterialContextMenuStrip();
-            this.closeExtraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.menuTabControl.SuspendLayout();
             this.groupUserOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).BeginInit();
             this.menuTabPage.SuspendLayout();
-            this.menuTabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -453,6 +453,68 @@
             this.tabPage3.Text = "Today\'s Customers";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // listCustomers
+            // 
+            this.listCustomers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listCustomers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.listCustomers.Depth = 0;
+            this.listCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.listCustomers.FullRowSelect = true;
+            this.listCustomers.Location = new System.Drawing.Point(8, 7);
+            this.listCustomers.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listCustomers.MouseState = MaterialSkin.MouseState.OUT;
+            this.listCustomers.MultiSelect = false;
+            this.listCustomers.Name = "listCustomers";
+            this.listCustomers.OwnerDraw = true;
+            this.listCustomers.Size = new System.Drawing.Size(561, 290);
+            this.listCustomers.TabIndex = 0;
+            this.listCustomers.UseCompatibleStateImageBehavior = false;
+            this.listCustomers.View = System.Windows.Forms.View.Details;
+            this.listCustomers.DoubleClick += new System.EventHandler(this.listCustomers_DoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Registrant";
+            this.columnHeader1.Width = 159;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Employee";
+            this.columnHeader2.Width = 162;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Time";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 115;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Price";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader4.Width = 123;
+            // 
+            // menuTabControl
+            // 
+            this.menuTabControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.menuTabControl.Depth = 0;
+            this.menuTabControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.closeExtraToolStripMenuItem});
+            this.menuTabControl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.menuTabControl.Name = "menuTabControl";
+            this.menuTabControl.Size = new System.Drawing.Size(132, 26);
+            // 
+            // closeExtraToolStripMenuItem
+            // 
+            this.closeExtraToolStripMenuItem.Name = "closeExtraToolStripMenuItem";
+            this.closeExtraToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.closeExtraToolStripMenuItem.Text = "Close Extra";
+            this.closeExtraToolStripMenuItem.Click += new System.EventHandler(this.closeExtraToolStripMenuItem_Click);
+            // 
             // groupUserOptions
             // 
             this.groupUserOptions.BackColor = System.Drawing.Color.Transparent;
@@ -534,52 +596,6 @@
             this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
             this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
             // 
-            // listCustomers
-            // 
-            this.listCustomers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listCustomers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.listCustomers.Depth = 0;
-            this.listCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.listCustomers.FullRowSelect = true;
-            this.listCustomers.Location = new System.Drawing.Point(8, 7);
-            this.listCustomers.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.listCustomers.MouseState = MaterialSkin.MouseState.OUT;
-            this.listCustomers.MultiSelect = false;
-            this.listCustomers.Name = "listCustomers";
-            this.listCustomers.OwnerDraw = true;
-            this.listCustomers.Size = new System.Drawing.Size(561, 290);
-            this.listCustomers.TabIndex = 0;
-            this.listCustomers.UseCompatibleStateImageBehavior = false;
-            this.listCustomers.View = System.Windows.Forms.View.Details;
-            this.listCustomers.DoubleClick += new System.EventHandler(this.listCustomers_DoubleClick);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Registrant";
-            this.columnHeader1.Width = 159;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Party Size";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 162;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Time";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 115;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Price";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader4.Width = 123;
-            // 
             // menuTabPage
             // 
             this.menuTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -593,26 +609,9 @@
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
-            // 
-            // menuTabControl
-            // 
-            this.menuTabControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.menuTabControl.Depth = 0;
-            this.menuTabControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.closeExtraToolStripMenuItem});
-            this.menuTabControl.MouseState = MaterialSkin.MouseState.HOVER;
-            this.menuTabControl.Name = "menuTabControl";
-            this.menuTabControl.Size = new System.Drawing.Size(153, 48);
-            // 
-            // closeExtraToolStripMenuItem
-            // 
-            this.closeExtraToolStripMenuItem.Name = "closeExtraToolStripMenuItem";
-            this.closeExtraToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.closeExtraToolStripMenuItem.Text = "Close Extra";
-            this.closeExtraToolStripMenuItem.Click += new System.EventHandler(this.closeExtraToolStripMenuItem_Click);
             // 
             // mainForm
             // 
@@ -634,11 +633,11 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.menuTabControl.ResumeLayout(false);
             this.groupUserOptions.ResumeLayout(false);
             this.groupUserOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).EndInit();
             this.menuTabPage.ResumeLayout(false);
-            this.menuTabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
