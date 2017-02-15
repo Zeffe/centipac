@@ -4,3 +4,12 @@ c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControl
 c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.csproj.GenerateResource.Cache
 c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.dll
 c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.pdb
+C:\Users\5654920324\Desktop\centipac\ViewCustomerTabControls\ViewCustomerTabControls\bin\Debug\ViewCustomerTabControls.dll
+C:\Users\5654920324\Desktop\centipac\ViewCustomerTabControls\ViewCustomerTabControls\bin\Debug\ViewCustomerTabControls.pdb
+C:\Users\5654920324\Desktop\centipac\ViewCustomerTabControls\ViewCustomerTabControls\bin\Debug\MaterialSkin.dll
+C:\Users\5654920324\Desktop\centipac\ViewCustomerTabControls\ViewCustomerTabControls\bin\Debug\MaterialSkin.pdb
+C:\Users\5654920324\Desktop\centipac\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.csprojResolveAssemblyReference.cache
+C:\Users\5654920324\Desktop\centipac\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.UserControl1.resources
+C:\Users\5654920324\Desktop\centipac\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.csproj.GenerateResource.Cache
+C:\Users\5654920324\Desktop\centipac\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.dll
+C:\Users\5654920324\Desktop\centipac\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.pdb
