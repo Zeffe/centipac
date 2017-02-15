@@ -350,12 +350,23 @@ namespace Centipac
                 int count = 0;
                 foreach (Control ctrl in tabMain.TabPages[0].Controls)
                 {
-                    Control tempControl = new Control();            // http://stackoverflow.com/questions/17305249/how-can-i-duplicate-tabpage-in-c
-                    tempControl = ctrl;                             // TRY USING USER CONTROL ^^^^
-                    tempControl.Name = "Ab" + count.ToString();
-                    tempPage.Controls.Add(tempControl);
+                    if (count == 1) break;
                     count++;
+                    Control tempControl = (Control)Activator.CreateInstance(ctrl.GetType());          // http://stackoverflow.com/questions/17305249/how-can-i-duplicate-tabpage-in-c
+
+                    PropertyDescriptorCollection pdc = TypeDescriptor.GetProperties(ctrl);
+
+                    foreach (PropertyDescriptor entry in pdc)
+                    {
+                        object val = entry.GetValue(ctrl);
+                        entry.SetValue(tempControl, val);
+                    }
+
+
+                    tempControl.Visible = false;
+                    tempPage.Controls.Add(tempControl);
                 }
+
                 tabMain.TabPages.Add(tempPage);
                 tabMain.SelectedTab = tempPage;
             }

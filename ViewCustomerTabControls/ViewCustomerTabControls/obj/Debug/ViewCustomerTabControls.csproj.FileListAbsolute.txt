@@ -1,0 +1,6 @@
+c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControls\ViewCustomerTabControls\bin\Debug\ViewCustomerTabControls.dll
+c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControls\ViewCustomerTabControls\bin\Debug\ViewCustomerTabControls.pdb
+c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.UserControl1.resources
+c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.csproj.GenerateResource.Cache
+c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.dll
+c:\users\5654920324\documents\visual studio 2015\Projects\ViewCustomerTabControls\ViewCustomerTabControls\obj\Debug\ViewCustomerTabControls.pdb
