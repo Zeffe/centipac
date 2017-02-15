@@ -18,6 +18,7 @@ namespace Centipac
     {
         public static Rank[] titles;
         List<Customer> todaysCustomers = new List<Customer>();
+        TabPage tabCustomerView = new TabPage();
         Customer selectedCustomer;
         User activeUser;
         DateTime dateCreated;
@@ -346,6 +347,15 @@ namespace Centipac
                 selectedCustomer = todaysCustomers[listCustomers.SelectedIndices[0]];
                 TabPage tempPage = new TabPage(selectedCustomer.Registrant);
                 tempPage.ContextMenuStrip = menuTabPage;
+                int count = 0;
+                foreach (Control ctrl in tabMain.TabPages[0].Controls)
+                {
+                    Control tempControl = new Control();            // http://stackoverflow.com/questions/17305249/how-can-i-duplicate-tabpage-in-c
+                    tempControl = ctrl;                             // TRY USING USER CONTROL ^^^^
+                    tempControl.Name = "Ab" + count.ToString();
+                    tempPage.Controls.Add(tempControl);
+                    count++;
+                }
                 tabMain.TabPages.Add(tempPage);
                 tabMain.SelectedTab = tempPage;
             }
