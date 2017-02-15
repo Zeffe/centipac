@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            this.tabMain = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblChildren = new MaterialSkin.Controls.MaterialLabel();
             this.lblAdults = new MaterialSkin.Controls.MaterialLabel();
@@ -60,15 +60,28 @@
             this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.timerUI = new System.Windows.Forms.Timer(this.components);
             this.btnClock = new System.Windows.Forms.PictureBox();
-            this.materialTabControl1.SuspendLayout();
+            this.listCustomers = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuTabPage = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTabControl = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.closeExtraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.groupUserOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).BeginInit();
+            this.menuTabPage.SuspendLayout();
+            this.menuTabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
             // 
-            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
+            this.materialTabSelector1.BaseTabControl = this.tabMain;
+            this.materialTabSelector1.ContextMenuStrip = this.menuTabControl;
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 63);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -77,18 +90,18 @@
             this.materialTabSelector1.TabIndex = 2;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // materialTabControl1
+            // tabMain
             // 
-            this.materialTabControl1.Controls.Add(this.tabPage1);
-            this.materialTabControl1.Controls.Add(this.tabPage3);
-            this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(0, 100);
-            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(586, 326);
-            this.materialTabControl1.TabIndex = 3;
-            this.materialTabControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.materialTabControl1_MouseClick);
+            this.tabMain.Controls.Add(this.tabPage1);
+            this.tabMain.Controls.Add(this.tabPage3);
+            this.tabMain.Depth = 0;
+            this.tabMain.Location = new System.Drawing.Point(0, 100);
+            this.tabMain.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(586, 326);
+            this.tabMain.TabIndex = 3;
+            this.tabMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.materialTabControl1_MouseClick);
             // 
             // tabPage1
             // 
@@ -432,6 +445,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.listCustomers);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(578, 300);
@@ -520,6 +534,86 @@
             this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
             this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
             // 
+            // listCustomers
+            // 
+            this.listCustomers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listCustomers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.listCustomers.Depth = 0;
+            this.listCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.listCustomers.FullRowSelect = true;
+            this.listCustomers.Location = new System.Drawing.Point(8, 7);
+            this.listCustomers.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.listCustomers.MouseState = MaterialSkin.MouseState.OUT;
+            this.listCustomers.MultiSelect = false;
+            this.listCustomers.Name = "listCustomers";
+            this.listCustomers.OwnerDraw = true;
+            this.listCustomers.Size = new System.Drawing.Size(561, 290);
+            this.listCustomers.TabIndex = 0;
+            this.listCustomers.UseCompatibleStateImageBehavior = false;
+            this.listCustomers.View = System.Windows.Forms.View.Details;
+            this.listCustomers.DoubleClick += new System.EventHandler(this.listCustomers_DoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Registrant";
+            this.columnHeader1.Width = 159;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Party Size";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 162;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Time";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 115;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Price";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader4.Width = 123;
+            // 
+            // menuTabPage
+            // 
+            this.menuTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.menuTabPage.Depth = 0;
+            this.menuTabPage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.closeToolStripMenuItem});
+            this.menuTabPage.MouseState = MaterialSkin.MouseState.HOVER;
+            this.menuTabPage.Name = "menuTabPage";
+            this.menuTabPage.Size = new System.Drawing.Size(104, 26);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // menuTabControl
+            // 
+            this.menuTabControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.menuTabControl.Depth = 0;
+            this.menuTabControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.closeExtraToolStripMenuItem});
+            this.menuTabControl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.menuTabControl.Name = "menuTabControl";
+            this.menuTabControl.Size = new System.Drawing.Size(153, 48);
+            // 
+            // closeExtraToolStripMenuItem
+            // 
+            this.closeExtraToolStripMenuItem.Name = "closeExtraToolStripMenuItem";
+            this.closeExtraToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeExtraToolStripMenuItem.Text = "Close Extra";
+            this.closeExtraToolStripMenuItem.Click += new System.EventHandler(this.closeExtraToolStripMenuItem_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -527,7 +621,7 @@
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(585, 425);
             this.Controls.Add(this.btnClock);
-            this.Controls.Add(this.materialTabControl1);
+            this.Controls.Add(this.tabMain);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.groupUserOptions);
             this.MaximizeBox = false;
@@ -536,19 +630,22 @@
             this.Text = "Centipac";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load);
-            this.materialTabControl1.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.groupUserOptions.ResumeLayout(false);
             this.groupUserOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).EndInit();
+            this.menuTabPage.ResumeLayout(false);
+            this.menuTabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
-        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private MaterialSkin.Controls.MaterialTabControl tabMain;
         private System.Windows.Forms.TabPage tabPage1;
         private MaterialSkin.Controls.MaterialGroupBox groupUserOptions;
         private MaterialSkin.Controls.MaterialRaisedButton btnLogOut;
@@ -578,6 +675,15 @@
         private MaterialSkin.Controls.MaterialLabel lblPrice;
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
         private System.Windows.Forms.Panel panel1;
+        private MaterialSkin.Controls.MaterialListView listCustomers;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private MaterialSkin.Controls.MaterialContextMenuStrip menuTabPage;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private MaterialSkin.Controls.MaterialContextMenuStrip menuTabControl;
+        private System.Windows.Forms.ToolStripMenuItem closeExtraToolStripMenuItem;
     }
 }
 

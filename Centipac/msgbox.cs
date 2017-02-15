@@ -13,11 +13,27 @@ namespace Centipac
 {
     public partial class msgbox : MaterialSkin.Controls.MaterialForm
     {
+
+        public enum Buttons
+        {
+            NoButtons,
+            OKButton,
+            YesNoButtons,
+            Input
+        }
+
         public msgbox(String msg, String title, int type)
         {
             InitializeComponent();
 
             createMessage(msg, title, type);
+        }
+
+        public msgbox(String msg, String title, Buttons btn)
+        {
+            InitializeComponent();
+
+            createMessage(msg, title, (int)btn);
         }
 
         string msgOut;

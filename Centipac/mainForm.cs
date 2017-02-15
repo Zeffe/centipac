@@ -17,10 +17,13 @@ namespace Centipac
     public partial class mainForm : MaterialSkin.Controls.MaterialForm
     {
         public static Rank[] titles;
+        List<Customer> todaysCustomers = new List<Customer>();
+        Customer selectedCustomer;
         User activeUser;
+        DateTime dateCreated;
         bool logout = false;
         bool exit = true;
-        int adults = 0, children = 0;
+        int adults = 0, children = 0; int price = 0;
 
         public mainForm(User user)
         {
@@ -206,9 +209,11 @@ namespace Centipac
             cmbAdults.SelectedIndex = 0; cmbChildren.SelectedIndex = 0;
             lblDate.Text = DateTime.Now.ToShortDateString();
             lblTime.Text = DateTime.Now.ToShortTimeString();
+            dateCreated = DateTime.Now;
             lblAdults.Text = "Adults ($10): 1";
             adults = 1; children = 0;
-            lblPrice.Text = "Price: $" + (children * 7 + adults * 10).ToString();
+            price = (children * 7 + adults * 10);
+            lblPrice.Text = "Price: $" + price.ToString();
         }
 
         private void cmbAdults_SelectedIndexChanged(object sender, EventArgs e)
@@ -248,7 +253,8 @@ namespace Centipac
 
             lblAdults.Text = "Adults ($10): " + (Convert.ToInt32(cmbAdults.SelectedItem) + 1).ToString();
             adults = Convert.ToInt32(cmbAdults.SelectedItem) + 1;
-            lblPrice.Text = "Price: $" + (children * 7 + adults * 10).ToString();
+            price = (children * 7 + adults * 10);
+            lblPrice.Text = "Price: $" + price.ToString();
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
@@ -260,6 +266,18 @@ namespace Centipac
                     // DO ADD CUSTOMER STUFF HERE
                     panel1.BackColor = Color.LightGray;
                     panel1.BringToFront();
+
+                    Customer tempCustomer = new Customer(
+                        txtRegistrant.Text,
+                        adults,
+                        children,
+                        dateCreated.ToUnixTime(),
+                        txtPhone.Text,
+                        txtEmail.Text,
+                        price);
+
+                    todaysCustomers.Add(tempCustomer);
+                    addCustomerToList(tempCustomer);
                 }
             } else
             {
@@ -316,7 +334,53 @@ namespace Centipac
             }
             lblChildren.Text = "Children ($7): " + cmbChildren.Text;
             children = Convert.ToInt32(cmbChildren.Text);
-            lblPrice.Text = "Price: $" + (children * 7 + adults * 10).ToString();
+            price = (children * 7 + adults * 10);
+            lblPrice.Text = "Price: $" + price.ToString();
         }
+
+        private void listCustomers_DoubleClick(object sender, EventArgs e)
+        {
+            if (listCustomers.SelectedIndices[0] > -1)
+            {
+                selectedCustomer = todaysCustomers[listCustomers.SelectedIndices[0]];
+                TabPage tempPage = new TabPage(selectedCustomer.Registrant);
+                tempPage.ContextMenuStrip = menuTabPage;
+                tabMain.TabPages.Add(tempPage);
+                tabMain.SelectedTab = tempPage;
+            }
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ContextMenuStrip menu = (ContextMenuStrip)((sender as ToolStripMenuItem).Owner);
+            tabMain.TabPages.Remove(menu.SourceControl as TabPage);
+        }
+
+        private void closeExtraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            msgbox conf = new msgbox("Are you sure you want to exit all extra tabs?", "Close Extra?", msgbox.Buttons.YesNoButtons);
+            if (conf.ShowDialog() == DialogResult.Yes)
+            {
+                for (int i = tabMain.TabPages.Count - 1; i > 1; i--)
+                {
+                    tabMain.SelectedTab = tabMain.TabPages[i];
+                    tabMain.TabPages.RemoveAt(i);
+                }
+            }
+        }
+
+        void addCustomerToList(Customer cust)
+        {
+            DateTime custTime = cust.date.UnixTimeStampToDateTime();
+            var tempItem = new[] {
+                cust.Registrant,                            // Registrant
+                (cust.adults + cust.children).ToString(),   // Party Size
+                custTime.ToShortTimeString(),               // Time
+                "$" + cust.amountPaid.ToString() };               // Amount paid
+            var item = new ListViewItem(tempItem);
+
+            listCustomers.Items.Add(item);
+        }
+
     }
 }
