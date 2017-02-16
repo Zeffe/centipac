@@ -234,6 +234,11 @@ namespace Centipac
                     {
                         cmbAdults.SelectedIndex = 0;
                     }
+                    else if (num > 100)
+                    {
+                        msgbox error1 = new msgbox("Number too high, please enter number less than 100.", "Error", 1);
+                        error1.Show();   
+                    }
                     else
                     {
                         cmbAdults.Items.Add(input.txtInput.Text);
