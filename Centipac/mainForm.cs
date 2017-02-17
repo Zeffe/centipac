@@ -18,7 +18,7 @@ namespace Centipac
     {
         public static Rank[] titles;
         List<Customer> todaysCustomers = new List<Customer>();
-        TabPage tabCustomerView = new TabPage();
+        List<ViewCustomer> extraTabs = new List<ViewCustomer>();
         Customer selectedCustomer;
         User activeUser;
         DateTime dateCreated;
@@ -355,37 +355,33 @@ namespace Centipac
         {
             if (listCustomers.SelectedIndices[0] > -1)
             {
+                bool cancel = false;
                 selectedCustomer = todaysCustomers[listCustomers.SelectedIndices[0]];
-                TabPage tempPage = new TabPage(selectedCustomer.Registrant);
-                tempPage.ContextMenuStrip = menuTabPage;
-                int count = 0;
 
-                ViewCustomer vc = new ViewCustomer();
-                vc.GetCustomer = selectedCustomer;
-                tempPage.Controls.Add(vc);
-                vc.DeleteClick += new EventHandler<ViewCustomer.ViewCustomerEventArgs>(delete_click);
-
-                /*foreach (Control ctrl in tabMain.TabPages[0].Controls)
+                foreach (ViewCustomer view in extraTabs)
                 {
-                    if (count == 1) break;
-                    count++;
-                    Control tempControl = (Control)Activator.CreateInstance(ctrl.GetType());          // http://stackoverflow.com/questions/17305249/how-can-i-duplicate-tabpage-in-c
-
-                    PropertyDescriptorCollection pdc = TypeDescriptor.GetProperties(ctrl);
-
-                    foreach (PropertyDescriptor entry in pdc)
+                    if (view.GetCustomer == selectedCustomer)
                     {
-                        object val = entry.GetValue(ctrl);
-                        entry.SetValue(tempControl, val);
+                        tabMain.SelectedTab = (TabPage)view.Parent;
+                        cancel = true;
                     }
+                }
 
+                if (!cancel)
+                {
+                    TabPage tempPage = new TabPage(selectedCustomer.Registrant);
+                    tempPage.ContextMenuStrip = menuTabPage;
 
-                    tempControl.Visible = false;
-                    tempPage.Controls.Add(tempControl);
-                }*/
+                    ViewCustomer vc = new ViewCustomer();
+                    vc.GetCustomer = selectedCustomer;
+                    tempPage.Controls.Add(vc);
+                    vc.DeleteClick += new EventHandler<ViewCustomer.ViewCustomerEventArgs>(delete_click);
 
-                tabMain.TabPages.Add(tempPage);
-                tabMain.SelectedTab = tempPage;
+                    extraTabs.Add(vc);
+
+                    tabMain.TabPages.Add(tempPage);
+                    tabMain.SelectedTab = tempPage;
+                }
             }
         }
 
