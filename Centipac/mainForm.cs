@@ -33,6 +33,7 @@ namespace Centipac
             activeUser = user;
 
             var materialSkinManager = Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
+
         }
 
         void hideManager()
@@ -281,7 +282,7 @@ namespace Centipac
                         txtPhone.Text,
                         txtEmail.Text,
                         price,
-                        activeUser.name);
+                        new EmployeeDate(activeUser.name, dateCreated.ToUnixTime()));
 
                     todaysCustomers.Add(tempCustomer);
                     addCustomerToList(tempCustomer);
@@ -345,6 +346,11 @@ namespace Centipac
             lblPrice.Text = "Price: $" + price.ToString();
         }
 
+        private void delete_click(object sender, ViewCustomer.ViewCustomerEventArgs e)
+        {
+            MessageBox.Show("Clicked Delete " + e.customer.Registrant);
+        }
+
         private void listCustomers_DoubleClick(object sender, EventArgs e)
         {
             if (listCustomers.SelectedIndices[0] > -1)
@@ -353,7 +359,13 @@ namespace Centipac
                 TabPage tempPage = new TabPage(selectedCustomer.Registrant);
                 tempPage.ContextMenuStrip = menuTabPage;
                 int count = 0;
-                foreach (Control ctrl in tabMain.TabPages[0].Controls)
+
+                ViewCustomer vc = new ViewCustomer();
+                vc.GetCustomer = selectedCustomer;
+                tempPage.Controls.Add(vc);
+                vc.DeleteClick += new EventHandler<ViewCustomer.ViewCustomerEventArgs>(delete_click);
+
+                /*foreach (Control ctrl in tabMain.TabPages[0].Controls)
                 {
                     if (count == 1) break;
                     count++;
@@ -370,7 +382,7 @@ namespace Centipac
 
                     tempControl.Visible = false;
                     tempPage.Controls.Add(tempControl);
-                }
+                }*/
 
                 tabMain.TabPages.Add(tempPage);
                 tabMain.SelectedTab = tempPage;
@@ -401,7 +413,7 @@ namespace Centipac
             DateTime custTime = cust.date.UnixTimeStampToDateTime();
             var tempItem = new[] {
                 cust.Registrant,                            // Registrant
-                cust.employee,                              // Employee
+                cust.employees[0].employee,                 // Employee
                 custTime.ToShortTimeString(),               // Time
                 "$" + cust.amountPaid.ToString() };         // Amount paid
             var item = new ListViewItem(tempItem);
