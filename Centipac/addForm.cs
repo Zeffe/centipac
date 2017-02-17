@@ -35,6 +35,7 @@ namespace Centipac
 
             activeUser = active;
             tempUser = user; tempName = name; tempRank = rank;
+            comboRank.SelectedIndex = rank - 1;
             this.Text = "Editing " + user;
             isEdit = true;
         }
@@ -75,6 +76,16 @@ namespace Centipac
                 msgbox msg = new msgbox("Passwords don't match.", "Error", 1);
                 msg.Show();
             }
+        }
+
+        private void addForm_Load(object sender, EventArgs e)
+        {
+            foreach (Rank rank in mainForm.titles)
+            {
+                comboRank.Items.Add(rank.title);
+            }
+
+            comboRank.SelectedIndex = comboRank.Items.Count - 1;
         }
 
         private void addForm_FormClosing(object sender, FormClosingEventArgs e)

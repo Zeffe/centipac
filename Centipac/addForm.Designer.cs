@@ -33,7 +33,7 @@
             this.txtName = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtPass = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtPassConfirm = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.comboRank = new System.Windows.Forms.ComboBox();
+            this.comboRank = new Xenon.ThirteenComboBox();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -125,20 +125,18 @@
             // 
             // comboRank
             // 
+            this.comboRank.AccentColor = System.Drawing.Color.DodgerBlue;
+            this.comboRank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.comboRank.ColorScheme = Xenon.ThirteenComboBox.ColorSchemes.Light;
+            this.comboRank.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboRank.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
+            this.comboRank.ForeColor = System.Drawing.Color.White;
             this.comboRank.FormattingEnabled = true;
-            this.comboRank.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"});
-            this.comboRank.Location = new System.Drawing.Point(225, 90);
+            this.comboRank.Location = new System.Drawing.Point(225, 88);
             this.comboRank.Name = "comboRank";
-            this.comboRank.Size = new System.Drawing.Size(121, 21);
-            this.comboRank.TabIndex = 5;
-            this.comboRank.Text = "Temp Rank";
+            this.comboRank.Size = new System.Drawing.Size(121, 26);
+            this.comboRank.TabIndex = 6;
             // 
             // addForm
             // 
@@ -154,6 +152,7 @@
             this.Name = "addForm";
             this.Text = "Add Employee";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.addForm_FormClosing);
+            this.Load += new System.EventHandler(this.addForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,6 +165,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtName;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPass;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPassConfirm;
-        private System.Windows.Forms.ComboBox comboRank;
+        private Xenon.ThirteenComboBox comboRank;
     }
 }
