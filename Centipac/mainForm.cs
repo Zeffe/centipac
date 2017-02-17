@@ -348,7 +348,66 @@ namespace Centipac
 
         private void delete_click(object sender, ViewCustomer.ViewCustomerEventArgs e)
         {
-            MessageBox.Show("Clicked Delete " + e.customer.Registrant);
+            msgbox conf = new msgbox("Are you sure you want to delete " + e.customer.Registrant + "?", "Delete?", msgbox.Buttons.YesNoButtons);
+            if (conf.ShowDialog() == DialogResult.Yes)
+            {
+                ViewCustomer vc = sender as ViewCustomer;
+                removeViewCustomer(vc);
+                int index = getCustomerIndex(e.customer);
+                todaysCustomers.RemoveAt(index);
+                tabMain.TabPages.Remove((TabPage)(sender as ViewCustomer).Parent);
+                tabMain.SelectedTab = tabPage3;
+                refreshList();
+            }
+        }
+
+        private void save_click(object sender, ViewCustomer.ViewCustomerEventArgs e)
+        {
+            msgbox conf = new msgbox("Save changes to " + e.customer.Registrant + "?", "Save?", msgbox.Buttons.YesNoButtons);
+            if (conf.ShowDialog() == DialogResult.Yes)
+            {
+                int index = getCustomerIndex(e.customer);
+                ViewCustomer vc = sender as ViewCustomer;
+                removeViewCustomer(vc);
+                todaysCustomers[index].Registrant = vc.Registrant;
+                todaysCustomers[index].email = vc.Email;
+                todaysCustomers[index].phone = vc.Phone;
+                todaysCustomers[index].adults = vc.Adults + 1;
+                todaysCustomers[index].children = vc.Children;
+                todaysCustomers[index].amountPaid = (vc.Children * 7) + (vc.Adults * 10) + 10;
+                todaysCustomers[index].employees.Add(new EmployeeDate(activeUser.name, DateTime.Now.ToUnixTime()));
+                tabMain.TabPages.Remove((TabPage)(sender as ViewCustomer).Parent);
+                tabMain.SelectedTab = tabPage3;
+                refreshList();
+
+                msgbox finish = new msgbox("Successfully made changes to " + e.customer.Registrant + ".", "Success", msgbox.Buttons.OKButton);
+                finish.Show();
+            }
+        }
+
+        void removeViewCustomer(ViewCustomer vc)
+        {
+            int indexToRemove = -1;
+
+            for (int i = 0; i < extraTabs.Count; i++)
+            {
+                if (extraTabs[i].GetCustomer == vc.GetCustomer) indexToRemove = i;
+            }
+
+            if (indexToRemove != -1)
+            {
+                extraTabs.RemoveAt(indexToRemove);
+            }
+        }
+
+        public int getCustomerIndex(Customer cust)
+        {
+            for (int i = 0; i < todaysCustomers.Count; i++)
+            {
+                if (todaysCustomers[i].Registrant == cust.Registrant) return i;
+            }
+
+            return -1;
         }
 
         private void listCustomers_DoubleClick(object sender, EventArgs e)
@@ -376,6 +435,7 @@ namespace Centipac
                     vc.GetCustomer = selectedCustomer;
                     tempPage.Controls.Add(vc);
                     vc.DeleteClick += new EventHandler<ViewCustomer.ViewCustomerEventArgs>(delete_click);
+                    vc.SaveClick += new EventHandler<ViewCustomer.ViewCustomerEventArgs>(save_click);
 
                     extraTabs.Add(vc);
 
@@ -388,7 +448,13 @@ namespace Centipac
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ContextMenuStrip menu = (ContextMenuStrip)((sender as ToolStripMenuItem).Owner);
+            TabPage page = menu.SourceControl as TabPage;
+            foreach (Control ctrl in page.Controls)
+            {
+                if (ctrl is ViewCustomer) removeViewCustomer(ctrl as ViewCustomer);
+            }
             tabMain.TabPages.Remove(menu.SourceControl as TabPage);
+            tabMain.SelectedTab = tabPage3;
         }
 
         private void closeExtraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -401,7 +467,43 @@ namespace Centipac
                     tabMain.SelectedTab = tabMain.TabPages[i];
                     tabMain.TabPages.RemoveAt(i);
                 }
+
+                extraTabs.Clear();
             }
+        }
+
+        void refreshList(string filter = "")
+        {
+            listCustomers.Items.Clear();
+
+            foreach (Customer cust in todaysCustomers)
+            {
+                if (cust.Registrant.ToUpper().Contains(filter.ToUpper()) || filter == "")
+                {
+                    DateTime custTime = cust.date.UnixTimeStampToDateTime();
+                    var tempItem = new[]
+                    {
+                    cust.Registrant,
+                    cust.employees[0].employee,
+                    custTime.ToShortTimeString(),
+                    "$" + cust.amountPaid.ToString()
+                    };
+                    var item = new ListViewItem(tempItem);
+
+                    listCustomers.Items.Add(item);
+                }
+            }
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            refreshList(txtFilter.Text);
+        }
+
+        private void btnCancelFilter_Click(object sender, EventArgs e)
+        {
+            txtFilter.Text = "";
+            refreshList();
         }
 
         void addCustomerToList(Customer cust)

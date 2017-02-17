@@ -110,9 +110,9 @@
             this.materialLabel1.Location = new System.Drawing.Point(28, 75);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(82, 19);
             this.materialLabel1.TabIndex = 3;
-            this.materialLabel1.Text = "Adults:";
+            this.materialLabel1.Text = "Adults (-1):";
             // 
             // materialLabel2
             // 

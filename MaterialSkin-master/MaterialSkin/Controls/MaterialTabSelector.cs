@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
 using MaterialSkin.Animations;
+using System;
 
 namespace MaterialSkin.Controls
 {
@@ -84,7 +85,7 @@ namespace MaterialSkin.Controls
             if (animationManager.IsAnimating())
             {
                 var rippleBrush = new SolidBrush(Color.FromArgb((int)(51 - (animationProgress * 50)), Color.White));
-                var rippleSize = (int)(animationProgress * tabRects[baseTabControl.SelectedIndex].Width * 1.75);
+                var rippleSize = (int)(animationProgress * tabRects[Math.Min(baseTabControl.SelectedIndex, tabRects.Count - 1)].Width * 1.75);
 
                 g.SetClip(tabRects[baseTabControl.SelectedIndex]);
                 g.FillEllipse(rippleBrush, new Rectangle(animationSource.X - rippleSize / 2, animationSource.Y - rippleSize / 2, rippleSize, rippleSize));
@@ -116,7 +117,8 @@ namespace MaterialSkin.Controls
             int x = previousActiveTabRect.X + (int)((activeTabPageRect.X - previousActiveTabRect.X) * animationProgress);
             int width = previousActiveTabRect.Width + (int)((activeTabPageRect.Width - previousActiveTabRect.Width) * animationProgress);
 
-			g.FillRectangle(SkinManager.ColorScheme.AccentBrush, x, y, width, TAB_INDICATOR_HEIGHT);
+            g.FillRectangle(SkinManager.ColorScheme.AccentBrush, x, y, width, TAB_INDICATOR_HEIGHT);
+
         }
 
         private int CalculateTextAlpha(int tabIndex, double animationProgress)

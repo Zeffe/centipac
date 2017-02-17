@@ -135,6 +135,8 @@ namespace Centipac
             txtPhoneEdit.Text = customer.phone;
             lblDate.Text = tempDate.ToShortDateString();
             lblTime.Text = tempDate.ToShortTimeString();
+            nmAdults.Value = customer.adults - 1;
+            nmChildren.Value = customer.children;
 
             foreach (EmployeeDate empDate in customer.employees)
             {
