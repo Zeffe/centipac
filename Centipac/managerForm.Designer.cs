@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -70,6 +71,8 @@
             this.cFriday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cSaturday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cSunday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timerAdd = new System.Windows.Forms.Timer(this.components);
+            this.timerEdit = new System.Windows.Forms.Timer(this.components);
             this.materialTabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -172,6 +175,7 @@
             this.btnEdit.useBackColor = false;
             this.btnEdit.useForeColor = false;
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -591,6 +595,16 @@
             this.cSunday.Text = "Sun";
             this.cSunday.Width = 85;
             // 
+            // timerAdd
+            // 
+            this.timerAdd.Interval = 1000;
+            this.timerAdd.Tick += new System.EventHandler(this.timerAdd_Tick);
+            // 
+            // timerEdit
+            // 
+            this.timerEdit.Interval = 1000;
+            this.timerEdit.Tick += new System.EventHandler(this.timerEdit_Tick);
+            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -662,5 +676,7 @@
         private System.Windows.Forms.ColumnHeader cFriday;
         private System.Windows.Forms.ColumnHeader cSaturday;
         private System.Windows.Forms.ColumnHeader cSunday;
+        private System.Windows.Forms.Timer timerAdd;
+        private System.Windows.Forms.Timer timerEdit;
     }
 }

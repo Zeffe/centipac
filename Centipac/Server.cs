@@ -121,6 +121,32 @@ namespace Centipac
             }
         }
 
+        public static string editUser(User currentUser, string oldUser, string newUser, string newName, string newPerm)
+        {
+            string url = baseUrl + "edit.php";
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("oldUser", oldUser);
+            postData.AppendUrlEncoded("newUser", newUser);
+            postData.AppendUrlEncoded("newName", newName);
+            postData.AppendUrlEncoded("newPerm", newPerm);
+
+            string result = Server.postPHP(url, postData.ToString());
+
+            if (result.Contains("token"))
+            {
+                return result;
+            }
+            else if (result == "fail")
+            {
+                return "Access Denied";
+            }
+            else
+            {
+                return "User already exists.";
+            }
+        }
 
         //  With proper authentication, delets a user from the user database.
         public static string deleteUser(User currentUser, string userToDelete) 

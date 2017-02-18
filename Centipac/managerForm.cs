@@ -18,7 +18,8 @@ namespace Centipac
         User activeUser;
         bool slider = true;
         string previousSelect = "Monday";                   // Stores the previously selected day on schedule page for saving purposes.
-        List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>(); 
+        List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>();
+        Employee[] employees;
 
         public managerForm(User active)
         {
@@ -34,11 +35,13 @@ namespace Centipac
             mainForm.manage = null;
         }
 
+
         TimePicker[] timepickers; 
 
         private void managerForm_Load(object sender, EventArgs e)
         {
-            Employee[] employees = Server.getEmployees(activeUser);
+            employees = Server.getEmployees(activeUser);
+
             timepickers = new TimePicker[employees.Length];
 
             lblSlider.Click += new System.EventHandler(scheduleSlider);
@@ -325,6 +328,7 @@ namespace Centipac
             {
                 add = new addForm(activeUser);
                 add.Show();
+                timerAdd.Start();
             } else
             {
                 add.BringToFront();
@@ -342,6 +346,61 @@ namespace Centipac
                 var item = new ListViewItem(tempItem);
                 listEmployees.Items.Add(item);
             }
+        }
+
+        public static addForm edit = null;
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            string selectedUser = listEmployees.SelectedItems[employeeDisplay % listEmployees.SelectedItems.Count].SubItems[1].Text;
+            Employee employeeToEdit = null;
+
+            foreach (Employee employee in employees)
+            {
+                if (employee.username == selectedUser) employeeToEdit = employee;
+            }
+
+            if (edit == null && employeeToEdit != null)
+            {
+                edit = new addForm(activeUser, employeeToEdit.username, employeeToEdit.name, Convert.ToInt32(employeeToEdit.perm));
+                edit.Show();
+                timerEdit.Start();
+            } else if (employeeToEdit != null)
+            {
+                edit.BringToFront();
+            }
+        }
+
+        private void updateList()
+        {
+            listEmployees.Items.Clear();
+
+            foreach (Employee emp in employees)
+            {
+                var tempItem = new[] { emp.name, emp.username, emp.perm };
+                var item = new ListViewItem(tempItem);
+                listEmployees.Items.Add(item);
+            }
+        }
+
+        private void timerAdd_Tick(object sender, EventArgs e)
+        {
+            if (add == null)
+            {
+                employees = Server.getEmployees(activeUser);
+                timerAdd.Stop();
+                updateList();
+            } 
+        }
+
+        private void timerEdit_Tick(object sender, EventArgs e)
+        {
+            if (edit == null)
+            {
+                employees = Server.getEmployees(activeUser);
+                timerEdit.Stop();
+                updateList();
+            } 
         }
     }
 }
