@@ -44,6 +44,8 @@ namespace Centipac
 
             timepickers = new TimePicker[employees.Length];
 
+            dtDay.MaxDate = DateTime.Today;
+
             lblSlider.Click += new System.EventHandler(scheduleSlider);
             lblTable.Click += new System.EventHandler(scheduleTable);
             pnlSliderSelect.Click += new System.EventHandler(scheduleSlider);

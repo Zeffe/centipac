@@ -73,7 +73,13 @@
             this.cSunday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timerAdd = new System.Windows.Forms.Timer(this.components);
             this.timerEdit = new System.Windows.Forms.Timer(this.components);
+            this.dtDay = new System.Windows.Forms.DateTimePicker();
+            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialTabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.pnlTableSelect.SuspendLayout();
@@ -108,6 +114,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.materialListView1);
+            this.tabPage1.Controls.Add(this.dtDay);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -605,6 +613,52 @@
             this.timerEdit.Interval = 1000;
             this.timerEdit.Tick += new System.EventHandler(this.timerEdit_Tick);
             // 
+            // dtDay
+            // 
+            this.dtDay.Location = new System.Drawing.Point(523, 6);
+            this.dtDay.MaxDate = new System.DateTime(2050, 2, 20, 0, 0, 0, 0);
+            this.dtDay.MinDate = new System.DateTime(2017, 1, 1, 0, 0, 0, 0);
+            this.dtDay.Name = "dtDay";
+            this.dtDay.Size = new System.Drawing.Size(204, 20);
+            this.dtDay.TabIndex = 0;
+            this.dtDay.Value = new System.DateTime(2017, 2, 20, 0, 0, 0, 0);
+            // 
+            // materialListView1
+            // 
+            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.materialListView1.Depth = 0;
+            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.materialListView1.FullRowSelect = true;
+            this.materialListView1.Location = new System.Drawing.Point(410, 32);
+            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialListView1.Name = "materialListView1";
+            this.materialListView1.OwnerDraw = true;
+            this.materialListView1.Size = new System.Drawing.Size(411, 297);
+            this.materialListView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.materialListView1.TabIndex = 1;
+            this.materialListView1.UseCompatibleStateImageBehavior = false;
+            this.materialListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Time";
+            this.columnHeader4.Width = 93;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Registrant";
+            this.columnHeader5.Width = 163;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Employee";
+            this.columnHeader6.Width = 153;
+            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -619,6 +673,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.managerForm_FormClosing);
             this.Load += new System.EventHandler(this.managerForm_Load);
             this.materialTabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -678,5 +733,10 @@
         private System.Windows.Forms.ColumnHeader cSunday;
         private System.Windows.Forms.Timer timerAdd;
         private System.Windows.Forms.Timer timerEdit;
+        private System.Windows.Forms.DateTimePicker dtDay;
+        private MaterialSkin.Controls.MaterialListView materialListView1;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
