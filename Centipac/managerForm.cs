@@ -45,6 +45,12 @@ namespace Centipac
             timepickers = new TimePicker[employees.Length];
 
             dtDay.MaxDate = DateTime.Today;
+            dtDay.Value = DateTime.Today;
+            dtEnd.Value = DateTime.Today;
+            dtEnd.MinDate = DateTime.Today;
+            dtEnd.MaxDate = DateTime.Today;
+            dtStart.MaxDate = DateTime.Today;
+            dtStart.Value = DateTime.Today;
 
             lblSlider.Click += new System.EventHandler(scheduleSlider);
             lblTable.Click += new System.EventHandler(scheduleTable);
@@ -86,6 +92,7 @@ namespace Centipac
             }
 
             employeeScheduleToTable(listEmployeeSchedules.ToArray());
+            this.reportViewer1.RefreshReport();
         }
 
         #region Schedule
@@ -403,6 +410,26 @@ namespace Centipac
                 timerEdit.Stop();
                 updateList();
             } 
+        }
+
+        private void dtStart_ValueChanged(object sender, EventArgs e)
+        {            
+            dtEnd.MaxDate = dtStart.Value.AddDays(1);
+            dtEnd.MinDate = dtStart.Value;
+        }
+
+        public static reportForm report = null;
+
+        private void btnEnlarge_Click(object sender, EventArgs e)
+        {
+            if (report == null)
+            {
+                report = new reportForm();
+                report.Show();
+            } else
+            {
+                report.BringToFront();
+            }
         }
     }
 }

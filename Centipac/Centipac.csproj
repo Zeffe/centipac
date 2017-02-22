@@ -33,10 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MaterialSkin-master\MaterialSkinExample\bin\Debug\MaterialSkin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -44,6 +49,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -107,6 +113,12 @@
     <Compile Include="registerForm.Designer.cs">
       <DependentUpon>registerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="reportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportForm.Designer.cs">
+      <DependentUpon>reportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Server.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="settingsForm.cs">
@@ -159,6 +171,9 @@
     </Compile>
     <EmbeddedResource Include="registerForm.resx">
       <DependentUpon>registerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportForm.resx">
+      <DependentUpon>reportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="settingsForm.resx">
       <DependentUpon>settingsForm.cs</DependentUpon>
