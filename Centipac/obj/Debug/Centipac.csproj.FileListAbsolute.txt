@@ -62,3 +62,5 @@ C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.ViewCustomer.re
 C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.reportForm.resources
+C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\RdlCompile.cache
+C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\RdlCompile.compiled

@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            this.tabMain = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnGenerate = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnEnlarge = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dtEnd = new System.Windows.Forms.DateTimePicker();
             this.dtStart = new System.Windows.Forms.DateTimePicker();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -61,6 +65,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnScheduleReport = new MaterialSkin.Controls.MaterialRaisedButton();
             this.pnlTableSelect = new System.Windows.Forms.Panel();
             this.lblTable = new System.Windows.Forms.Label();
             this.pnlSliderSelect = new System.Windows.Forms.Panel();
@@ -81,22 +86,25 @@
             this.cFriday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cSaturday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cSunday = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabScheduleReport = new System.Windows.Forms.TabPage();
+            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.timerAdd = new System.Windows.Forms.Timer(this.components);
             this.timerEdit = new System.Windows.Forms.Timer(this.components);
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.btnEnlarge = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialTabControl1.SuspendLayout();
+            this.UserBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.pnlTableSelect.SuspendLayout();
             this.pnlSliderSelect.SuspendLayout();
             this.pnlTable.SuspendLayout();
+            this.tabScheduleReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UserBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // materialTabSelector1
             // 
-            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
+            this.materialTabSelector1.BaseTabControl = this.tabMain;
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 64);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -105,22 +113,24 @@
             this.materialTabSelector1.TabIndex = 0;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // materialTabControl1
+            // tabMain
             // 
-            this.materialTabControl1.Controls.Add(this.tabPage1);
-            this.materialTabControl1.Controls.Add(this.tabPage2);
-            this.materialTabControl1.Controls.Add(this.tabPage3);
-            this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(0, 114);
-            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(837, 363);
-            this.materialTabControl1.TabIndex = 1;
-            this.materialTabControl1.SelectedIndexChanged += new System.EventHandler(this.materialTabControl1_SelectedIndexChanged);
+            this.tabMain.Controls.Add(this.tabPage1);
+            this.tabMain.Controls.Add(this.tabPage2);
+            this.tabMain.Controls.Add(this.tabPage3);
+            this.tabMain.Controls.Add(this.tabScheduleReport);
+            this.tabMain.Depth = 0;
+            this.tabMain.Location = new System.Drawing.Point(0, 114);
+            this.tabMain.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(837, 363);
+            this.tabMain.TabIndex = 1;
+            this.tabMain.SelectedIndexChanged += new System.EventHandler(this.materialTabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnGenerate);
             this.tabPage1.Controls.Add(this.btnEnlarge);
             this.tabPage1.Controls.Add(this.reportViewer1);
             this.tabPage1.Controls.Add(this.dtEnd);
@@ -137,6 +147,42 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer Data";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnGenerate
+            // 
+            this.btnGenerate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnGenerate.Depth = 0;
+            this.btnGenerate.Icon = null;
+            this.btnGenerate.Location = new System.Drawing.Point(321, 105);
+            this.btnGenerate.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.Primary = true;
+            this.btnGenerate.Size = new System.Drawing.Size(83, 23);
+            this.btnGenerate.TabIndex = 41;
+            this.btnGenerate.Text = "Generate";
+            this.btnGenerate.UseVisualStyleBackColor = true;
+            // 
+            // btnEnlarge
+            // 
+            this.btnEnlarge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnEnlarge.Depth = 0;
+            this.btnEnlarge.Icon = null;
+            this.btnEnlarge.Location = new System.Drawing.Point(6, 105);
+            this.btnEnlarge.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEnlarge.Name = "btnEnlarge";
+            this.btnEnlarge.Primary = true;
+            this.btnEnlarge.Size = new System.Drawing.Size(71, 23);
+            this.btnEnlarge.TabIndex = 40;
+            this.btnEnlarge.Text = "Enlarge";
+            this.btnEnlarge.UseVisualStyleBackColor = true;
+            this.btnEnlarge.Click += new System.EventHandler(this.btnEnlarge_Click);
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Location = new System.Drawing.Point(6, 144);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(398, 197);
+            this.reportViewer1.TabIndex = 39;
             // 
             // dtEnd
             // 
@@ -509,6 +555,7 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.btnScheduleReport);
             this.tabPage3.Controls.Add(this.pnlTableSelect);
             this.tabPage3.Controls.Add(this.pnlSliderSelect);
             this.tabPage3.Controls.Add(this.lblEndDate);
@@ -526,11 +573,26 @@
             this.tabPage3.Text = "Schedule";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnScheduleReport
+            // 
+            this.btnScheduleReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnScheduleReport.Depth = 0;
+            this.btnScheduleReport.Icon = null;
+            this.btnScheduleReport.Location = new System.Drawing.Point(4, 308);
+            this.btnScheduleReport.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnScheduleReport.Name = "btnScheduleReport";
+            this.btnScheduleReport.Primary = true;
+            this.btnScheduleReport.Size = new System.Drawing.Size(122, 23);
+            this.btnScheduleReport.TabIndex = 33;
+            this.btnScheduleReport.Text = "View Report";
+            this.btnScheduleReport.UseVisualStyleBackColor = true;
+            this.btnScheduleReport.Click += new System.EventHandler(this.btnScheduleReport_Click);
+            // 
             // pnlTableSelect
             // 
             this.pnlTableSelect.BackColor = System.Drawing.Color.Transparent;
             this.pnlTableSelect.Controls.Add(this.lblTable);
-            this.pnlTableSelect.Location = new System.Drawing.Point(64, 276);
+            this.pnlTableSelect.Location = new System.Drawing.Point(64, 249);
             this.pnlTableSelect.Name = "pnlTableSelect";
             this.pnlTableSelect.Size = new System.Drawing.Size(61, 24);
             this.pnlTableSelect.TabIndex = 31;
@@ -548,7 +610,7 @@
             // 
             this.pnlSliderSelect.BackColor = System.Drawing.Color.DodgerBlue;
             this.pnlSliderSelect.Controls.Add(this.lblSlider);
-            this.pnlSliderSelect.Location = new System.Drawing.Point(3, 276);
+            this.pnlSliderSelect.Location = new System.Drawing.Point(3, 249);
             this.pnlSliderSelect.Name = "pnlSliderSelect";
             this.pnlSliderSelect.Size = new System.Drawing.Size(61, 24);
             this.pnlSliderSelect.TabIndex = 30;
@@ -585,7 +647,7 @@
             this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSave.Depth = 0;
             this.btnSave.Icon = null;
-            this.btnSave.Location = new System.Drawing.Point(3, 306);
+            this.btnSave.Location = new System.Drawing.Point(3, 279);
             this.btnSave.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSave.Name = "btnSave";
             this.btnSave.Primary = true;
@@ -723,6 +785,28 @@
             this.cSunday.Text = "Sun";
             this.cSunday.Width = 85;
             // 
+            // tabScheduleReport
+            // 
+            this.tabScheduleReport.Controls.Add(this.reportViewer2);
+            this.tabScheduleReport.Location = new System.Drawing.Point(4, 22);
+            this.tabScheduleReport.Name = "tabScheduleReport";
+            this.tabScheduleReport.Padding = new System.Windows.Forms.Padding(3);
+            this.tabScheduleReport.Size = new System.Drawing.Size(829, 337);
+            this.tabScheduleReport.TabIndex = 3;
+            this.tabScheduleReport.Text = "Schedule Report";
+            this.tabScheduleReport.UseVisualStyleBackColor = true;
+            // 
+            // reportViewer2
+            // 
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.UserBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "Centipac.Report1.rdlc";
+            this.reportViewer2.Location = new System.Drawing.Point(6, 6);
+            this.reportViewer2.Name = "reportViewer2";
+            this.reportViewer2.Size = new System.Drawing.Size(823, 328);
+            this.reportViewer2.TabIndex = 40;
+            // 
             // timerAdd
             // 
             this.timerAdd.Interval = 1000;
@@ -733,34 +817,16 @@
             this.timerEdit.Interval = 1000;
             this.timerEdit.Tick += new System.EventHandler(this.timerEdit_Tick);
             // 
-            // reportViewer1
+            // UserBindingSource
             // 
-            this.reportViewer1.Location = new System.Drawing.Point(12, 97);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(392, 210);
-            this.reportViewer1.TabIndex = 39;
-            // 
-            // btnEnlarge
-            // 
-            this.btnEnlarge.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnEnlarge.Depth = 0;
-            this.btnEnlarge.Icon = null;
-            this.btnEnlarge.Location = new System.Drawing.Point(333, 310);
-            this.btnEnlarge.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnEnlarge.Name = "btnEnlarge";
-            this.btnEnlarge.Primary = true;
-            this.btnEnlarge.Size = new System.Drawing.Size(71, 23);
-            this.btnEnlarge.TabIndex = 40;
-            this.btnEnlarge.Text = "Enlarge";
-            this.btnEnlarge.UseVisualStyleBackColor = true;
-            this.btnEnlarge.Click += new System.EventHandler(this.btnEnlarge_Click);
+            this.UserBindingSource.DataSource = typeof(Centipac.User);
             // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 477);
-            this.Controls.Add(this.materialTabControl1);
+            this.Controls.Add(this.tabMain);
             this.Controls.Add(this.materialTabSelector1);
             this.MaximizeBox = false;
             this.Name = "managerForm";
@@ -768,7 +834,7 @@
             this.Text = "Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.managerForm_FormClosing);
             this.Load += new System.EventHandler(this.managerForm_Load);
-            this.materialTabControl1.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -780,6 +846,8 @@
             this.pnlSliderSelect.ResumeLayout(false);
             this.pnlSliderSelect.PerformLayout();
             this.pnlTable.ResumeLayout(false);
+            this.tabScheduleReport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UserBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -787,7 +855,7 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
-        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private MaterialSkin.Controls.MaterialTabControl tabMain;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -842,5 +910,10 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private MaterialSkin.Controls.MaterialRaisedButton btnEnlarge;
+        private MaterialSkin.Controls.MaterialRaisedButton btnGenerate;
+        private MaterialSkin.Controls.MaterialRaisedButton btnScheduleReport;
+        private System.Windows.Forms.TabPage tabScheduleReport;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private System.Windows.Forms.BindingSource UserBindingSource;
     }
 }

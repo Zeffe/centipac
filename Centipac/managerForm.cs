@@ -20,6 +20,7 @@ namespace Centipac
         string previousSelect = "Monday";                   // Stores the previously selected day on schedule page for saving purposes.
         List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>();
         Employee[] employees;
+        TabPage scheduleReport;
 
         public managerForm(User active)
         {
@@ -92,7 +93,6 @@ namespace Centipac
             }
 
             employeeScheduleToTable(listEmployeeSchedules.ToArray());
-            this.reportViewer1.RefreshReport();
         }
 
         #region Schedule
@@ -215,7 +215,7 @@ namespace Centipac
 
         private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (materialTabControl1.SelectedIndex)
+            switch (tabMain.SelectedIndex)
             {
                 case 2: 
                     foreach (TimePicker timepicker in timepickers)
@@ -430,6 +430,11 @@ namespace Centipac
             {
                 report.BringToFront();
             }
+        }
+
+        private void btnScheduleReport_Click(object sender, EventArgs e)
+        {
+            tabMain.SelectedIndex = tabMain.TabCount - 1; //CHECK OUT THIS VIDEO https://www.youtube.com/watch?v=G1OuPZNsCr4
         }
     }
 }
