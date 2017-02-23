@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Centipac
 {
@@ -119,6 +120,71 @@ namespace Centipac
             {
                 return "User already exists.";
             }
+        }
+
+        public static string addCustomer(User currentUser, Customer customer)
+        {
+            string url = baseUrl + "addCustomer.php";
+
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("registrant", customer.registrant);
+            postData.AppendUrlEncoded("adults", customer.adults.ToString());
+            postData.AppendUrlEncoded("children", customer.children.ToString());
+            postData.AppendUrlEncoded("date", customer.date.ToString());
+            postData.AppendUrlEncoded("phone", customer.phone);
+            postData.AppendUrlEncoded("email", customer.email);
+            postData.AppendUrlEncoded("amountPaid", customer.amountPaid.ToString());
+            postData.AppendUrlEncoded("employees", JsonConvert.SerializeObject(customer.employees));
+
+            return Server.postPHP(url, postData.ToString());
+        }
+
+        public static Customer[] getCustomers(User currentUser)
+        {
+            string url = baseUrl + "getCustomers.php";
+
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+
+            List<Customer> returnCusts = new List<Customer>();
+        
+            string jsonResult = Server.postPHP(url, postData.ToString());
+
+            JArray result = JArray.Parse(jsonResult);
+
+            foreach(JObject json in result)
+            {
+                returnCusts.Add(new Customer(json));
+            }
+
+            return returnCusts.ToArray();
+        }
+
+        public static Customer[] getCustomers(User currentUser, long startTime, long endTime)
+        {
+            string url = baseUrl + "getCustomers.php";
+
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("start", startTime.ToString());
+            postData.AppendUrlEncoded("end", endTime.ToString());
+
+            List<Customer> returnCusts = new List<Customer>();
+
+            string jsonResult = Server.postPHP(url, postData.ToString());
+
+            JArray result = JArray.Parse(jsonResult);
+
+            foreach (JObject json in result)
+            {
+                returnCusts.Add(new Customer(json));
+            }
+
+            return returnCusts.ToArray();
         }
 
         public static string editUser(User currentUser, string oldUser, string newUser, string newName, string newPerm)

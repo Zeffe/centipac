@@ -130,7 +130,7 @@ namespace Centipac
         {
             DateTime tempDate = customer.date.UnixTimeStampToDateTime();
 
-            txtRegistrantEdit.Text = customer.Registrant;
+            txtRegistrantEdit.Text = customer.registrant;
             txtEmailEdit.Text = customer.email;
             txtPhoneEdit.Text = customer.phone;
             lblDate.Text = tempDate.ToShortDateString();

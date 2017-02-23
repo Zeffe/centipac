@@ -93,6 +93,15 @@ namespace Centipac
             groupUserOptions.Location = new Point(this.Width - groupUserOptions.Width - 3, user.Location.Y + user.Size.Height);
             groupUserOptions.DiamondPos = user.Location.X - groupUserOptions.Location.X + (user.Width / 2) - 9;
             groupUserOptions.BringToFront();
+
+            Customer[] tempCust = Server.getCustomers(activeUser);
+
+            foreach (Customer cust in tempCust)
+            {
+                todaysCustomers.Add(cust);
+            }
+
+            refreshList();
         }
 
         private void onUserClick(object sender, EventArgs e)
@@ -270,7 +279,7 @@ namespace Centipac
                 msgbox conf = new msgbox("Are you sure you want to add " + txtRegistrant.Text + "?", txtRegistrant.Text, 2);
                 if (conf.ShowDialog() == DialogResult.Yes)
                 {
-                    // DO ADD CUSTOMER STUFF HERE
+                    // DO ADD CUSTOMER STUFF HERE                   
                     panel1.BackColor = Color.LightGray;
                     panel1.BringToFront();
 
@@ -284,6 +293,7 @@ namespace Centipac
                         price,
                         new EmployeeDate(activeUser.name, dateCreated.ToUnixTime()));
 
+                    Server.addCustomer(activeUser, tempCustomer);
                     todaysCustomers.Add(tempCustomer);
                     addCustomerToList(tempCustomer);
                 }
@@ -348,7 +358,7 @@ namespace Centipac
 
         private void delete_click(object sender, ViewCustomer.ViewCustomerEventArgs e)
         {
-            msgbox conf = new msgbox("Are you sure you want to delete " + e.customer.Registrant + "?", "Delete?", msgbox.Buttons.YesNoButtons);
+            msgbox conf = new msgbox("Are you sure you want to delete " + e.customer.registrant + "?", "Delete?", msgbox.Buttons.YesNoButtons);
             if (conf.ShowDialog() == DialogResult.Yes)
             {
                 ViewCustomer vc = sender as ViewCustomer;
@@ -363,13 +373,13 @@ namespace Centipac
 
         private void save_click(object sender, ViewCustomer.ViewCustomerEventArgs e)
         {
-            msgbox conf = new msgbox("Save changes to " + e.customer.Registrant + "?", "Save?", msgbox.Buttons.YesNoButtons);
+            msgbox conf = new msgbox("Save changes to " + e.customer.registrant + "?", "Save?", msgbox.Buttons.YesNoButtons);
             if (conf.ShowDialog() == DialogResult.Yes)
             {
                 int index = getCustomerIndex(e.customer);
                 ViewCustomer vc = sender as ViewCustomer;
                 removeViewCustomer(vc);
-                todaysCustomers[index].Registrant = vc.Registrant;
+                todaysCustomers[index].registrant = vc.Registrant;
                 todaysCustomers[index].email = vc.Email;
                 todaysCustomers[index].phone = vc.Phone;
                 todaysCustomers[index].adults = vc.Adults + 1;
@@ -380,7 +390,7 @@ namespace Centipac
                 tabMain.SelectedTab = tabPage3;
                 refreshList();
 
-                msgbox finish = new msgbox("Successfully made changes to " + e.customer.Registrant + ".", "Success", msgbox.Buttons.OKButton);
+                msgbox finish = new msgbox("Successfully made changes to " + e.customer.registrant + ".", "Success", msgbox.Buttons.OKButton);
                 finish.Show();
             }
         }
@@ -404,7 +414,7 @@ namespace Centipac
         {
             for (int i = 0; i < todaysCustomers.Count; i++)
             {
-                if (todaysCustomers[i].Registrant == cust.Registrant) return i;
+                if (todaysCustomers[i].registrant == cust.registrant) return i;
             }
 
             return -1;
@@ -428,7 +438,7 @@ namespace Centipac
 
                 if (!cancel)
                 {
-                    TabPage tempPage = new TabPage(selectedCustomer.Registrant);
+                    TabPage tempPage = new TabPage(selectedCustomer.registrant);
                     tempPage.ContextMenuStrip = menuTabPage;
 
                     ViewCustomer vc = new ViewCustomer();
@@ -478,12 +488,12 @@ namespace Centipac
 
             foreach (Customer cust in todaysCustomers)
             {
-                if (cust.Registrant.ToUpper().Contains(filter.ToUpper()) || filter == "")
+                if (cust.registrant.ToUpper().Contains(filter.ToUpper()) || filter == "")
                 {
                     DateTime custTime = cust.date.UnixTimeStampToDateTime();
                     var tempItem = new[]
                     {
-                    cust.Registrant,
+                    cust.registrant,
                     cust.employees[0].employee,
                     custTime.ToShortTimeString(),
                     "$" + cust.amountPaid.ToString()
@@ -510,7 +520,7 @@ namespace Centipac
         {
             DateTime custTime = cust.date.UnixTimeStampToDateTime();
             var tempItem = new[] {
-                cust.Registrant,                            // Registrant
+                cust.registrant,                            // registrant
                 cust.employees[0].employee,                 // Employee
                 custTime.ToShortTimeString(),               // Time
                 "$" + cust.amountPaid.ToString() };         // Amount paid
