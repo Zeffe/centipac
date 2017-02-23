@@ -70,5 +70,16 @@ namespace Centipac.Properties {
                 this["Setting"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=us-cdbr-azure-central-a.cloudapp.net;user id=be0fcec3c5f777;password=421e6" +
+            "bec;persistsecurityinfo=True;database=centipacdb")]
+        public string centipacdbConnectionString {
+            get {
+                return ((string)(this["centipacdbConnectionString"]));
+            }
+        }
     }
 }

@@ -18,7 +18,8 @@ namespace Centipac
         private ToolTip label = new ToolTip();
         private ToolTip tempDisplay = new ToolTip();
         private MaterialSkin.Controls.MaterialContextMenuStrip menu = new MaterialSkin.Controls.MaterialContextMenuStrip();
-        private Label name = new Label();        
+        private Label name = new Label();
+        private UserSchedule schedule;        
 
         Dictionary<string, DayValue> dayData = new Dictionary<string, DayValue>();
 
@@ -26,6 +27,7 @@ namespace Centipac
         {
             if (materialProgressBar.Value != 0 && materialProgressBar.Offset != 0 && labelText != null)
             {
+                schedule.setValueSuccess(key, labelText);
                 if (!dayData.ContainsKey(key))
                 {
                     dayData.Add(key, new DayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText));
@@ -35,6 +37,11 @@ namespace Centipac
                     dayData[key] = new DayValue(materialProgressBar.Offset, materialProgressBar.Value, labelText);
                 }
             }
+        }
+
+        public UserSchedule getSchedule()
+        {
+            return schedule;
         }
 
         public string getJsonData()
@@ -111,6 +118,7 @@ namespace Centipac
         {
             name.Location = new Point(materialProgressBar.Location.X - 75, materialProgressBar.Location.Y - materialProgressBar.Height);
             name.Text = _name;
+            schedule = new Centipac.UserSchedule(_name);
             return name;
         }
 

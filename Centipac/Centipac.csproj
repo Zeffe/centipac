@@ -48,7 +48,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -119,6 +123,12 @@
     <Compile Include="reportForm.Designer.cs">
       <DependentUpon>reportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="scheduleReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="scheduleReportForm.Designer.cs">
+      <DependentUpon>scheduleReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Server.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="settingsForm.cs">
@@ -129,6 +139,7 @@
     </Compile>
     <Compile Include="TimePicker.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserSchedule.cs" />
     <Compile Include="verifyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +187,9 @@
     <EmbeddedResource Include="reportForm.resx">
       <DependentUpon>reportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="scheduleReportForm.resx">
+      <DependentUpon>scheduleReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="settingsForm.resx">
       <DependentUpon>settingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,7 +200,9 @@
       <DependentUpon>ViewCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Employee.datasource" />
     <None Include="Properties\DataSources\User.datasource" />
+    <None Include="Properties\DataSources\UserSchedule.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

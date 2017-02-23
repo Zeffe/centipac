@@ -45,6 +45,8 @@ namespace Centipac
 
             timepickers = new TimePicker[employees.Length];
 
+            //DataSet1.userTa
+
             dtDay.MaxDate = DateTime.Today;
             dtDay.Value = DateTime.Today;
             dtEnd.Value = DateTime.Today;
@@ -434,7 +436,34 @@ namespace Centipac
 
         private void btnScheduleReport_Click(object sender, EventArgs e)
         {
-            tabMain.SelectedIndex = tabMain.TabCount - 1; //CHECK OUT THIS VIDEO https://www.youtube.com/watch?v=G1OuPZNsCr4
+            List<UserSchedule> schedules = new List<UserSchedule>();
+            foreach (TimePicker tp in timepickers)
+            {
+                schedules.Add(tp.getSchedule());
+            }
+            UserScheduleBindingSource.DataSource = schedules;
+            reportViewer2.RefreshReport();
+            tabMain.SelectedIndex = tabMain.TabCount - 1;
+        }
+
+        public static scheduleReportForm scheduleView = null;
+
+        private void btnNewWindow_Click(object sender, EventArgs e)
+        {
+            List<UserSchedule> schedules = new List<UserSchedule>();
+            foreach (TimePicker tp in timepickers)
+            {
+                schedules.Add(tp.getSchedule());
+            }
+
+            if (scheduleView == null)
+            {                   
+                scheduleView = new scheduleReportForm(schedules.ToArray());
+                scheduleView.Show();
+            } else
+            {
+                scheduleView.update(schedules.ToArray());
+            }
         }
     }
 }
