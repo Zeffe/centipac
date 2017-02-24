@@ -34,7 +34,9 @@
             this.btnLogin = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lblStatus = new MaterialSkin.Controls.MaterialLabel();
             this.btnClock = new System.Windows.Forms.PictureBox();
+            this.btnHelp = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUser
@@ -114,11 +116,25 @@
             this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
             this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
             // 
+            // btnHelp
+            // 
+            this.btnHelp.BackColor = System.Drawing.Color.Black;
+            this.btnHelp.Image = global::Centipac.Properties.Resources.question;
+            this.btnHelp.Location = new System.Drawing.Point(197, 31);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(24, 26);
+            this.btnHelp.TabIndex = 8;
+            this.btnHelp.TabStop = false;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            this.btnHelp.MouseEnter += new System.EventHandler(this.btnHelp_MouseEnter);
+            this.btnHelp.MouseLeave += new System.EventHandler(this.btnHelp_MouseLeave);
+            // 
             // loginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(258, 203);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnClock);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnLogin);
@@ -131,6 +147,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.loginForm_FormClosing);
             this.Load += new System.EventHandler(this.loginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnClock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHelp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -142,5 +159,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnLogin;
         private MaterialSkin.Controls.MaterialLabel lblStatus;
         private System.Windows.Forms.PictureBox btnClock;
+        private System.Windows.Forms.PictureBox btnHelp;
     }
 }

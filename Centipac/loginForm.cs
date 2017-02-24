@@ -100,6 +100,7 @@ namespace Centipac
         private void loginForm_Load(object sender, EventArgs e)
         {
             btnClock.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
+            btnHelp.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
         }
 
         private void btnClock_MouseEnter(object sender, EventArgs e)
@@ -122,6 +123,21 @@ namespace Centipac
             {
                 timeclockForm.BringToFront();
             }
+        }
+
+        private void btnHelp_MouseEnter(object sender, EventArgs e)
+        {
+            btnHelp.Image = Properties.Resources.questionU;
+        }
+
+        private void btnHelp_MouseLeave(object sender, EventArgs e)
+        {
+            btnHelp.Image = Properties.Resources.question;
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

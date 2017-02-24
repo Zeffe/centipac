@@ -153,4 +153,22 @@
   <data name="iconC" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconC.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="question" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJ
+        TUUH4QIYETMqzJUrNgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAG9SURBVEhL
+        tZY7SgNRGIWjYrC0CxaCLiGN4hpMIdhZ22UFVpEQg9hYuQAbsU+RdSiIFhZWaVIFrFSI35k5Fx1ycydR
+        5sAH93/O5L4mtZSm02kDWtCBAYyMxuegWMPpi4uiOvTgE6QxDKFrNJZPUo5y6y5Pi8QmPMAX9GHHoRkp
+        5hzlqqbpUFwktOEDnmHP7lIp1zWqbdtdFAG9uRJuYcPuhaUa16pH8Zfg0JzrJ+otos3xb8IJHMKa3QWp
+        FtRDvX7WBEOLpHmMTgv+A5hA0BPsOlwQfk2XevWCQ1tRO6GfOSIi9gKPsA9q8Ab3Ds+ImBZePRsytJel
+        6G7Br+l7h2O75DuDic0ZEdPukloydGDGjkVFfMvDTNh38GozKvWEjgY6lUP7S0XuKUhHdkVFXIdxoIGO
+        ftf+pMgLW/nKrrlSTxgt+wBNpxZ8xa65Uk/IHrDwFJF3Adc2k1JP9Q5vlVzkIPJWYd1mUuoJ2SInt+lf
+        pF55y3yblh60ZaVe7pl/Kxgkr4og4jdwaTMq9XCv/KqQMEovO4nYNsz9gqnWPYqXnYSjuus6iEB1H5wg
+        Eqr7ZAaRWN1H/7co+uffllrtG6sl/2yRc3gGAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="questionU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\questionU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
