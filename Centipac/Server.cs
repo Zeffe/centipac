@@ -190,6 +190,37 @@ namespace Centipac
             return returnCusts.ToArray();
         }
 
+        public static string editCustomer(User currentUser, Customer editedCustomer)
+        {
+            string url = baseUrl + "editCustomer.php";
+
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("registrant", editedCustomer.registrant);
+            postData.AppendUrlEncoded("adults", editedCustomer.adults.ToString());
+            postData.AppendUrlEncoded("children", editedCustomer.children.ToString());
+            postData.AppendUrlEncoded("id", editedCustomer.id.ToString());
+            postData.AppendUrlEncoded("phone", editedCustomer.phone);
+            postData.AppendUrlEncoded("email", editedCustomer.email);
+            postData.AppendUrlEncoded("amountPaid", editedCustomer.amountPaid.ToString());
+            postData.AppendUrlEncoded("employees", JsonConvert.SerializeObject(editedCustomer.employees));
+
+            return Server.postPHP(url, postData.ToString());
+        }
+
+        public static string deleteCustomer(User currentUser, int customerId)
+        {
+            string url = baseUrl + "deleteCustomer.php";
+
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("id", customerId.ToString());
+
+            return Server.postPHP(url, postData.ToString());
+        }
+
         public static string editUser(User currentUser, string oldUser, string newUser, string newName, string newPerm)
         {
             string url = baseUrl + "edit.php";

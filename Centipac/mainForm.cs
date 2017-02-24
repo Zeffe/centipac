@@ -292,10 +292,17 @@ namespace Centipac
                         txtEmail.Text,
                         price,
                         new EmployeeDate(activeUser.name, dateCreated.ToUnixTime()));
-
-                    Server.addCustomer(activeUser, tempCustomer);
-                    todaysCustomers.Add(tempCustomer);
-                    addCustomerToList(tempCustomer);
+                    try
+                    {
+                        string response = Server.addCustomer(activeUser, tempCustomer);
+                        tempCustomer.id = Convert.ToInt32(response);
+                        todaysCustomers.Add(tempCustomer);
+                        addCustomerToList(tempCustomer);
+                    } catch
+                    {
+                        msgbox err = new msgbox("Failed to add customer to server.", "Error", msgbox.Buttons.OKButton);
+                        err.Show();
+                    }
                 }
             } else
             {
@@ -361,6 +368,7 @@ namespace Centipac
             msgbox conf = new msgbox("Are you sure you want to delete " + e.customer.registrant + "?", "Delete?", msgbox.Buttons.YesNoButtons);
             if (conf.ShowDialog() == DialogResult.Yes)
             {
+                Server.deleteCustomer(activeUser, e.customer.id);
                 ViewCustomer vc = sender as ViewCustomer;
                 removeViewCustomer(vc);
                 int index = getCustomerIndex(e.customer);
@@ -386,6 +394,7 @@ namespace Centipac
                 todaysCustomers[index].children = vc.Children;
                 todaysCustomers[index].amountPaid = (vc.Children * 7) + (vc.Adults * 10) + 10;
                 todaysCustomers[index].employees.Add(new EmployeeDate(activeUser.name, DateTime.Now.ToUnixTime()));
+                string response = Server.editCustomer(activeUser, todaysCustomers[index]);
                 tabMain.TabPages.Remove((TabPage)(sender as ViewCustomer).Parent);
                 tabMain.SelectedTab = tabPage3;
                 refreshList();

@@ -22,6 +22,7 @@ namespace Centipac
 
     public class Customer
     {        
+        public int id { get; set; }
         public string registrant { get; set; }
         public int adults { get; set; }
         public int children { get; set; }
@@ -40,6 +41,7 @@ namespace Centipac
 
         public Customer(JObject jsonObj)
         {
+            this.id = jsonObj["id"].Value<int>();
             this.registrant = jsonObj["registrant"].Value<string>();
             this.adults = jsonObj["adults"].Value<int>();
             this.children = jsonObj["children"].Value<int>();

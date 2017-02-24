@@ -54,6 +54,9 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnCancelFilter = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnFilter = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtFilter = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.listCustomers = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -69,9 +72,7 @@
             this.btnClock = new System.Windows.Forms.PictureBox();
             this.menuTabPage = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtFilter = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.btnFilter = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnCancelFilter = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -449,6 +450,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.Controls.Add(this.materialLabel5);
             this.tabPage3.Controls.Add(this.btnCancelFilter);
             this.tabPage3.Controls.Add(this.btnFilter);
             this.tabPage3.Controls.Add(this.txtFilter);
@@ -458,6 +460,53 @@
             this.tabPage3.Size = new System.Drawing.Size(578, 300);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Today\'s Customers";
+            // 
+            // btnCancelFilter
+            // 
+            this.btnCancelFilter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCancelFilter.Depth = 0;
+            this.btnCancelFilter.Icon = null;
+            this.btnCancelFilter.Location = new System.Drawing.Point(547, 274);
+            this.btnCancelFilter.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancelFilter.Name = "btnCancelFilter";
+            this.btnCancelFilter.Primary = true;
+            this.btnCancelFilter.Size = new System.Drawing.Size(22, 23);
+            this.btnCancelFilter.TabIndex = 3;
+            this.btnCancelFilter.Text = "X";
+            this.btnCancelFilter.UseVisualStyleBackColor = true;
+            this.btnCancelFilter.Click += new System.EventHandler(this.btnCancelFilter_Click);
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnFilter.Depth = 0;
+            this.btnFilter.Icon = null;
+            this.btnFilter.Location = new System.Drawing.Point(296, 274);
+            this.btnFilter.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Primary = true;
+            this.btnFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnFilter.TabIndex = 2;
+            this.btnFilter.Text = "Filter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.Depth = 0;
+            this.txtFilter.Hint = "Filter";
+            this.txtFilter.Location = new System.Drawing.Point(380, 274);
+            this.txtFilter.MaxLength = 32767;
+            this.txtFilter.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.PasswordChar = '\0';
+            this.txtFilter.SelectedText = "";
+            this.txtFilter.SelectionLength = 0;
+            this.txtFilter.SelectionStart = 0;
+            this.txtFilter.Size = new System.Drawing.Size(161, 23);
+            this.txtFilter.TabIndex = 1;
+            this.txtFilter.TabStop = false;
+            this.txtFilter.UseSystemPasswordChar = false;
             // 
             // listCustomers
             // 
@@ -619,52 +668,18 @@
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
-            // txtFilter
+            // materialLabel5
             // 
-            this.txtFilter.Depth = 0;
-            this.txtFilter.Hint = "Filter";
-            this.txtFilter.Location = new System.Drawing.Point(380, 274);
-            this.txtFilter.MaxLength = 32767;
-            this.txtFilter.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.PasswordChar = '\0';
-            this.txtFilter.SelectedText = "";
-            this.txtFilter.SelectionLength = 0;
-            this.txtFilter.SelectionStart = 0;
-            this.txtFilter.Size = new System.Drawing.Size(161, 23);
-            this.txtFilter.TabIndex = 1;
-            this.txtFilter.TabStop = false;
-            this.txtFilter.UseSystemPasswordChar = false;
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnFilter.Depth = 0;
-            this.btnFilter.Icon = null;
-            this.btnFilter.Location = new System.Drawing.Point(296, 274);
-            this.btnFilter.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Primary = true;
-            this.btnFilter.Size = new System.Drawing.Size(75, 23);
-            this.btnFilter.TabIndex = 2;
-            this.btnFilter.Text = "Filter";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
-            // btnCancelFilter
-            // 
-            this.btnCancelFilter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCancelFilter.Depth = 0;
-            this.btnCancelFilter.Icon = null;
-            this.btnCancelFilter.Location = new System.Drawing.Point(547, 274);
-            this.btnCancelFilter.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnCancelFilter.Name = "btnCancelFilter";
-            this.btnCancelFilter.Primary = true;
-            this.btnCancelFilter.Size = new System.Drawing.Size(22, 23);
-            this.btnCancelFilter.TabIndex = 3;
-            this.btnCancelFilter.Text = "X";
-            this.btnCancelFilter.UseVisualStyleBackColor = true;
-            this.btnCancelFilter.Click += new System.EventHandler(this.btnCancelFilter_Click);
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(30, 275);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(191, 19);
+            this.materialLabel5.TabIndex = 4;
+            this.materialLabel5.Text = "Double Click to Edit/Delete";
             // 
             // mainForm
             // 
@@ -686,6 +701,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.menuTabControl.ResumeLayout(false);
             this.groupUserOptions.ResumeLayout(false);
             this.groupUserOptions.PerformLayout();
@@ -739,6 +755,7 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnFilter;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtFilter;
         private MaterialSkin.Controls.MaterialRaisedButton btnCancelFilter;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
     }
 }
 
