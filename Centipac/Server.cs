@@ -177,11 +177,14 @@ namespace Centipac
 
             string jsonResult = Server.postPHP(url, postData.ToString());
 
-            JArray result = JArray.Parse(jsonResult);
-
-            foreach (JObject json in result)
+            if (jsonResult != "Couldn't connect to server.")
             {
-                returnCusts.Add(new Customer(json));
+                JArray result = JArray.Parse(jsonResult);
+
+                foreach (JObject json in result)
+                {
+                    returnCusts.Add(new Customer(json));
+                }
             }
 
             return returnCusts.ToArray();

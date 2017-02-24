@@ -39,7 +39,7 @@ namespace Centipac
         }
 
         public Customer(JObject jsonObj)
-        {           
+        {
             this.registrant = jsonObj["registrant"].Value<string>();
             this.adults = jsonObj["adults"].Value<int>();
             this.children = jsonObj["children"].Value<int>();

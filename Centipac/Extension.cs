@@ -20,7 +20,7 @@ namespace ExtensionMethods
 
         public static long ToUnixTime(this DateTime time)
         {
-            var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+            var timeSpan = (time.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0));
             return (long)timeSpan.TotalSeconds;
         }
 

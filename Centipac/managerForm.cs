@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MaterialSkin;
 using System.Collections;
 using Newtonsoft.Json;
+using ExtensionMethods;
 
 namespace Centipac
 {
@@ -222,13 +223,19 @@ namespace Centipac
                 case 2: 
                     foreach (TimePicker timepicker in timepickers)
                     {
-                        timepicker.showToolTip();
+                        if (timepicker != null)
+                        {
+                            timepicker.showToolTip();
+                        }
                     }
                     break;
                 default:
                     foreach (TimePicker timepicker in timepickers)
                     {
-                        timepicker.hideToolTip();
+                        if (timepicker != null)
+                        {
+                            timepicker.hideToolTip();
+                        }
                     }
                     break;
             }
@@ -436,12 +443,17 @@ namespace Centipac
 
         private void btnScheduleReport_Click(object sender, EventArgs e)
         {
+            Microsoft.Reporting.WinForms.ReportParameterCollection rpc = new Microsoft.Reporting.WinForms.ReportParameterCollection();
+            rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("StartDate", DateTime.Now.ToShortDateString()));
+            rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("EndDate", DateTime.Now.ToShortDateString()));
+
             List<UserSchedule> schedules = new List<UserSchedule>();
             foreach (TimePicker tp in timepickers)
             {
                 schedules.Add(tp.getSchedule());
             }
             UserScheduleBindingSource.DataSource = schedules;
+            reportViewer2.LocalReport.SetParameters(rpc);
             reportViewer2.RefreshReport();
             tabMain.SelectedIndex = tabMain.TabCount - 1;
         }
@@ -464,6 +476,41 @@ namespace Centipac
             {
                 scheduleView.update(schedules.ToArray());
             }
+        }
+
+        void populateTable(Customer[] customers, string filter)
+        {
+            listCustomers.Items.Clear();
+
+            foreach (Customer cust in customers)
+            {
+                if (cust.registrant.ToUpper().Contains(filter.ToUpper()) || filter == "")
+                {
+                    DateTime custTime = cust.date.UnixTimeStampToDateTime();
+                    var tempItem = new[]
+                    {
+                       custTime.ToShortTimeString(),
+                        cust.registrant,
+                        cust.employees[0].employee
+                    };
+                    var item = new ListViewItem(tempItem);
+
+                    listCustomers.Items.Add(item);
+                }
+            }
+        }
+
+        Customer[] loadedCustomers;
+
+        private void dtDay_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime value = dtDay.Value;
+            long startDate = value.ToUnixTime();
+            long endDate = startDate + 86400;
+
+            loadedCustomers = Server.getCustomers(activeUser, startDate, endDate);
+
+            populateTable(loadedCustomers, "");               
         }
     }
 }
