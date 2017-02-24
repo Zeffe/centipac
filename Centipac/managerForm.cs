@@ -22,6 +22,7 @@ namespace Centipac
         List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>();
         Employee[] employees;
         TabPage scheduleReport;
+        DateTime startDate, endDate;
 
         public managerForm(User active)
         {
@@ -49,10 +50,10 @@ namespace Centipac
             //DataSet1.userTa
 
             dtDay.MaxDate = DateTime.Today;
-            dtDay.Value = DateTime.Today;
-            dtEnd.Value = DateTime.Today;
+            dtDay.Value = DateTime.Today;         
             dtEnd.MinDate = DateTime.Today;
-            dtEnd.MaxDate = DateTime.Today;
+            dtEnd.MaxDate = DateTime.Today.AddDays(1);
+            dtEnd.Value = DateTime.Today.AddDays(1);
             dtStart.MaxDate = DateTime.Today;
             dtStart.Value = DateTime.Today;
 
@@ -68,9 +69,11 @@ namespace Centipac
             lblTitle.ForeColor = MaterialSkinManager.Instance.GetPrimaryTextColor();
 
             DateTime today = DateTime.Today;
-            int daysUntilMonday = ((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7;
-            DateTime nextMonday = today.AddDays(daysUntilMonday);
+            int daysSinceMonday = (int)today.DayOfWeek - 1;
+            today = today.AddDays(-daysSinceMonday);
 
+            startDate = today;
+            endDate = today.AddDays(6);
             lblStartDate.Text = today.ToShortDateString() + " - ";
             lblEndDate.Text = (today.AddDays(6)).ToShortDateString();
 
@@ -422,8 +425,7 @@ namespace Centipac
         }
 
         private void dtStart_ValueChanged(object sender, EventArgs e)
-        {            
-            dtEnd.MaxDate = dtStart.Value.AddDays(1);
+        {
             dtEnd.MinDate = dtStart.Value;
         }
 
@@ -433,7 +435,7 @@ namespace Centipac
         {
             if (report == null)
             {
-                report = new reportForm();
+                report = new reportForm(activeUser);
                 report.Show();
             } else
             {
@@ -444,8 +446,8 @@ namespace Centipac
         private void btnScheduleReport_Click(object sender, EventArgs e)
         {
             Microsoft.Reporting.WinForms.ReportParameterCollection rpc = new Microsoft.Reporting.WinForms.ReportParameterCollection();
-            rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("StartDate", DateTime.Now.ToShortDateString()));
-            rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("EndDate", DateTime.Now.ToShortDateString()));
+            rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("StartDate", startDate.ToShortDateString()));
+            rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("EndDate", endDate.ToShortDateString()));
 
             List<UserSchedule> schedules = new List<UserSchedule>();
             foreach (TimePicker tp in timepickers)
@@ -454,6 +456,7 @@ namespace Centipac
             }
             UserScheduleBindingSource.DataSource = schedules;
             reportViewer2.LocalReport.SetParameters(rpc);
+            reportViewer2.LocalReport.DisplayName = "Schedule" + startDate.ToString("yyyyMMdd");
             reportViewer2.RefreshReport();
             tabMain.SelectedIndex = tabMain.TabCount - 1;
         }
@@ -470,7 +473,7 @@ namespace Centipac
 
             if (scheduleView == null)
             {                   
-                scheduleView = new scheduleReportForm(schedules.ToArray());
+                scheduleView = new scheduleReportForm(schedules.ToArray(), startDate, endDate);
                 scheduleView.Show();
             } else
             {
@@ -501,6 +504,17 @@ namespace Centipac
         }
 
         Customer[] loadedCustomers;
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            Microsoft.Reporting.WinForms.ReportParameterCollection rpc = new Microsoft.Reporting.WinForms.ReportParameterCollection();
+            rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("StartDate", dtStart.Value.ToShortDateString()));
+            rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("EndDate", dtEnd.Value.ToShortDateString()));
+            CustomerBindingSource.DataSource = Server.getCustomers(activeUser, dtStart.Value.ToUnixTime(), dtEnd.Value.ToUnixTime());
+            reportViewer1.LocalReport.SetParameters(rpc);
+            reportViewer1.LocalReport.DisplayName = "Report" + dtStart.Value.ToString("yyyyMMdd");
+            reportViewer1.RefreshReport();
+        }
 
         private void dtDay_ValueChanged(object sender, EventArgs e)
         {

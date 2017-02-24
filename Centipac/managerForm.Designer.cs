@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.UserScheduleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.tabMain = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -92,7 +92,8 @@
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.timerAdd = new System.Windows.Forms.Timer(this.components);
             this.timerEdit = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.UserScheduleBindingSource)).BeginInit();
+            this.UserScheduleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.CustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -101,11 +102,9 @@
             this.pnlSliderSelect.SuspendLayout();
             this.pnlTable.SuspendLayout();
             this.tabScheduleReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UserScheduleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomerBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // UserScheduleBindingSource
-            // 
-            this.UserScheduleBindingSource.DataSource = typeof(Centipac.UserSchedule);
             // 
             // materialTabSelector1
             // 
@@ -166,6 +165,7 @@
             this.btnGenerate.TabIndex = 41;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // btnEnlarge
             // 
@@ -184,6 +184,10 @@
             // 
             // reportViewer1
             // 
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.CustomerBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Centipac.Report2.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(6, 134);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(398, 207);
@@ -214,12 +218,12 @@
             // 
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel3.Location = new System.Drawing.Point(23, 71);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(77, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(77, 18);
             this.materialLabel3.TabIndex = 36;
             this.materialLabel3.Text = "End Date: ";
             // 
@@ -227,12 +231,12 @@
             // 
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(23, 42);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(84, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(82, 18);
             this.materialLabel1.TabIndex = 35;
             this.materialLabel1.Text = "Start Date: ";
             // 
@@ -240,12 +244,12 @@
             // 
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel2.Location = new System.Drawing.Point(8, 8);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(57, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(57, 18);
             this.materialLabel2.TabIndex = 34;
             this.materialLabel2.Text = "Report:";
             // 
@@ -452,12 +456,12 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Depth = 0;
-            this.lblTitle.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblTitle.Location = new System.Drawing.Point(47, 120);
             this.lblTitle.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(47, 19);
+            this.lblTitle.Size = new System.Drawing.Size(43, 18);
             this.lblTitle.TabIndex = 5;
             this.lblTitle.Text = "Title: ";
             // 
@@ -465,12 +469,12 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Depth = 0;
-            this.lblUsername.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblUsername.Location = new System.Drawing.Point(9, 87);
             this.lblUsername.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(85, 19);
+            this.lblUsername.Size = new System.Drawing.Size(85, 18);
             this.lblUsername.TabIndex = 4;
             this.lblUsername.Text = "Username: ";
             // 
@@ -478,12 +482,12 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Depth = 0;
-            this.lblName.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblName.Location = new System.Drawing.Point(9, 53);
             this.lblName.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(85, 19);
+            this.lblName.Size = new System.Drawing.Size(83, 18);
             this.lblName.TabIndex = 3;
             this.lblName.Text = "Full Name: ";
             // 
@@ -491,12 +495,12 @@
             // 
             this.lblHeader.AutoSize = true;
             this.lblHeader.Depth = 0;
-            this.lblHeader.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblHeader.Location = new System.Drawing.Point(8, 12);
             this.lblHeader.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(145, 19);
+            this.lblHeader.Size = new System.Drawing.Size(143, 18);
             this.lblHeader.TabIndex = 2;
             this.lblHeader.Text = "Selected Employee: ";
             // 
@@ -820,9 +824,9 @@
             // 
             // reportViewer2
             // 
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.UserScheduleBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.UserScheduleBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "Centipac.Report1.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(6, 35);
             this.reportViewer2.Name = "reportViewer2";
@@ -839,6 +843,14 @@
             this.timerEdit.Interval = 1000;
             this.timerEdit.Tick += new System.EventHandler(this.timerEdit_Tick);
             // 
+            // UserScheduleBindingSource
+            // 
+            this.UserScheduleBindingSource.DataSource = typeof(Centipac.UserSchedule);
+            // 
+            // CustomerBindingSource
+            // 
+            this.CustomerBindingSource.DataSource = typeof(Centipac.Customer);
+            // 
             // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -852,7 +864,6 @@
             this.Text = "Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.managerForm_FormClosing);
             this.Load += new System.EventHandler(this.managerForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.UserScheduleBindingSource)).EndInit();
             this.tabMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -866,6 +877,8 @@
             this.pnlSliderSelect.PerformLayout();
             this.pnlTable.ResumeLayout(false);
             this.tabScheduleReport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UserScheduleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -934,5 +947,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
         private System.Windows.Forms.BindingSource UserScheduleBindingSource;
         private MaterialSkin.Controls.MaterialRaisedButton btnNewWindow;
+        private System.Windows.Forms.BindingSource CustomerBindingSource;
     }
 }

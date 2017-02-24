@@ -51,7 +51,6 @@ C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.registerForm.resource
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.settingsForm.resources
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.verifyForm.resources
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.csproj.GenerateResource.Cache
-C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\MaterialSkin.dll
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.addForm.resources
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.addForm.resources
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.clockForm.resources
@@ -70,3 +69,4 @@ C:\Users\Seth\Desktop\centipac\Centipac\bin\Debug\Microsoft.ReportViewer.WinForm
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\RdlCompile.cache
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\RdlCompile.compiled
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.scheduleReportForm.resources
+C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.scheduleReportForm.resources

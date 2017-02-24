@@ -184,6 +184,7 @@
       <DependentUpon>registerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
     <EmbeddedResource Include="reportForm.resx">
       <DependentUpon>reportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +201,7 @@
       <DependentUpon>ViewCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Customer.datasource" />
     <None Include="Properties\DataSources\Employee.datasource" />
     <None Include="Properties\DataSources\User.datasource" />
     <None Include="Properties\DataSources\UserSchedule.datasource" />
