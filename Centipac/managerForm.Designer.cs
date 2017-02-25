@@ -92,8 +92,10 @@
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.timerAdd = new System.Windows.Forms.Timer(this.components);
             this.timerEdit = new System.Windows.Forms.Timer(this.components);
-            this.UserScheduleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.CustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.UserScheduleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnReload = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -102,8 +104,8 @@
             this.pnlSliderSelect.SuspendLayout();
             this.pnlTable.SuspendLayout();
             this.tabScheduleReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UserScheduleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserScheduleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -408,7 +410,7 @@
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.Enabled = false;
             this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(51, 290);
+            this.materialFlatButton1.Location = new System.Drawing.Point(104, 295);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -416,6 +418,7 @@
             this.materialFlatButton1.Size = new System.Drawing.Size(98, 36);
             this.materialFlatButton1.TabIndex = 7;
             this.materialFlatButton1.Text = "Edit Ranks";
+            this.toolTip1.SetToolTip(this.materialFlatButton1, "Feature currently disabled.");
             this.materialFlatButton1.useBackColor = false;
             this.materialFlatButton1.useForeColor = false;
             this.materialFlatButton1.UseVisualStyleBackColor = true;
@@ -436,7 +439,7 @@
             this.listRanks.MouseState = MaterialSkin.MouseState.OUT;
             this.listRanks.Name = "listRanks";
             this.listRanks.OwnerDraw = true;
-            this.listRanks.Size = new System.Drawing.Size(168, 124);
+            this.listRanks.Size = new System.Drawing.Size(264, 129);
             this.listRanks.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listRanks.TabIndex = 6;
             this.listRanks.UseCompatibleStateImageBehavior = false;
@@ -445,12 +448,12 @@
             // columnHeader7
             // 
             this.columnHeader7.Text = "Rank";
-            this.columnHeader7.Width = 92;
+            this.columnHeader7.Width = 86;
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "Title";
-            this.columnHeader8.Width = 81;
+            this.columnHeader8.Width = 175;
             // 
             // lblTitle
             // 
@@ -565,6 +568,7 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.btnReload);
             this.tabPage3.Controls.Add(this.btnScheduleReport);
             this.tabPage3.Controls.Add(this.pnlTableSelect);
             this.tabPage3.Controls.Add(this.pnlSliderSelect);
@@ -602,7 +606,7 @@
             // 
             this.pnlTableSelect.BackColor = System.Drawing.Color.Transparent;
             this.pnlTableSelect.Controls.Add(this.lblTable);
-            this.pnlTableSelect.Location = new System.Drawing.Point(64, 249);
+            this.pnlTableSelect.Location = new System.Drawing.Point(64, 220);
             this.pnlTableSelect.Name = "pnlTableSelect";
             this.pnlTableSelect.Size = new System.Drawing.Size(61, 24);
             this.pnlTableSelect.TabIndex = 31;
@@ -620,7 +624,7 @@
             // 
             this.pnlSliderSelect.BackColor = System.Drawing.Color.DodgerBlue;
             this.pnlSliderSelect.Controls.Add(this.lblSlider);
-            this.pnlSliderSelect.Location = new System.Drawing.Point(3, 249);
+            this.pnlSliderSelect.Location = new System.Drawing.Point(3, 220);
             this.pnlSliderSelect.Name = "pnlSliderSelect";
             this.pnlSliderSelect.Size = new System.Drawing.Size(61, 24);
             this.pnlSliderSelect.TabIndex = 30;
@@ -657,7 +661,7 @@
             this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSave.Depth = 0;
             this.btnSave.Icon = null;
-            this.btnSave.Location = new System.Drawing.Point(3, 279);
+            this.btnSave.Location = new System.Drawing.Point(3, 250);
             this.btnSave.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSave.Name = "btnSave";
             this.btnSave.Primary = true;
@@ -665,7 +669,7 @@
             this.btnSave.TabIndex = 27;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cmbDay
             // 
@@ -843,13 +847,28 @@
             this.timerEdit.Interval = 1000;
             this.timerEdit.Tick += new System.EventHandler(this.timerEdit_Tick);
             // 
+            // CustomerBindingSource
+            // 
+            this.CustomerBindingSource.DataSource = typeof(Centipac.Customer);
+            // 
             // UserScheduleBindingSource
             // 
             this.UserScheduleBindingSource.DataSource = typeof(Centipac.UserSchedule);
             // 
-            // CustomerBindingSource
+            // btnReload
             // 
-            this.CustomerBindingSource.DataSource = typeof(Centipac.Customer);
+            this.btnReload.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReload.Depth = 0;
+            this.btnReload.Icon = null;
+            this.btnReload.Location = new System.Drawing.Point(4, 279);
+            this.btnReload.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Primary = true;
+            this.btnReload.Size = new System.Drawing.Size(122, 23);
+            this.btnReload.TabIndex = 34;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // managerForm
             // 
@@ -877,8 +896,8 @@
             this.pnlSliderSelect.PerformLayout();
             this.pnlTable.ResumeLayout(false);
             this.tabScheduleReport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.UserScheduleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserScheduleBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -948,5 +967,7 @@
         private System.Windows.Forms.BindingSource UserScheduleBindingSource;
         private MaterialSkin.Controls.MaterialRaisedButton btnNewWindow;
         private System.Windows.Forms.BindingSource CustomerBindingSource;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private MaterialSkin.Controls.MaterialRaisedButton btnReload;
     }
 }

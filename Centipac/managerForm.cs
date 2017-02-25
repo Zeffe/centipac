@@ -11,6 +11,7 @@ using MaterialSkin;
 using System.Collections;
 using Newtonsoft.Json;
 using ExtensionMethods;
+using Newtonsoft.Json.Linq;
 
 namespace Centipac
 {
@@ -39,7 +40,7 @@ namespace Centipac
         }
 
 
-        TimePicker[] timepickers; 
+        TimePicker[] timepickers;
 
         private void managerForm_Load(object sender, EventArgs e)
         {
@@ -50,7 +51,7 @@ namespace Centipac
             //DataSet1.userTa
 
             dtDay.MaxDate = DateTime.Today;
-            dtDay.Value = DateTime.Today;         
+            dtDay.Value = DateTime.Today;
             dtEnd.MinDate = DateTime.Today;
             dtEnd.MaxDate = DateTime.Today.AddDays(1);
             dtEnd.Value = DateTime.Today.AddDays(1);
@@ -79,7 +80,7 @@ namespace Centipac
 
             for (int i = 0; i < mainForm.titles.Length; i++)
             {
-                var tempItem = new[] { mainForm.titles[i].permission.ToString(), mainForm.titles[i].title };
+                var tempItem = new[] { mainForm.titles[i].rank.ToString(), mainForm.titles[i].title };
                 var item = new ListViewItem(tempItem);
                 listRanks.Items.Add(item);
             }
@@ -122,7 +123,7 @@ namespace Centipac
                         if (index == -1) break;
                         foreach (var item2 in item.Value)
                         {
-                            switch(item2.Key)
+                            switch (item2.Key)
                             {
                                 case "Monday": listEmployeeSchedules[index].Monday = item2.Value.text; break;
                                 case "Tuesday": listEmployeeSchedules[index].Tuesday = item2.Value.text; break;
@@ -131,7 +132,7 @@ namespace Centipac
                                 case "Friday": listEmployeeSchedules[index].Friday = item2.Value.text; break;
                                 case "Saturday": listEmployeeSchedules[index].Saturday = item2.Value.text; break;
                                 case "Sunday": listEmployeeSchedules[index].Sunday = item2.Value.text; break;
-                            }                           
+                            }
                         }
                     }
 
@@ -192,16 +193,6 @@ namespace Centipac
             }
         }
 
-        private void materialRaisedButton1_Click(object sender, EventArgs e)
-        {
-            List<string> times = new List<string>();
-            foreach (TimePicker timepicker in timepickers)
-            {
-                times.Add(timepicker.getJsonData());
-            }
-            MessageBox.Show(JsonConvert.SerializeObject(times));
-        }
-
         private void cmbDay_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateSchedules();
@@ -223,7 +214,7 @@ namespace Centipac
         {
             switch (tabMain.SelectedIndex)
             {
-                case 2: 
+                case 2:
                     foreach (TimePicker timepicker in timepickers)
                     {
                         if (timepicker != null)
@@ -248,7 +239,7 @@ namespace Centipac
         {
             private int col;
             private SortOrder order;
-            
+
             public ListViewItemComparer()
             {
                 col = 0;
@@ -296,7 +287,7 @@ namespace Centipac
             listEmployees.Sort();
 
             listEmployees.ListViewItemSorter = new ListViewItemComparer(e.Column, listEmployees.Sorting);
-            
+
         }
 
         private void listEmployees_SelectedIndexChanged(object sender, EventArgs e)
@@ -309,7 +300,7 @@ namespace Centipac
 
             btnNext.Enabled = (listEmployees.SelectedItems.Count > 1);
             employeeDisplay = 0;
-            displayEmployeeInfo(employeeDisplay);  
+            displayEmployeeInfo(employeeDisplay);
         }
 
         void displayEmployeeInfo(int count)
@@ -330,7 +321,7 @@ namespace Centipac
                 "Are you sure?", 2);
             if (confirm.ShowDialog() == DialogResult.Yes)
             {
-                MessageBox.Show(Server.deleteUser(activeUser, userToDelete));
+                Server.deleteUser(activeUser, userToDelete);
                 listEmployees.SelectedItems[employeeDisplay % listEmployees.SelectedItems.Count].Remove();
             }
         }
@@ -411,7 +402,7 @@ namespace Centipac
                 employees = Server.getEmployees(activeUser);
                 timerAdd.Stop();
                 updateList();
-            } 
+            }
         }
 
         private void timerEdit_Tick(object sender, EventArgs e)
@@ -421,7 +412,7 @@ namespace Centipac
                 employees = Server.getEmployees(activeUser);
                 timerEdit.Stop();
                 updateList();
-            } 
+            }
         }
 
         private void dtStart_ValueChanged(object sender, EventArgs e)
@@ -472,7 +463,7 @@ namespace Centipac
             }
 
             if (scheduleView == null)
-            {                   
+            {
                 scheduleView = new scheduleReportForm(schedules.ToArray(), startDate, endDate);
                 scheduleView.Show();
             } else
@@ -514,6 +505,36 @@ namespace Centipac
             reportViewer1.LocalReport.SetParameters(rpc);
             reportViewer1.LocalReport.DisplayName = "Report" + dtStart.Value.ToString("yyyyMMdd");
             reportViewer1.RefreshReport();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            List<object> times = new List<object>();
+            foreach (TimePicker timepicker in timepickers)
+            {
+                timepicker.Save(previousSelect);
+                times.Add(timepicker.getJsonObj());
+            }
+
+            string jsonData = JsonConvert.SerializeObject(times);
+            MessageBox.Show(Server.saveSchedule(activeUser, startDate.Date.ToUnixTime(), jsonData));
+        }
+
+        private void btnReload_Click(object sender, EventArgs e) {
+            List<Dictionary<string, DayValue>> scheduleData = new List<Dictionary<string, DayValue>>();
+            List<NameDayValue> ndvs = new List<NameDayValue>();
+            string scheduleJson = Server.getSchedule(activeUser, startDate.Date.ToUnixTime());
+
+            JArray schedules = JArray.Parse(scheduleJson);
+
+            foreach (JObject obj in schedules)
+            {
+                ndvs.Add(new NameDayValue(obj.getFirstPropertyName(), JsonConvert.DeserializeObject<Dictionary<string, DayValue>>(obj.First.First.ToString(Formatting.None))));
+            }
+
+            // TODO: Finish up by making timepickers load the values gotten in ndvs!!
+
+            return;
         }
 
         private void dtDay_ValueChanged(object sender, EventArgs e)

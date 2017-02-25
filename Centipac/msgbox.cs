@@ -27,6 +27,8 @@ namespace Centipac
             InitializeComponent();
 
             createMessage(msg, title, type);
+
+            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
         }
 
         public msgbox(String msg, String title, Buttons btn)
@@ -34,6 +36,8 @@ namespace Centipac
             InitializeComponent();
 
             createMessage(msg, title, (int)btn);
+
+            Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
         }
 
         string msgOut;

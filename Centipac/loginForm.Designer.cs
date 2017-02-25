@@ -107,11 +107,12 @@
             // 
             this.btnClock.BackColor = System.Drawing.Color.Black;
             this.btnClock.Image = ((System.Drawing.Image)(resources.GetObject("btnClock.Image")));
-            this.btnClock.Location = new System.Drawing.Point(227, 31);
+            this.btnClock.Location = new System.Drawing.Point(197, 31);
             this.btnClock.Name = "btnClock";
             this.btnClock.Size = new System.Drawing.Size(24, 26);
             this.btnClock.TabIndex = 7;
             this.btnClock.TabStop = false;
+            this.btnClock.Visible = false;
             this.btnClock.Click += new System.EventHandler(this.btnClock_Click);
             this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
             this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
@@ -120,7 +121,7 @@
             // 
             this.btnHelp.BackColor = System.Drawing.Color.Black;
             this.btnHelp.Image = global::Centipac.Properties.Resources.question;
-            this.btnHelp.Location = new System.Drawing.Point(197, 31);
+            this.btnHelp.Location = new System.Drawing.Point(227, 31);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(24, 26);
             this.btnHelp.TabIndex = 8;

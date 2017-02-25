@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace ExtensionMethods
 {
@@ -22,6 +23,16 @@ namespace ExtensionMethods
         {
             var timeSpan = (time.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0));
             return (long)timeSpan.TotalSeconds;
+        }
+
+        public static string getFirstPropertyName(this JObject obj)
+        {
+            foreach (JProperty prop in obj.Properties())
+            {
+                return prop.Name;
+            }
+
+            return "Fail";
         }
 
         public static DateTime UnixTimeStampToDateTime(this long unixTimeStamp)

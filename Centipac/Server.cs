@@ -221,6 +221,39 @@ namespace Centipac
             return Server.postPHP(url, postData.ToString());
         }
 
+        public static string saveSchedule(User currentUser, long startDate, string scheduleData)
+        {
+            string url = baseUrl + "saveSchedule.php";
+
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("startDate", startDate.ToString());
+            postData.AppendUrlEncoded("scheduleData", scheduleData);
+
+            return Server.postPHP(url, postData.ToString());
+        }
+
+        public static string getSchedule(User currentUser, long startDate)
+        {
+            string url = baseUrl + "getSchedule.php";
+
+            StringBuilder postData = new StringBuilder();
+            postData.AppendUrlEncoded("token", currentUser.token);
+            postData.AppendUrlEncoded("data", currentUser.data);
+            postData.AppendUrlEncoded("startDate", startDate.ToString());
+
+            string result = Server.postPHP(url, postData.ToString());
+
+            if (result == "fail")
+            {
+                return "Failed to retrieve schedule.";
+            } else
+            {
+                return result;
+            }
+        }
+
         public static string editUser(User currentUser, string oldUser, string newUser, string newName, string newPerm)
         {
             string url = baseUrl + "edit.php";

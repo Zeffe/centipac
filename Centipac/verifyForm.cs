@@ -26,13 +26,13 @@ namespace Centipac
 
             activeUser = active;
             launchForm = formToLaunch;
-            permReq = 1;
+            permReq = permLevel;
         }
 
         private void verifyForm_Load(object sender, EventArgs e)
         {
             txtPass.Hint = "Password for: " + activeUser.getUser();
-            if (activeUser.getPerms() < permReq)
+            if (activeUser.getPerms() > permReq)
             {
                 msgbox msg = new msgbox("Access Denied", "Error", 1);
                 msg.Show();

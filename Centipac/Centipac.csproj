@@ -226,13 +226,13 @@
     <None Include="Resources\clockU.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\iconC.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\question.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\questionU.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconC.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

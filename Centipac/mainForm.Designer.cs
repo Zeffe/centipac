@@ -54,6 +54,7 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCancelFilter = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnFilter = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txtFilter = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -72,7 +73,6 @@
             this.btnClock = new System.Windows.Forms.PictureBox();
             this.menuTabPage = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -461,6 +461,19 @@
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Today\'s Customers";
             // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(30, 275);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(191, 19);
+            this.materialLabel5.TabIndex = 4;
+            this.materialLabel5.Text = "Double Click to Edit/Delete";
+            // 
             // btnCancelFilter
             // 
             this.btnCancelFilter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -647,6 +660,7 @@
             this.btnClock.Size = new System.Drawing.Size(24, 26);
             this.btnClock.TabIndex = 6;
             this.btnClock.TabStop = false;
+            this.btnClock.Visible = false;
             this.btnClock.Click += new System.EventHandler(this.btnClock_Click);
             this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
             this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
@@ -667,19 +681,6 @@
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
-            // 
-            // materialLabel5
-            // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(30, 275);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(191, 19);
-            this.materialLabel5.TabIndex = 4;
-            this.materialLabel5.Text = "Double Click to Edit/Delete";
             // 
             // mainForm
             // 

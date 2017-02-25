@@ -8,7 +8,7 @@ namespace Centipac
 {
     public class Rank
     {
-        public int permission { get; set; }
+        public int rank { get; set; }
 
         public string title { get; set; }
     }

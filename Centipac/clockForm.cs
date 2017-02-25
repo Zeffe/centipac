@@ -11,6 +11,8 @@ using MaterialSkin;
 
 namespace Centipac
 {
+    // TODO: add time clock functionality.
+
     public partial class clockForm : MaterialSkin.Controls.MaterialForm
     {
         public clockForm()
