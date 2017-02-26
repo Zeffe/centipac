@@ -521,6 +521,19 @@ namespace Centipac
             refreshList();
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            Customer[] tempCust = Server.getCustomers(activeUser);
+            todaysCustomers.Clear();
+
+            foreach (Customer cust in tempCust)
+            {
+                todaysCustomers.Add(cust);
+            }
+
+            refreshList();
+        }
+
         void addCustomerToList(Customer cust)
         {
             DateTime custTime = cust.date.UnixTimeStampToDateTime();

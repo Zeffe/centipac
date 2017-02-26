@@ -39,6 +39,12 @@ namespace Centipac
             }
         }
 
+        public void Delete()
+        {
+            materialProgressBar.Visible = false;
+            timeLabel.Visible = false;
+        }
+
         public string getName()
         {
             return name.Text;

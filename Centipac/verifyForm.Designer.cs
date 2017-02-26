@@ -76,6 +76,7 @@
             this.Name = "verifyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Verify Password";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.verifyForm_FormClosing);
             this.Load += new System.EventHandler(this.verifyForm_Load);
             this.ResumeLayout(false);
 

@@ -77,5 +77,10 @@ namespace Centipac
                 submit();
             }
         }
+
+        private void verifyForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mainForm.manage = null;
+        }
     }
 }

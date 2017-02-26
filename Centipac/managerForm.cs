@@ -22,7 +22,7 @@ namespace Centipac
         string previousSelect = "Monday";                   // Stores the previously selected day on schedule page for saving purposes.
         List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>();
         Employee[] employees;
-        TabPage scheduleReport;
+        TabPage scheduleTab;
         DateTime startDate, endDate;
 
         public managerForm(User active)
@@ -44,6 +44,8 @@ namespace Centipac
 
         private void managerForm_Load(object sender, EventArgs e)
         {
+            scheduleTab = tabMain.TabPages[2];
+
             employees = Server.getEmployees(activeUser);
 
             timepickers = new TimePicker[employees.Length];
@@ -295,6 +297,7 @@ namespace Centipac
             {
                 Server.deleteUser(activeUser, userToDelete);
                 listEmployees.SelectedItems[employeeDisplay % listEmployees.SelectedItems.Count].Remove();
+                updateList();
             }
         }
 
@@ -322,13 +325,12 @@ namespace Centipac
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             listEmployees.Items.Clear();
-            Employee[] employees = Server.getEmployees(activeUser);
-
+            
             for (int i = 0; i < employees.Length; i++)
             {
                 var tempItem = new[] { employees[i].name, employees[i].username, employees[i].perm };
                 var item = new ListViewItem(tempItem);
-                listEmployees.Items.Add(item);
+                listEmployees.Items.Add(item);               
             }
         }
 
@@ -357,13 +359,25 @@ namespace Centipac
 
         private void updateList()
         {
+            tabMain.TabPages[2] = scheduleTab;
+
             listEmployees.Items.Clear();
 
-            foreach (Employee emp in employees)
+            Employee[] employees = Server.getEmployees(activeUser);
+
+            timepickers = new TimePicker[employees.Length];
+
+            for (int i = 0; i < employees.Length; i++)
             {
-                var tempItem = new[] { emp.name, emp.username, emp.perm };
+                var tempItem = new[] { employees[i].name, employees[i].username, employees[i].perm };
                 var item = new ListViewItem(tempItem);
                 listEmployees.Items.Add(item);
+
+                timepickers[i] = new TimePicker();
+
+                tabMain.TabPages[2].Controls.Add(timepickers[i].CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + (60 * (i + 1))), materialRuler1.Width, this));
+                tabMain.TabPages[2].Controls.Add(timepickers[i].CreateNameLabel(employees[i].name));
+                tabMain.TabPages[2].Controls.Add(timepickers[i].CreateTimeLabel());
             }
         }
 
@@ -535,6 +549,27 @@ namespace Centipac
             if (conf.ShowDialog() == DialogResult.Yes)
             {
                 updateTimePickersSchedule();
+            }
+        }
+
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == tabMain.TabCount - 1)
+            {
+                Microsoft.Reporting.WinForms.ReportParameterCollection rpc = new Microsoft.Reporting.WinForms.ReportParameterCollection();
+                rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("StartDate", startDate.ToShortDateString()));
+                rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("EndDate", endDate.ToShortDateString()));
+
+                List<UserSchedule> schedules = new List<UserSchedule>();
+                foreach (TimePicker tp in timepickers)
+                {
+                    schedules.Add(tp.getSchedule());
+                }
+                UserScheduleBindingSource.DataSource = schedules;
+                reportViewer2.LocalReport.SetParameters(rpc);
+                reportViewer2.LocalReport.DisplayName = "Schedule" + startDate.ToString("yyyyMMdd");
+                reportViewer2.RefreshReport();
+                tabMain.SelectedIndex = tabMain.TabCount - 1;
             }
         }
 
