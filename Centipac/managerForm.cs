@@ -96,8 +96,11 @@ namespace Centipac
                 timepickers[i] = new TimePicker();
 
                 tabPage3.Controls.Add(timepickers[i].CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + (60 * (i + 1))), materialRuler1.Width, this));
-                tabPage3.Controls.Add(timepickers[i].CreateLabel(employees[i].name));
+                tabPage3.Controls.Add(timepickers[i].CreateNameLabel(employees[i].name));
+                tabPage3.Controls.Add(timepickers[i].CreateTimeLabel());
             }
+
+            updateTimePickersSchedule();
 
             employeeScheduleToTable(listEmployeeSchedules.ToArray());
         }
@@ -135,8 +138,6 @@ namespace Centipac
                             }
                         }
                     }
-
-                    timepicker.hideToolTip();
                 }
                 employeeScheduleToTable(listEmployeeSchedules.ToArray());
                 slider = !slider;
@@ -157,10 +158,6 @@ namespace Centipac
                 pnlSliderSelect.BackColor = Color.DodgerBlue;
                 pnlTableSelect.BackColor = Color.Transparent;
                 pnlTable.Visible = false;
-                foreach (TimePicker timepicker in timepickers)
-                {
-                    timepicker.showToolTip();
-                }
                 slider = !slider;
             }
         }
@@ -209,31 +206,6 @@ namespace Centipac
             }
         }
         #endregion
-
-        private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (tabMain.SelectedIndex)
-            {
-                case 2:
-                    foreach (TimePicker timepicker in timepickers)
-                    {
-                        if (timepicker != null)
-                        {
-                            timepicker.showToolTip();
-                        }
-                    }
-                    break;
-                default:
-                    foreach (TimePicker timepicker in timepickers)
-                    {
-                        if (timepicker != null)
-                        {
-                            timepicker.hideToolTip();
-                        }
-                    }
-                    break;
-            }
-        }
 
         class ListViewItemComparer : IComparer
         {
@@ -435,7 +407,7 @@ namespace Centipac
         }
 
         private void btnScheduleReport_Click(object sender, EventArgs e)
-        {
+        {            
             Microsoft.Reporting.WinForms.ReportParameterCollection rpc = new Microsoft.Reporting.WinForms.ReportParameterCollection();
             rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("StartDate", startDate.ToShortDateString()));
             rpc.Add(new Microsoft.Reporting.WinForms.ReportParameter("EndDate", endDate.ToShortDateString()));
@@ -509,32 +481,61 @@ namespace Centipac
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            List<object> times = new List<object>();
-            foreach (TimePicker timepicker in timepickers)
-            {
-                timepicker.Save(previousSelect);
-                times.Add(timepicker.getJsonObj());
-            }
+            msgbox conf = new msgbox("Save changes to schedule?", "Save?", msgbox.Buttons.YesNoButtons);
 
-            string jsonData = JsonConvert.SerializeObject(times);
-            MessageBox.Show(Server.saveSchedule(activeUser, startDate.Date.ToUnixTime(), jsonData));
+            if (conf.ShowDialog() == DialogResult.Yes)
+            {
+                List<object> times = new List<object>();
+                foreach (TimePicker timepicker in timepickers)
+                {
+                    timepicker.Save(previousSelect);
+                    times.Add(timepicker.getJsonObj());
+                }
+
+                string jsonData = JsonConvert.SerializeObject(times);
+                Server.saveSchedule(activeUser, startDate.Date.ToUnixTime(), jsonData);
+            }
+        }
+
+        void updateTimePickersSchedule()
+        {
+            try {
+                List<NameDayValue> ndvs = new List<NameDayValue>();
+                string scheduleJson = Server.getSchedule(activeUser, startDate.Date.ToUnixTime());
+
+                JArray schedules = JArray.Parse(scheduleJson);
+
+                foreach (JObject obj in schedules)
+                {
+                    ndvs.Add(new NameDayValue(obj.getFirstPropertyName(), JsonConvert.DeserializeObject<Dictionary<string, DayValue>>(obj.First.First.ToString(Formatting.None))));
+                }
+
+                for (int i = 0; i < timepickers.Length; i++)
+                {
+                    foreach (NameDayValue ndv in ndvs)
+                    {
+                        if (timepickers[i].getName() == ndv.name)
+                        {
+                            timepickers[i].HardClear();
+                            timepickers[i].populateData(ndv.scheduleData);
+                            timepickers[i].Load(previousSelect);
+                            continue;
+                        }
+                    }
+                }
+            } catch
+            {
+                msgbox err = new msgbox("Failed to update schedule information.", "Error", msgbox.Buttons.OKButton);
+                err.Show();
+            }
         }
 
         private void btnReload_Click(object sender, EventArgs e) {
-            List<Dictionary<string, DayValue>> scheduleData = new List<Dictionary<string, DayValue>>();
-            List<NameDayValue> ndvs = new List<NameDayValue>();
-            string scheduleJson = Server.getSchedule(activeUser, startDate.Date.ToUnixTime());
-
-            JArray schedules = JArray.Parse(scheduleJson);
-
-            foreach (JObject obj in schedules)
+            msgbox conf = new msgbox("Reload schedule and delete any changes?", "Reload?", msgbox.Buttons.YesNoButtons);
+            if (conf.ShowDialog() == DialogResult.Yes)
             {
-                ndvs.Add(new NameDayValue(obj.getFirstPropertyName(), JsonConvert.DeserializeObject<Dictionary<string, DayValue>>(obj.First.First.ToString(Formatting.None))));
+                updateTimePickersSchedule();
             }
-
-            // TODO: Finish up by making timepickers load the values gotten in ndvs!!
-
-            return;
         }
 
         private void dtDay_ValueChanged(object sender, EventArgs e)

@@ -39,7 +39,6 @@ C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.pdb
 C:\Users\Seth\Desktop\centipac\Centipac\bin\Debug\Centipac.exe
 C:\Users\Seth\Desktop\centipac\Centipac\bin\Debug\Centipac.pdb
 C:\Users\Seth\Desktop\centipac\Centipac\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Seth\Desktop\centipac\Centipac\bin\Debug\MaterialSkin.pdb
 C:\Users\Seth\Desktop\centipac\Centipac\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.csprojResolveAssemblyReference.cache
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.mainForm.resources

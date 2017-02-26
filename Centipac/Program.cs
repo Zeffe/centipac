@@ -16,7 +16,12 @@ namespace Centipac
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new loginForm());
+            try {
+                Application.Run(new loginForm());
+            } catch
+            {
+                Application.Exit();
+            }
         }
     }
 }

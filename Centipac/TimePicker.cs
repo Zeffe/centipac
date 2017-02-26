@@ -15,7 +15,7 @@ namespace Centipac
         private MaterialSkin.Controls.MaterialProgressBar materialProgressBar;
         private Form parentForm;
         private Timer timer = new Timer();
-        private ToolTip label = new ToolTip();
+        private Label timeLabel = new Label();
         private ToolTip tempDisplay = new ToolTip();
         private MaterialSkin.Controls.MaterialContextMenuStrip menu = new MaterialSkin.Controls.MaterialContextMenuStrip();
         private Label name = new Label();
@@ -39,6 +39,20 @@ namespace Centipac
             }
         }
 
+        public string getName()
+        {
+            return name.Text;
+        }
+
+        public void populateData(Dictionary<string, DayValue> data)
+        {
+            foreach (KeyValuePair<string, DayValue> nd in data)
+            {
+                schedule.setValueSuccess(nd.Key, nd.Value.text);
+            }
+            dayData = data;
+        }
+
         public UserSchedule getSchedule()
         {
             return schedule;
@@ -58,6 +72,11 @@ namespace Centipac
             return jsonFormat;
         }
 
+        public TimePicker()
+        {
+            timeLabel.Visible = false;
+        }
+
         public void Load(string key)
         {
             try
@@ -68,20 +87,38 @@ namespace Centipac
                 labelPosY = materialProgressBar.Location.Y - 25 + materialProgressBar.Parent.Parent.Location.Y;
                 if (materialProgressBar.Value != 0)
                 {
-                    label.Show(dayData[key].text,
-                        parentForm,
-                        labelPosX,
-                        labelPosY);
+                    timeLabel.Visible = true;
+                    timeLabel.Text = dayData[key].text;
+                    timeLabel.Location = new Point(getXValue(), getYValue());
                 }
             }
             catch { }
+        }
+
+        public int getXValue()
+        {
+            return materialProgressBar.Location.X + materialProgressBar.Offset + (materialProgressBar.Value / 2) - (timeLabel.Width / 2);
+        }
+
+        public int getYValue()
+        {
+            return materialProgressBar.Location.Y - timeLabel.Height - 5;
         }
 
         public void Clear()
         {
             materialProgressBar.Value = 0;
             materialProgressBar.Offset = 0;
-            label.Hide(parentForm);
+            timeLabel.Visible = false;
+        }
+
+        public void HardClear()
+        {
+            materialProgressBar.Value = 0;
+            materialProgressBar.Offset = 0;
+            timeLabel.Visible = false;
+            dayData.Clear();
+            schedule = new UserSchedule(name.Text);
         }
 
         public string beginTime()
@@ -99,14 +136,14 @@ namespace Centipac
             return name;
         }
 
-        public void showToolTip()
+        public void showTime()
         {
-            label.Show(labelText, parentForm, labelPosX, labelPosY);
+            timeLabel.Visible = true;
         }
 
-        public void hideToolTip()
+        public void hideTime()
         {
-            label.Hide(parentForm);
+            timeLabel.Visible = false;
         }
 
         public MaterialSkin.Controls.MaterialProgressBar getBar()
@@ -114,7 +151,13 @@ namespace Centipac
             return materialProgressBar;
         }
 
-        public Label CreateLabel(string _name)
+        public Label CreateTimeLabel()
+        {
+            timeLabel.AutoSize = true;
+            return timeLabel;
+        }
+
+        public Label CreateNameLabel(string _name)
         {
             name.Location = new Point(materialProgressBar.Location.X - 75, materialProgressBar.Location.Y - materialProgressBar.Height);
             name.Text = _name;
@@ -137,7 +180,6 @@ namespace Centipac
             materialProgressBar.MouseDown += new MouseEventHandler(mouseDown);
             materialProgressBar.MouseUp += new MouseEventHandler(mouseUp);
             timer.Tick += new EventHandler(timerTick);
-            label.Popup += new PopupEventHandler(popUp);
             tempDisplay.Popup += new PopupEventHandler(popUpTemp);
             
             return materialProgressBar;
@@ -146,7 +188,7 @@ namespace Centipac
         private void menuDelete(object sender, EventArgs e)
         {
             materialProgressBar.Value = 0;
-            label.Hide(parentForm);
+            timeLabel.Visible = false;
         }
 
         private int tempOffset = 0, tempValue = 0;
@@ -223,7 +265,12 @@ namespace Centipac
                 {
                     initTime = progressBarTime(materialProgressBar.Width, parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X);
                 }
-                label.Show(initTime, parentForm, parentForm.PointToClient(Cursor.Position).X - 10, materialProgressBar.Location.Y + 10);
+                timeLabel.Visible = true;
+                timeLabel.Text = initTime;
+                timeLabel.Location = new Point(
+                    parentForm.PointToClient(Cursor.Position).X - 10,
+                    getYValue());
+                //label.Show(initTime, parentForm, parentForm.PointToClient(Cursor.Position).X - 10, materialProgressBar.Location.Y + 10);
             }
         }
 
@@ -273,20 +320,17 @@ namespace Centipac
             {
                 materialProgressBar.Offset = Math.Min(Math.Max(parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X - materialProgressBar.Parent.Parent.Location.X, materialProgressBar.Minimum), materialProgressBar.Maximum);
                 materialProgressBar.Value = Math.Min(Math.Max(tempValue + (tempOffset - materialProgressBar.Offset), materialProgressBar.Minimum), materialProgressBar.Maximum);
-                label.Show(finalTime + " - " + initTime,
-                    parentForm,
-                    labelPosX,
-                    labelPosY);
+                timeLabel.Visible = true;
+                timeLabel.Text = finalTime + " - " + initTime;
+                timeLabel.Location = new Point(getXValue(), getYValue());
                 labelText = finalTime + " - " + initTime;
             }
             else
             {
                 materialProgressBar.Value = Math.Min(Math.Max((parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X - materialProgressBar.Parent.Parent.Location.X - materialProgressBar.Offset), materialProgressBar.Minimum), materialProgressBar.Maximum);
-
-                label.Show(initTime + " - " + finalTime,
-                parentForm,
-                labelPosX,
-                labelPosY);
+                timeLabel.Visible = true;
+                timeLabel.Text = initTime + " - " + finalTime;
+                timeLabel.Location = new Point(getXValue(), getYValue());
                 labelText = initTime + " - " + finalTime;
             }
         }

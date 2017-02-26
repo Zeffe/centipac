@@ -10,7 +10,7 @@ namespace Centipac
     public class NameDayValue
     {
         public string name;
-        Dictionary<string, DayValue> scheduleData = new Dictionary<string, DayValue>();
+        public Dictionary<string, DayValue> scheduleData = new Dictionary<string, DayValue>();
 
         public NameDayValue(string name, Dictionary<string, DayValue> scheduleData)
         {

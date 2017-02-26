@@ -184,10 +184,6 @@ namespace Centipac
             groupUserOptions.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(Server.test());
-        }
 
         private void btnClock_MouseEnter(object sender, EventArgs e)
         {
