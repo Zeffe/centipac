@@ -117,10 +117,15 @@ namespace Centipac
                 pnlSliderSelect.BackColor = Color.Transparent;
                 pnlTable.Visible = true;
                 pnlTable.BringToFront();
+
+                listEmployeeSchedules.Clear();
+
                 foreach (TimePicker timepicker in timepickers)
                 {
                     Dictionary<string, Dictionary<string, DayValue>> tempData = new Dictionary<string, Dictionary<string, DayValue>>();
                     tempData = timepicker.getJsonObj() as Dictionary<string, Dictionary<string, DayValue>>;
+
+                    listEmployeeSchedules.Add(new EmployeeSchedule(timepicker.getName()));
 
                     foreach (var item in tempData)
                     {
