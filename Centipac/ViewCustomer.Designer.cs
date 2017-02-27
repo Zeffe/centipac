@@ -97,9 +97,24 @@
             // nmAdults
             // 
             this.nmAdults.Location = new System.Drawing.Point(161, 77);
+            this.nmAdults.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.nmAdults.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nmAdults.Name = "nmAdults";
             this.nmAdults.Size = new System.Drawing.Size(87, 20);
             this.nmAdults.TabIndex = 2;
+            this.nmAdults.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // materialLabel1
             // 
@@ -110,9 +125,9 @@
             this.materialLabel1.Location = new System.Drawing.Point(28, 75);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(82, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(56, 19);
             this.materialLabel1.TabIndex = 3;
-            this.materialLabel1.Text = "Adults (-1):";
+            this.materialLabel1.Text = "Adults:";
             // 
             // materialLabel2
             // 

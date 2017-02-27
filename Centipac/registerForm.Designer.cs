@@ -73,6 +73,7 @@
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
+            this.lblInfo.BackColor = System.Drawing.Color.White;
             this.lblInfo.Depth = 0;
             this.lblInfo.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -145,6 +146,7 @@
             this.Controls.Add(this.txtUser);
             this.MaximizeBox = false;
             this.Name = "registerForm";
+            this.Sizable = false;
             this.Text = "Register";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.registerForm_FormClosed);
             this.Load += new System.EventHandler(this.registerForm_Load);

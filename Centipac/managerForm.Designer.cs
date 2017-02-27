@@ -881,6 +881,7 @@
             this.Controls.Add(this.materialTabSelector1);
             this.MaximizeBox = false;
             this.Name = "managerForm";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.managerForm_FormClosing);

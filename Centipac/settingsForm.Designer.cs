@@ -70,6 +70,7 @@
             this.materialLabel2.Size = new System.Drawing.Size(146, 19);
             this.materialLabel2.TabIndex = 2;
             this.materialLabel2.Text = "Change Background:";
+            this.materialLabel2.Visible = false;
             // 
             // comboTheme
             // 
@@ -81,19 +82,21 @@
             this.comboTheme.Name = "comboTheme";
             this.comboTheme.Size = new System.Drawing.Size(158, 21);
             this.comboTheme.TabIndex = 3;
+            this.comboTheme.Visible = false;
             this.comboTheme.SelectedIndexChanged += new System.EventHandler(this.comboTheme_SelectedIndexChanged);
             // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(192, 300);
+            this.ClientSize = new System.Drawing.Size(192, 134);
             this.Controls.Add(this.comboTheme);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.comboColorScheme);
             this.MaximizeBox = false;
             this.Name = "settingsForm";
+            this.Sizable = false;
             this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.settingsForm_FormClosing);
             this.Load += new System.EventHandler(this.settingsForm_Load);

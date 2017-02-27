@@ -135,9 +135,18 @@ namespace Centipac
             btnHelp.Image = Properties.Resources.question;
         }
 
+        public static helpForm help = null;
+
         private void btnHelp_Click(object sender, EventArgs e)
         {
-
+            if (help == null)
+            {
+                help = new helpForm();
+                help.Show();
+            } else
+            {
+                help.BringToFront();
+            }
         }
     }
 }

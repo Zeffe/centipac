@@ -130,12 +130,12 @@
             this.comboRank.ColorScheme = Xenon.ThirteenComboBox.ColorSchemes.Light;
             this.comboRank.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboRank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboRank.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F);
+            this.comboRank.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.comboRank.ForeColor = System.Drawing.Color.White;
             this.comboRank.FormattingEnabled = true;
             this.comboRank.Location = new System.Drawing.Point(225, 88);
             this.comboRank.Name = "comboRank";
-            this.comboRank.Size = new System.Drawing.Size(121, 26);
+            this.comboRank.Size = new System.Drawing.Size(121, 23);
             this.comboRank.TabIndex = 6;
             // 
             // addForm
@@ -149,7 +149,9 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.btnAdd);
+            this.MaximizeBox = false;
             this.Name = "addForm";
+            this.Sizable = false;
             this.Text = "Add Employee";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.addForm_FormClosing);
             this.Load += new System.EventHandler(this.addForm_Load);

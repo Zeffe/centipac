@@ -74,6 +74,7 @@
             this.Controls.Add(this.txtPass);
             this.MaximizeBox = false;
             this.Name = "verifyForm";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Verify Password";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.verifyForm_FormClosing);

@@ -131,6 +131,7 @@
             this.Controls.Add(this.btnNo);
             this.MaximizeBox = false;
             this.Name = "msgbox";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "msgbox";
             this.ResumeLayout(false);

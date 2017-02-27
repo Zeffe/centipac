@@ -21,6 +21,7 @@ namespace Centipac
         bool slider = true;
         string previousSelect = "Monday";                   // Stores the previously selected day on schedule page for saving purposes.
         List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>();
+        List<ViewCustomer> extraTabs = new List<ViewCustomer>();
         Employee[] employees;
         TabPage scheduleTab;
         DateTime startDate, endDate;

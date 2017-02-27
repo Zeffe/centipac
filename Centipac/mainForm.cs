@@ -240,8 +240,9 @@ namespace Centipac
                     {
                         cmbAdults.SelectedIndex = 0;
                     }
-                    else if (num > 100)
+                    else if (num >= 100)
                     {
+                        cmbAdults.SelectedIndex = 0;
                         msgbox error1 = new msgbox("Number too high, please enter number less than 100.", "Error", 1);
                         error1.Show();   
                     }
@@ -263,8 +264,8 @@ namespace Centipac
                 input.Dispose();
             }
 
-            lblAdults.Text = "Adults ($10): " + (Convert.ToInt32(cmbAdults.SelectedItem) + 1).ToString();
-            adults = Convert.ToInt32(cmbAdults.SelectedItem) + 1;
+            lblAdults.Text = "Adults ($10): " + Convert.ToInt32(cmbAdults.SelectedItem).ToString();
+            adults = Convert.ToInt32(cmbAdults.SelectedItem);
             price = (children * 7 + adults * 10);
             lblPrice.Text = "Price: $" + price.ToString();
         }
@@ -333,6 +334,11 @@ namespace Centipac
                     else if (num < 1)
                     {
                         cmbChildren.SelectedIndex = 0;
+                    } else if (num >= 100)
+                    {
+                        cmbChildren.SelectedIndex = 0;
+                        msgbox error1 = new msgbox("Number too high, please enter number less than 100.", "Error", 1);
+                        error1.Show();
                     }
                     else
                     {
@@ -386,7 +392,7 @@ namespace Centipac
                 todaysCustomers[index].registrant = vc.Registrant;
                 todaysCustomers[index].email = vc.Email;
                 todaysCustomers[index].phone = vc.Phone;
-                todaysCustomers[index].adults = vc.Adults + 1;
+                todaysCustomers[index].adults = vc.Adults;
                 todaysCustomers[index].children = vc.Children;
                 todaysCustomers[index].amountPaid = (vc.Children * 7) + (vc.Adults * 10) + 10;
                 todaysCustomers[index].employees.Add(new EmployeeDate(activeUser.name, DateTime.Now.ToUnixTime()));

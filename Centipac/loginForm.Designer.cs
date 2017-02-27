@@ -143,6 +143,8 @@
             this.Controls.Add(this.txtUser);
             this.MaximizeBox = false;
             this.Name = "loginForm";
+            this.Sizable = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.loginForm_FormClosing);

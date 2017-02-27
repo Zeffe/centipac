@@ -54,6 +54,7 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnRefresh = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.btnCancelFilter = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnFilter = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -73,7 +74,6 @@
             this.btnClock = new System.Windows.Forms.PictureBox();
             this.menuTabPage = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRefresh = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -214,7 +214,6 @@
             this.cmbAdults.FormatString = "N0";
             this.cmbAdults.FormattingEnabled = true;
             this.cmbAdults.Items.AddRange(new object[] {
-            "0",
             "1",
             "2",
             "3",
@@ -268,9 +267,9 @@
             this.materialLabel3.Location = new System.Drawing.Point(150, 146);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(198, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(64, 19);
             this.materialLabel3.TabIndex = 35;
-            this.materialLabel3.Text = "Adults (Without Registrant): ";
+            this.materialLabel3.Text = "Adults:  ";
             // 
             // materialDivider2
             // 
@@ -462,6 +461,21 @@
             this.tabPage3.Size = new System.Drawing.Size(578, 300);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Today\'s Customers";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRefresh.Depth = 0;
+            this.btnRefresh.Icon = null;
+            this.btnRefresh.Location = new System.Drawing.Point(237, 274);
+            this.btnRefresh.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Primary = true;
+            this.btnRefresh.Size = new System.Drawing.Size(68, 23);
+            this.btnRefresh.TabIndex = 5;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // materialLabel5
             // 
@@ -684,21 +698,6 @@
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnRefresh.Depth = 0;
-            this.btnRefresh.Icon = null;
-            this.btnRefresh.Location = new System.Drawing.Point(237, 274);
-            this.btnRefresh.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Primary = true;
-            this.btnRefresh.Size = new System.Drawing.Size(68, 23);
-            this.btnRefresh.TabIndex = 5;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -711,6 +710,7 @@
             this.Controls.Add(this.groupUserOptions);
             this.MaximizeBox = false;
             this.Name = "mainForm";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Centipac";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);

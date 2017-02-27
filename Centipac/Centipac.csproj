@@ -106,6 +106,12 @@
     <Compile Include="DayValue.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Extension.cs" />
+    <Compile Include="helpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="helpForm.Designer.cs">
+      <DependentUpon>helpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="clockForm.resx">
       <DependentUpon>clockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="helpForm.resx">
+      <DependentUpon>helpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
