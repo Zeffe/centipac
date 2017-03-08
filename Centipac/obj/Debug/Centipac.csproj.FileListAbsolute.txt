@@ -31,7 +31,6 @@ C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\bin\Debug\
 C:\Users\Seth\Documents\Visual Studio 2015\Projects\Centipac\Centipac\obj\Debug\Centipac.settingsForm.resources
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.managerForm.resources
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.settingsForm.resources
-C:\Users\5654920324\Desktop\centipac\Centipac\bin\Debug\MaterialSkin.pdb
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.verifyForm.resources
 C:\Users\Seth\Desktop\centipac\Centipac\bin\Debug\Centipac.exe.config
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.exe
@@ -68,3 +67,4 @@ C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\RdlCompile.compiled
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.scheduleReportForm.resources
 C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.scheduleReportForm.resources
 C:\Users\Seth\Desktop\centipac\Centipac\obj\Debug\Centipac.helpForm.resources
+C:\Users\5654920324\Desktop\centipac\Centipac\obj\Debug\Centipac.helpForm.resources
