@@ -99,8 +99,8 @@ namespace Centipac
             cmbChildren.SelectedIndex = 0;
             cmbAdults.SelectedIndex = 0;
 
-            btnClock.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
-            btnClock.Location = new Point(user.Location.X - 30, user.Location.Y + 5);
+            btnHelp.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
+            btnHelp.Location = new Point(user.Location.X - 30, user.Location.Y + 5);
 
             groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
             groupUserOptions.Location = new Point(this.Width - groupUserOptions.Width - 3, user.Location.Y + user.Size.Height);
@@ -179,7 +179,7 @@ namespace Centipac
                 MaterialSkin.Controls.MaterialFlatButton userBtn = this.Controls.Find("btnUser", false)[0] as MaterialSkin.Controls.MaterialFlatButton;
                 userBtn.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
                 groupUserOptions.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
-                btnClock.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
+                btnHelp.BackColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
                 cmbAdults.AccentColor = cmbChildren.AccentColor = MaterialSkinManager.Instance.ColorScheme.PrimaryColor;
             } else if (settings == null)
             {
@@ -211,30 +211,14 @@ namespace Centipac
 
         private void btnClock_MouseEnter(object sender, EventArgs e)
         {
-            btnClock.Image = Properties.Resources.clockU;
+            btnHelp.Image = Properties.Resources.questionU;
         }
 
         private void btnClock_MouseLeave(object sender, EventArgs e)
         {
-            btnClock.Image = Properties.Resources.clock;
+            btnHelp.Image = Properties.Resources.question;
         }
 
-        /// <summary>
-        /// OBSOLETE CURRENTLY
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnClock_Click(object sender, EventArgs e)
-        {
-            if (loginForm.timeclockForm == null)
-            {
-                loginForm.timeclockForm = new clockForm();
-                loginForm.timeclockForm.Show();
-            } else
-            {
-                loginForm.timeclockForm.BringToFront();
-            }
-        }
 
         /// <summary>
         /// Prepares interface to add a new customer.
@@ -620,6 +604,21 @@ namespace Centipac
             }
 
             refreshList();
+        }
+
+        public static helpForm help = null;
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            if (help == null)
+            {
+                help = new helpForm();
+                help.Show();
+            }
+            else
+            {
+                help.BringToFront();
+            }
         }
 
         /// <summary>

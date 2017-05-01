@@ -71,7 +71,7 @@
             this.btnLogOut = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSettings = new MaterialSkin.Controls.MaterialRaisedButton();
             this.timerUI = new System.Windows.Forms.Timer(this.components);
-            this.btnClock = new System.Windows.Forms.PictureBox();
+            this.btnHelp = new System.Windows.Forms.PictureBox();
             this.menuTabPage = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabMain.SuspendLayout();
@@ -79,7 +79,7 @@
             this.tabPage3.SuspendLayout();
             this.menuTabControl.SuspendLayout();
             this.groupUserOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHelp)).BeginInit();
             this.menuTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -546,7 +546,7 @@
             this.columnHeader3,
             this.columnHeader4});
             this.listCustomers.Depth = 0;
-            this.listCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.listCustomers.Font = new System.Drawing.Font("Roboto", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.listCustomers.FullRowSelect = true;
             this.listCustomers.Location = new System.Drawing.Point(8, 7);
             this.listCustomers.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -667,19 +667,18 @@
             // 
             this.timerUI.Tick += new System.EventHandler(this.timerUI_Tick);
             // 
-            // btnClock
+            // btnHelp
             // 
-            this.btnClock.BackColor = System.Drawing.Color.Black;
-            this.btnClock.Image = global::Centipac.Properties.Resources.clock;
-            this.btnClock.Location = new System.Drawing.Point(143, 34);
-            this.btnClock.Name = "btnClock";
-            this.btnClock.Size = new System.Drawing.Size(24, 26);
-            this.btnClock.TabIndex = 6;
-            this.btnClock.TabStop = false;
-            this.btnClock.Visible = false;
-            this.btnClock.Click += new System.EventHandler(this.btnClock_Click);
-            this.btnClock.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
-            this.btnClock.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
+            this.btnHelp.BackColor = System.Drawing.Color.Black;
+            this.btnHelp.Image = global::Centipac.Properties.Resources.question;
+            this.btnHelp.Location = new System.Drawing.Point(143, 34);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(24, 26);
+            this.btnHelp.TabIndex = 6;
+            this.btnHelp.TabStop = false;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            this.btnHelp.MouseEnter += new System.EventHandler(this.btnClock_MouseEnter);
+            this.btnHelp.MouseLeave += new System.EventHandler(this.btnClock_MouseLeave);
             // 
             // menuTabPage
             // 
@@ -704,7 +703,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(585, 425);
-            this.Controls.Add(this.btnClock);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.groupUserOptions);
@@ -723,7 +722,7 @@
             this.menuTabControl.ResumeLayout(false);
             this.groupUserOptions.ResumeLayout(false);
             this.groupUserOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHelp)).EndInit();
             this.menuTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -738,7 +737,7 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnSettings;
         private System.Windows.Forms.Timer timerUI;
         private MaterialSkin.Controls.MaterialRaisedButton btnManager;
-        private System.Windows.Forms.PictureBox btnClock;
+        private System.Windows.Forms.PictureBox btnHelp;
         private System.Windows.Forms.TabPage tabPage3;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialRaisedButton btnNewCustomer;
