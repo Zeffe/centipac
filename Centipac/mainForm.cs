@@ -14,14 +14,15 @@ using System.Runtime.InteropServices;
 
 namespace Centipac
 {
+    
     public partial class mainForm : MaterialSkin.Controls.MaterialForm
     {
-        public static Rank[] titles;
-        List<Customer> todaysCustomers = new List<Customer>();
-        List<ViewCustomer> extraTabs = new List<ViewCustomer>();
-        Customer selectedCustomer;
+        public static Rank[] titles;                                // Stores all the ranks.
+        List<Customer> todaysCustomers = new List<Customer>();      // Customers from the current 24 hour period.
+        List<ViewCustomer> extraTabs = new List<ViewCustomer>();    // ViewCustomer objects that have been opened.
+        Customer selectedCustomer;                                  
         User activeUser;
-        DateTime dateCreated;
+        DateTime dateCreated;                                       // Stores the value when the Create button was hit to be used when posting to server.
         bool logout = false;
         bool exit = true;
         int adults = 0, children = 0; int price = 0;
@@ -36,6 +37,9 @@ namespace Centipac
 
         }
 
+        /// <summary>
+        /// Hides the manager button if the user does not have manager priveleges.
+        /// </summary>
         void hideManager()
         {
             groupUserOptions.Height = 99;
@@ -58,17 +62,26 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Initializes interface values.
+        /// </summary>
+        /// <param name="sender">mainForm</param>
+        /// <param name="e"></param>
         private void mainForm_Load(object sender, EventArgs e)
         {
+            // Hides manager button if Permissions aren't high enough.
             if (activeUser.getPerms() > 2)
             {
                 hideManager();
             }
 
+            // Hides add customer options.
             panel1.BringToFront();
 
+            // Gets rank objects from servers.
             titles = Server.getRanks(activeUser);
 
+            // Initializes the User button in the top right of display.
             MaterialSkin.Controls.MaterialFlatButton user = new MaterialSkin.Controls.MaterialFlatButton();
             user.BackColor = Settings.colorSchemes[Properties.Settings.Default["COLORSCHEME"].ToString()].PrimaryColor;
             user.ForeColor = Color.White;
@@ -94,6 +107,7 @@ namespace Centipac
             groupUserOptions.DiamondPos = user.Location.X - groupUserOptions.Location.X + (user.Width / 2) - 9;
             groupUserOptions.BringToFront();
 
+            // Gets today's customers from servers and adds them to the list.
             Customer[] tempCust = Server.getCustomers(activeUser);
 
             foreach (Customer cust in tempCust)
@@ -153,6 +167,11 @@ namespace Centipac
             groupUserOptions.Hide();
         }
 
+        /// <summary>
+        /// Ensures that interface is using correct theme.
+        /// </summary>
+        /// <param name="sender">timerUI</param>
+        /// <param name="e"></param>
         private void timerUI_Tick(object sender, EventArgs e)
         {
             if (groupUserOptions.BackColor != MaterialSkinManager.Instance.ColorScheme.PrimaryColor)
@@ -170,6 +189,11 @@ namespace Centipac
 
         public static managerForm manage = null;
 
+        /// <summary>
+        /// Launches password verification to access Manager form.
+        /// </summary>
+        /// <param name="sender">btnManager</param>
+        /// <param name="e"></param>
         private void btnManager_Click(object sender, EventArgs e)
         {
             if (manage == null)
@@ -195,6 +219,11 @@ namespace Centipac
             btnClock.Image = Properties.Resources.clock;
         }
 
+        /// <summary>
+        /// OBSOLETE CURRENTLY
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClock_Click(object sender, EventArgs e)
         {
             if (loginForm.timeclockForm == null)
@@ -207,6 +236,11 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Prepares interface to add a new customer.
+        /// </summary>
+        /// <param name="sender">btnNewCustomer</param>
+        /// <param name="e"></param>
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
             panel1.SendToBack(); panel1.BackColor = Color.White;
@@ -275,11 +309,11 @@ namespace Centipac
             if (txtRegistrant.Text != "") { 
                 msgbox conf = new msgbox("Are you sure you want to add " + txtRegistrant.Text + "?", txtRegistrant.Text, 2);
                 if (conf.ShowDialog() == DialogResult.Yes)
-                {
-                    // DO ADD CUSTOMER STUFF HERE                   
+                {                                      
                     panel1.BackColor = Color.LightGray;
                     panel1.BringToFront();
 
+                    // Adds new customer information to a Customer object.
                     Customer tempCustomer = new Customer(
                         txtRegistrant.Text,
                         adults,
@@ -289,8 +323,10 @@ namespace Centipac
                         txtEmail.Text,
                         price,
                         new EmployeeDate(activeUser.name, dateCreated.ToUnixTime()));
+
                     try
                     {
+                        // Tries to add customer to database, if successful returns the ID value of customer.
                         string response = Server.addCustomer(activeUser, tempCustomer);
                         tempCustomer.id = Convert.ToInt32(response);
                         todaysCustomers.Add(tempCustomer);
@@ -365,11 +401,17 @@ namespace Centipac
             lblPrice.Text = "Price: $" + price.ToString();
         }
 
+        /// <summary>
+        /// Deletes selected customer from ViewCustomer object.
+        /// </summary>
+        /// <param name="sender">ViewCustomer tab.</param>
+        /// <param name="e"></param>
         private void delete_click(object sender, ViewCustomer.ViewCustomerEventArgs e)
         {
             msgbox conf = new msgbox("Are you sure you want to delete " + e.customer.registrant + "?", "Delete?", msgbox.Buttons.YesNoButtons);
             if (conf.ShowDialog() == DialogResult.Yes)
             {
+                // Deletes customer and removes the ViewCustomer object from interface.
                 Server.deleteCustomer(activeUser, e.customer.id);
                 ViewCustomer vc = sender as ViewCustomer;
                 removeViewCustomer(vc);
@@ -381,11 +423,17 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Used to edit customers from a ViewCustomer object.
+        /// </summary>
+        /// <param name="sender">ViewCustomer tab.</param>
+        /// <param name="e"></param>
         private void save_click(object sender, ViewCustomer.ViewCustomerEventArgs e)
         {
             msgbox conf = new msgbox("Save changes to " + e.customer.registrant + "?", "Save?", msgbox.Buttons.YesNoButtons);
             if (conf.ShowDialog() == DialogResult.Yes)
             {
+                // Saves changes to customer and deletes ViewCustomer object.
                 int index = getCustomerIndex(e.customer);
                 ViewCustomer vc = sender as ViewCustomer;
                 removeViewCustomer(vc);
@@ -406,6 +454,10 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Function used to remove a ViewCustomer object.
+        /// </summary>
+        /// <param name="vc">ViewCustomer object to remove.</param>
         void removeViewCustomer(ViewCustomer vc)
         {
             int indexToRemove = -1;
@@ -421,6 +473,11 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Gets a customer's index number in the todaysCustomers List.
+        /// </summary>
+        /// <param name="cust">Customer to find index of.</param>
+        /// <returns>Index of customer in todaysCustomers list as integer.</returns>
         public int getCustomerIndex(Customer cust)
         {
             for (int i = 0; i < todaysCustomers.Count; i++)
@@ -431,6 +488,11 @@ namespace Centipac
             return -1;
         }
 
+        /// <summary>
+        /// Creates a ViewCustomer object and a new tab for customer that was double clicked.
+        /// </summary>
+        /// <param name="sender">listCustomers</param>
+        /// <param name="e"></param>
         private void listCustomers_DoubleClick(object sender, EventArgs e)
         {
             if (listCustomers.SelectedIndices[0] > -1)
@@ -438,6 +500,7 @@ namespace Centipac
                 bool cancel = false;
                 selectedCustomer = todaysCustomers[listCustomers.SelectedIndices[0]];
 
+                // Checks to see if customer already has tab open.
                 foreach (ViewCustomer view in extraTabs)
                 {
                     if (view.GetCustomer == selectedCustomer)
@@ -466,6 +529,11 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Used to close ViewCustomer tabs.
+        /// </summary>
+        /// <param name="sender">closeToolStripMenuItem</param>
+        /// <param name="e"></param>
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ContextMenuStrip menu = (ContextMenuStrip)((sender as ToolStripMenuItem).Owner);
@@ -478,6 +546,11 @@ namespace Centipac
             tabMain.SelectedTab = tabPage3;
         }
 
+        /// <summary>
+        /// Used to close all open ViewCustomer tabs.
+        /// </summary>
+        /// <param name="sender">closeExtraToolStripMenuItem</param>
+        /// <param name="e"></param>
         private void closeExtraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             msgbox conf = new msgbox("Are you sure you want to exit all extra tabs?", "Close Extra?", msgbox.Buttons.YesNoButtons);
@@ -493,6 +566,10 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Refreshes the listCustomers object using todaysCustomers values.
+        /// </summary>
+        /// <param name="filter">Filters out registrants that don't contain filter value.</param>
         void refreshList(string filter = "")
         {
             listCustomers.Items.Clear();
@@ -527,6 +604,11 @@ namespace Centipac
             refreshList();
         }
 
+        /// <summary>
+        /// Gets updated list of users from server and updates listCustomers.
+        /// </summary>
+        /// <param name="sender">btnRefresh</param>
+        /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             Customer[] tempCust = Server.getCustomers(activeUser);
@@ -540,6 +622,10 @@ namespace Centipac
             refreshList();
         }
 
+        /// <summary>
+        /// Adds customer to listCustomers.
+        /// </summary>
+        /// <param name="cust">Customer to add.</param>
         void addCustomerToList(Customer cust)
         {
             DateTime custTime = cust.date.UnixTimeStampToDateTime();

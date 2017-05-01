@@ -21,9 +21,8 @@ namespace Centipac
         bool slider = true;
         string previousSelect = "Monday";                   // Stores the previously selected day on schedule page for saving purposes.
         List<EmployeeSchedule> listEmployeeSchedules = new List<EmployeeSchedule>();
-        List<ViewCustomer> extraTabs = new List<ViewCustomer>();
         Employee[] employees;
-        TabPage scheduleTab;
+        TabPage scheduleTab;                                // Used to store the scheuleTab to refresh it back to default.
         DateTime startDate, endDate;
 
         public managerForm(User active)
@@ -41,18 +40,19 @@ namespace Centipac
         }
 
 
-        TimePicker[] timepickers;
+        TimePicker[] timepickers;   // Array of TimePickers used on schedule tab.
 
         private void managerForm_Load(object sender, EventArgs e)
         {
             scheduleTab = tabMain.TabPages[2];
 
+            // Gets list of employees from server.
             employees = Server.getEmployees(activeUser);
 
+            // Initializes a TimePicker for every employee.
             timepickers = new TimePicker[employees.Length];
 
-            //DataSet1.userTa
-
+            // Sets DatePicker values relative to today.
             dtDay.MaxDate = DateTime.Today;
             dtDay.Value = DateTime.Today;
             dtEnd.MinDate = DateTime.Today;
@@ -81,6 +81,7 @@ namespace Centipac
             lblStartDate.Text = today.ToShortDateString() + " - ";
             lblEndDate.Text = (today.AddDays(6)).ToShortDateString();
 
+            // Displays all ranks in listRanks table.
             for (int i = 0; i < mainForm.titles.Length; i++)
             {
                 var tempItem = new[] { mainForm.titles[i].rank.ToString(), mainForm.titles[i].title };
@@ -88,6 +89,7 @@ namespace Centipac
                 listRanks.Items.Add(item);
             }
 
+            // Displays list of employees on listEmployees and creates TimePicker object for each employee.
             for (int i = 0; i < employees.Length; i++)
             {
                 var tempItem = new[] { employees[i].name, employees[i].username, employees[i].perm };
@@ -95,7 +97,8 @@ namespace Centipac
                 listEmployees.Items.Add(item);
 
                 listEmployeeSchedules.Add(new EmployeeSchedule(employees[i].name));
-
+                
+                // Creates TimePickers and places them on schedule tab.
                 timepickers[i] = new TimePicker();
 
                 tabPage3.Controls.Add(timepickers[i].CreateBar(new Point(materialRuler1.Location.X, materialRuler1.Location.Y + (60 * (i + 1))), materialRuler1.Width, this));
@@ -109,6 +112,11 @@ namespace Centipac
         }
 
         #region Schedule
+        /// <summary>
+        /// Shows the current TimePicker values in a table.
+        /// </summary>
+        /// <param name="sender">pnlTable</param>
+        /// <param name="e"></param>
         private void scheduleTable(object sender, EventArgs e)
         {
             if (slider)
@@ -121,6 +129,7 @@ namespace Centipac
 
                 listEmployeeSchedules.Clear();
 
+                // Gets TimePicker values and puts them on a table.
                 foreach (TimePicker timepicker in timepickers)
                 {
                     Dictionary<string, Dictionary<string, DayValue>> tempData = new Dictionary<string, Dictionary<string, DayValue>>();
@@ -151,6 +160,12 @@ namespace Centipac
                 slider = !slider;
             }
         }
+
+        /// <summary>
+        /// Gets an employees index in listEmployeeSchedules based off name.
+        /// </summary>
+        /// <param name="name">Name of employee to get index of.</param>
+        /// <returns>Index in listEmployeeSchedules as an integer.</returns>
         int getEmployeeIndex(string name)
         {
             for (int i = 0; i < listEmployeeSchedules.Count; i++)
@@ -159,6 +174,12 @@ namespace Centipac
             }
             return -1;
         }
+
+        /// <summary>
+        /// Changes from table to view with TimePickers on it.
+        /// </summary>
+        /// <param name="sender">pnlSlider</param>
+        /// <param name="e"></param>
         private void scheduleSlider(object sender, EventArgs e)
         {
             if (!slider)
@@ -170,6 +191,9 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Object used for displaying TimePicker information on table.
+        /// </summary>
         public class EmployeeSchedule
         {
             public string name;
@@ -187,6 +211,10 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Converts an EmployeeSchedule object to an item in listSchedule.
+        /// </summary>
+        /// <param name="employeeSchedules">Array of EmployeeSchedules to add.</param>
         void employeeScheduleToTable(EmployeeSchedule[] employeeSchedules)
         {
             listSchedule.Items.Clear();
@@ -204,6 +232,9 @@ namespace Centipac
             previousSelect = cmbDay.SelectedItem.ToString();
         }
 
+        /// <summary>
+        /// Saves TimePicker value for a given day and loads the value for another day.
+        /// </summary>
         void updateSchedules()
         {
             foreach (TimePicker tp in timepickers)
@@ -215,6 +246,9 @@ namespace Centipac
         }
         #endregion
 
+        /// <summary>
+        /// Used for sorting items in a listView.
+        /// </summary>
         class ListViewItemComparer : IComparer
         {
             private int col;
@@ -294,8 +328,14 @@ namespace Centipac
             catch { }
         }
 
+        /// <summary>
+        /// Attempts to delete an employee from server.
+        /// </summary>
+        /// <param name="sender">btnDelete</param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            // Gets the selected employee's username.
             string userToDelete = listEmployees.SelectedItems[employeeDisplay % listEmployees.SelectedItems.Count].SubItems[1].Text;
             msgbox confirm = new msgbox("Are you sure you want to delete the user '" + userToDelete + "'. This cannot be undone.",
                 "Are you sure?", 2);
@@ -342,11 +382,17 @@ namespace Centipac
 
         public static addForm edit = null;
 
+        /// <summary>
+        /// Opens the addForm with selected employee's edit information.
+        /// </summary>
+        /// <param name="sender">btnEdit</param>
+        /// <param name="e"></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             string selectedUser = listEmployees.SelectedItems[employeeDisplay % listEmployees.SelectedItems.Count].SubItems[1].Text;
             Employee employeeToEdit = null;
 
+            // Gets the Employee object from username to edit.
             foreach (Employee employee in employees)
             {
                 if (employee.username == selectedUser) employeeToEdit = employee;
@@ -363,6 +409,10 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Updates the list of Employees with information from server.
+        /// Also updates TimePickers.
+        /// </summary>
         private void updateList()
         {
             tabMain.TabPages[2] = scheduleTab;
@@ -387,6 +437,11 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Updates list after an employee is added.
+        /// </summary>
+        /// <param name="sender">timerAdd</param>
+        /// <param name="e"></param>
         private void timerAdd_Tick(object sender, EventArgs e)
         {
             if (add == null)
@@ -397,6 +452,11 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Updates list after an employee is edited.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerEdit_Tick(object sender, EventArgs e)
         {
             if (edit == null)
@@ -426,6 +486,11 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Creates the schedule report.
+        /// </summary>
+        /// <param name="sender">btnScheduleReport</param>
+        /// <param name="e"></param>
         private void btnScheduleReport_Click(object sender, EventArgs e)
         {            
             Microsoft.Reporting.WinForms.ReportParameterCollection rpc = new Microsoft.Reporting.WinForms.ReportParameterCollection();
@@ -464,6 +529,11 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Populates the listCustomers table with an array of Customer objects.
+        /// </summary>
+        /// <param name="customers">Array of customers to display in table.</param>
+        /// <param name="filter">Used to filter out certain registrant names.</param>
         void populateTable(Customer[] customers, string filter)
         {
             listCustomers.Items.Clear();
@@ -488,6 +558,11 @@ namespace Centipac
 
         Customer[] loadedCustomers;
 
+        /// <summary>
+        /// Generates a report of customers from a given time period.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             Microsoft.Reporting.WinForms.ReportParameterCollection rpc = new Microsoft.Reporting.WinForms.ReportParameterCollection();
@@ -499,6 +574,11 @@ namespace Centipac
             reportViewer1.RefreshReport();
         }
 
+        /// <summary>
+        /// Sends changes to TimePickers to server.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             msgbox conf = new msgbox("Save changes to schedule?", "Save?", msgbox.Buttons.YesNoButtons);
@@ -517,6 +597,9 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Updates the TimePicker values with values from the server.
+        /// </summary>
         void updateTimePickersSchedule()
         {
             try {
@@ -550,6 +633,11 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Deletes any changes to TimePickers and loads info from server.
+        /// </summary>
+        /// <param name="sender">btnReload</param>
+        /// <param name="e"></param>
         private void btnReload_Click(object sender, EventArgs e) {
             msgbox conf = new msgbox("Reload schedule and delete any changes?", "Reload?", msgbox.Buttons.YesNoButtons);
             if (conf.ShowDialog() == DialogResult.Yes)

@@ -12,6 +12,9 @@ using ExtensionMethods;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Form used for displaying an enlarged report of customers for a given time period.
+    /// </summary>
     public partial class reportForm : MaterialSkin.Controls.MaterialForm
     {
 

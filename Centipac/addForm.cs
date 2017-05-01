@@ -11,6 +11,9 @@ using MaterialSkin;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Form used for adding and editing users.
+    /// </summary>
     public partial class addForm : MaterialSkin.Controls.MaterialForm
     {
         User activeUser;
@@ -18,6 +21,10 @@ namespace Centipac
         int tempRank;
         bool isEdit = false;
 
+        /// <summary>
+        /// Initialization for adding users.
+        /// </summary>
+        /// <param name="active"></param>
         public addForm(User active)
         {
             InitializeComponent();
@@ -27,6 +34,13 @@ namespace Centipac
             activeUser = active;
         }
 
+        /// <summary>
+        /// Overload initialization function for editing users.
+        /// </summary>
+        /// <param name="active">Currently logged in user.</param>
+        /// <param name="user">Username of user to edit.</param>
+        /// <param name="name">Name of user to edit.</param>
+        /// <param name="rank">Rank of person to edit.</param>
         public addForm(User active, string user, string name, int rank)
         {
             InitializeComponent();
@@ -39,11 +53,18 @@ namespace Centipac
             isEdit = true;
         }
 
+        /// <summary>
+        /// Validates information before adding users to server.
+        /// </summary>
+        /// <param name="sender">btnAdd</param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!isEdit)
             {
+                // Checks availability of username, returns "valid" if available.
                 string availability = Server.checkUser(activeUser, txtUser.Text);
+
                 if (!availability.Contains("valid"))
                 {
                     msgbox msg = new msgbox(availability, "Error", 1);
@@ -56,6 +77,7 @@ namespace Centipac
                         msgbox conf = new msgbox("Are you sure you want to add " + txtUser.Text + "?", "Confirmation", 2);
                         if (conf.ShowDialog() == DialogResult.Yes)
                         {
+                            // Attempts to add user to the server.
                             string result = Server.addUser(activeUser, txtUser.Text, txtPass.Text, (comboRank.SelectedIndex + 1).ToString(), txtName.Text);
                             if (!result.Contains("token"))
                             {
@@ -88,6 +110,7 @@ namespace Centipac
                     msgbox conf = new msgbox("Are you sure you want to edit " + tempUser + "?", "Confirmation", 2);
                     if (conf.ShowDialog() == DialogResult.Yes)
                     {
+                        // Attempts to edit the user.
                         string result = Server.editUser(activeUser, tempUser, txtUser.Text, txtName.Text, (comboRank.SelectedIndex + 1).ToString());
                         if (!result.Contains("token"))
                         {
@@ -109,8 +132,14 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Initializes variables and interface components to prepare for the addition or editing of users.
+        /// </summary>
+        /// <param name="sender">addForm</param>
+        /// <param name="e"></param>
         private void addForm_Load(object sender, EventArgs e)
         {
+            // Goes through each existing rank and makes it an option.
             foreach (Rank rank in mainForm.titles)
             {
                 comboRank.Items.Add(rank.title);
@@ -118,6 +147,7 @@ namespace Centipac
 
             if (isEdit)
             {
+                // Values for editing a user.
                 comboRank.SelectedIndex = tempRank - 1;
                 txtUser.Text = tempUser;
                 txtName.Text = tempName;
@@ -127,10 +157,16 @@ namespace Centipac
             }
             else
             {
+                // Values for adding a user.
                 comboRank.SelectedIndex = comboRank.Items.Count - 1;
             }
         }
 
+        /// <summary>
+        /// Nullifies open form when closed to allow another form to be opened.
+        /// </summary>
+        /// <param name="sender">addForm</param>
+        /// <param name="e"></param>
         private void addForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (isEdit)

@@ -11,9 +11,15 @@ using MaterialSkin;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Custom Message Box class that uses the Material Theme.
+    /// </summary>
     public partial class msgbox : MaterialSkin.Controls.MaterialForm
     {
-
+        
+        /// <summary>
+        /// Enumerator for different button tpes.
+        /// </summary>
         public enum Buttons
         {
             NoButtons,
@@ -22,6 +28,12 @@ namespace Centipac
             Input
         }
 
+        /// <summary>
+        /// Initializer that uses integer value for button type.
+        /// </summary>
+        /// <param name="msg">Text to display in messagebox.</param>
+        /// <param name="title">Title of messagebox.</param>
+        /// <param name="type">Integer value of buttons to use.</param>
         public msgbox(String msg, String title, int type)
         {
             InitializeComponent();
@@ -31,6 +43,12 @@ namespace Centipac
             Settings.changeSkin(Properties.Settings.Default["COLORSCHEME"].ToString(), Properties.Settings.Default["THEME"].ToString(), this);
         }
 
+        /// <summary>
+        /// Overload initializer that uses Buttons enumerator instead of integer.
+        /// </summary>
+        /// <param name="msg">Text to display in messagebox.</param>
+        /// <param name="title">Title of messagebox.</param>
+        /// <param name="btn">Buttons enumerator value.</param>
         public msgbox(String msg, String title, Buttons btn)
         {
             InitializeComponent();

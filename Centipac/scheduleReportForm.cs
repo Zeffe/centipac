@@ -11,6 +11,9 @@ using MaterialSkin.Controls;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Form used for displaying an enlarged report of schedule for the week.
+    /// </summary>
     public partial class scheduleReportForm : MaterialForm
     {
         UserSchedule[] data;

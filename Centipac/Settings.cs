@@ -20,6 +20,11 @@ namespace Centipac
             { "Grey", new ColorScheme(Primary.Grey500, Primary.Grey700, Primary.Grey100, Accent.LightBlue200, TextShade.WHITE) }
         };   
 
+        /// <summary>
+        /// Method to get theme enumerator objects from a string.
+        /// </summary>
+        /// <param name="theme">"Light" or "Dark" string values.</param>
+        /// <returns>Themes enumeration value for given string.</returns>
         public static MaterialSkinManager.Themes getTheme(string theme)
         {
             switch (theme)
@@ -30,8 +35,14 @@ namespace Centipac
 
             return MaterialSkinManager.Themes.LIGHT;
         }
-        
-        //  Used to change skins and initialize skins for new forms.
+
+        /// <summary>
+        /// Used to change skins and initialize skins for new forms.
+        /// </summary>
+        /// <param name="colorScheme">ColorScheme from colorSchemes dictionary above.</param>
+        /// <param name="theme">Light or Dark theme.</param>
+        /// <param name="form">Form to set skin properties on.</param>
+        /// <returns>Returns the MaterialSkinManager object.</returns>
         public static MaterialSkinManager changeSkin(string colorScheme, string theme, MaterialSkin.Controls.MaterialForm form)
         {
             var materialSkinManager = MaterialSkinManager.Instance;

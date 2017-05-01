@@ -11,6 +11,9 @@ using ExtensionMethods;
 
 namespace Centipac
 {
+    /// <summary>
+    /// User Control used to view and edit customers.
+    /// </summary>
     public partial class ViewCustomer : UserControl
     {
         public class ViewCustomerEventArgs : EventArgs
@@ -35,7 +38,6 @@ namespace Centipac
             InitializeComponent();
         }
 
-        // LOOK HERE https://msdn.microsoft.com/en-us/library/a6h7e207(v=vs.110).aspx
 
         public Customer GetCustomer
         {
@@ -126,6 +128,10 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Fills the ViewCustomer object with a given Customer's data.
+        /// </summary>
+        /// <param name="customer">Customer to display.</param>
         void fillControl(Customer customer)
         {
             DateTime tempDate = customer.date.UnixTimeStampToDateTime();

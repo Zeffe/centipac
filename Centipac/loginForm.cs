@@ -16,6 +16,9 @@ using System.Threading;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Form that starts when program starts.
+    /// </summary>
     public partial class loginForm : MaterialSkin.Controls.MaterialForm
     {
         public loginForm()
@@ -28,8 +31,12 @@ namespace Centipac
 
         public static clockForm timeclockForm = null;
 
+        /// <summary>
+        /// Tries to log in to server using values in txtUser and txtPass.
+        /// </summary>
         void login()
         {
+            // Tries to log in, returns a User object in JSON form.
             string result = Server.login(txtUser.Text, txtPass.Text);
 
             User activeUser = new User();

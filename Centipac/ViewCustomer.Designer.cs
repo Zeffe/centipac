@@ -72,7 +72,7 @@
             this.cEmployee,
             this.cDateTime});
             this.listEditors.Depth = 0;
-            this.listEditors.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.listEditors.Font = new System.Drawing.Font("Roboto", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.listEditors.FullRowSelect = true;
             this.listEditors.Location = new System.Drawing.Point(263, 11);
             this.listEditors.MouseLocation = new System.Drawing.Point(-1, -1);

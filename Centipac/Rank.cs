@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Centipac
 {
+    ///<summary>
+    /// Associates a permission value with a title, used primarily for
+    /// serialization.
+    ///</summary>
     public class Rank
     {
-        public int rank { get; set; }
+        public int rank { get; set; }           // Integer value of permission level.
 
-        public string title { get; set; }
+        public string title { get; set; }       // Title of given rank.
     }
 }

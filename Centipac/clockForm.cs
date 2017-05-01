@@ -13,6 +13,12 @@ namespace Centipac
 {
     // TODO: add time clock functionality.
 
+    /// <summary>
+    /// AS OF RIGHT NOW COMPLETELY OBSOLETE.
+    /// AS OF RIGHT NOW COMPLETELY OBSOLETE.
+    /// AS OF RIGHT NOW COMPLETELY OBSOLETE.
+    /// AS OF RIGHT NOW COMPLETELY OBSOLETE.
+    /// </summary>
     public partial class clockForm : MaterialSkin.Controls.MaterialForm
     {
         public clockForm()

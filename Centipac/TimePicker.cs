@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Object used for selecting periods of time for specific days of the week.
+    /// </summary>
     class TimePicker
     {
         private MaterialSkin.Controls.MaterialProgressBar materialProgressBar;
@@ -23,6 +26,10 @@ namespace Centipac
 
         Dictionary<string, DayValue> dayData = new Dictionary<string, DayValue>();
 
+        /// <summary>
+        /// Saves DayValue for a given day in dayData dictionary.
+        /// </summary>
+        /// <param name="key">Given day of the week as string.</param>
         public void Save(string key)
         {
             if (materialProgressBar.Value != 0 && materialProgressBar.Offset != 0 && labelText != null)
@@ -39,17 +46,28 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Deletes the TimePicker object.
+        /// </summary>
         public void Delete()
         {
             materialProgressBar.Visible = false;
             timeLabel.Visible = false;
         }
 
+        /// <summary>
+        /// Used to get the name value the TimePicker is associated with.
+        /// </summary>
+        /// <returns>Name as string.</returns>
         public string getName()
         {
             return name.Text;
         }
 
+        /// <summary>
+        /// Populates the TimePicker with given data.
+        /// </summary>
+        /// <param name="data">Dictionary of days of week to DayValues.</param>
         public void populateData(Dictionary<string, DayValue> data)
         {
             foreach (KeyValuePair<string, DayValue> nd in data)
@@ -59,11 +77,19 @@ namespace Centipac
             dayData = data;
         }
 
+        /// <summary>
+        /// Used to get the UserSchedule object for a TimePicker.
+        /// </summary>
+        /// <returns>UserSchedule object.</returns>
         public UserSchedule getSchedule()
         {
             return schedule;
         }
 
+        /// <summary>
+        /// Used to get JSON data of a TimePicker.
+        /// </summary>
+        /// <returns>JSON String of information in TimePicker.</returns>
         public string getJsonData()
         {
             Dictionary<string, Dictionary<string, DayValue>> jsonFormat = new Dictionary<string, Dictionary<string, DayValue>>();
@@ -71,6 +97,10 @@ namespace Centipac
             return JsonConvert.SerializeObject(jsonFormat);
         }
 
+        /// <summary>
+        /// Used to get JSON object before it is converted to JSON.
+        /// </summary>
+        /// <returns>Dictionary values ready to be converted to JSON.</returns>
         public object getJsonObj()
         {
             Dictionary<string, Dictionary<string, DayValue>> jsonFormat = new Dictionary<string, Dictionary<string, DayValue>>();
@@ -83,6 +113,10 @@ namespace Centipac
             timeLabel.Visible = false;
         }
 
+        /// <summary>
+        /// Loads the correct values for a given day.
+        /// </summary>
+        /// <param name="key">Given day of week as string.</param>
         public void Load(string key)
         {
             try
@@ -157,12 +191,21 @@ namespace Centipac
             return materialProgressBar;
         }
 
+        /// <summary>
+        /// Creates the label that displays the time selected.
+        /// </summary>
+        /// <returns>Label.</returns>
         public Label CreateTimeLabel()
         {
             timeLabel.AutoSize = true;
             return timeLabel;
         }
 
+        /// <summary>
+        /// Creates the label that displays name next to TimePicker.
+        /// </summary>
+        /// <param name="_name">Name to display.</param>
+        /// <returns>Label.</returns>
         public Label CreateNameLabel(string _name)
         {
             name.Location = new Point(materialProgressBar.Location.X - 75, materialProgressBar.Location.Y - materialProgressBar.Height);
@@ -171,6 +214,13 @@ namespace Centipac
             return name;
         }
 
+        /// <summary>
+        /// Used to create the MaterialProgressBar object that displays on form.
+        /// </summary>
+        /// <param name="location">Point where the progress bar will be created.</param>
+        /// <param name="width">Width of progress bar.</param>
+        /// <param name="parent">Form to create the TimePicker in.</param>
+        /// <returns>MaterialProgressBar.</returns>
         public MaterialSkin.Controls.MaterialProgressBar CreateBar(Point location, int width, Form parent)
         {
             menu.Items.Add("Delete", null, menuDelete);
@@ -201,6 +251,11 @@ namespace Centipac
         private bool fromLeft = false, selecting = false;
         private string initTime, finalTime;
 
+        /// <summary>
+        /// Displays time on label as TimePicker is moused over.
+        /// </summary>
+        /// <param name="sender">materialProgressBar</param>
+        /// <param name="e"></param>
         private void mouseMove(object sender, MouseEventArgs e)
         {
             if (!selecting)
@@ -233,6 +288,11 @@ namespace Centipac
             }
         }        
 
+        /// <summary>
+        /// Selects time period when mouse is down.
+        /// </summary>
+        /// <param name="sender">materialProgressBar</param>
+        /// <param name="e"></param>
         private void mouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -280,6 +340,12 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Converts a progressbar value and width to 12 hour time format.
+        /// </summary>
+        /// <param name="progressBarWidth">Width of the progress bar.</param>
+        /// <param name="value">Value of the progress bar.</param>
+        /// <returns>Returns a string that tells what time is based as a percent out of 24.</returns>
         private string progressBarTime(int progressBarWidth, int value)
         {
             string _temp = "";
@@ -317,6 +383,11 @@ namespace Centipac
             toolTipWidthTemp = e.ToolTipSize.Width;            
         }
 
+        /// <summary>
+        /// Timer used for showing time as you select it.
+        /// </summary>
+        /// <param name="sender">timer</param>
+        /// <param name="e"></param>
         private void timerTick(object sender, EventArgs e)
         {
             finalTime = progressBarTime(materialProgressBar.Width, parentForm.PointToClient(Cursor.Position).X - materialProgressBar.Location.X);

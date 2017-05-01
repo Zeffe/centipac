@@ -11,6 +11,9 @@ using MaterialSkin.Controls;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Help Form used only for displaying help information.
+    /// </summary>
     public partial class helpForm : MaterialForm
     {
         public helpForm()

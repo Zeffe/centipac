@@ -12,6 +12,10 @@ using ExtensionMethods;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Form that shows when someone logs in with default credentials, prompts
+    /// user to create a new, unique, administrator account.
+    /// </summary>
     public partial class registerForm : MaterialSkin.Controls.MaterialForm
     {
         public registerForm(User user)
@@ -39,14 +43,21 @@ namespace Centipac
             }
         }
 
+        /// <summary>
+        /// Registers new default admin account and adds it to server.
+        /// </summary>
+        /// <param name="sender">btnRegister</param>
+        /// <param name="e"></param>
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (txtPass.Text == txtPass2.Text && txtUser.Text.Length > 4 && txtPass.Text.Length > 4 && txtName.Text != String.Empty)
             {
+                // Adds user and gets token for new account as result.
                 string result = Server.addUser(activeUser, txtUser.Text, txtPass.Text, "1", txtName.Text);
 
                 if (result.Contains("token"))
-                {                   
+                {     
+                    // If successful delete admin user and show login form again.
                     Server.deleteUser(activeUser, "admin");
                     activeUser.updateToken(result);
                     loginForm newLogin = new loginForm();

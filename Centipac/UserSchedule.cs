@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Class used for serializing and storing schedule information in TimePickers and on server.
+    /// Associates days of week with time values.
+    /// </summary>
     public class UserSchedule
     {
         public string name { get; set; }

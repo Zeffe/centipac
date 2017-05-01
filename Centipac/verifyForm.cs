@@ -18,6 +18,12 @@ namespace Centipac
         private const int adminPerm = 1;
         int permReq = 1;
 
+        /// <summary>
+        /// Initializes the verifyForm.
+        /// </summary>
+        /// <param name="active">Currently logged in user.</param>
+        /// <param name="formToLaunch">Form to launch if permissions are high enough.</param>
+        /// <param name="permLevel">Permission required to launch given form.</param>
         public verifyForm(User active, MaterialSkin.Controls.MaterialForm formToLaunch, int permLevel)
         {
             InitializeComponent();
@@ -32,6 +38,7 @@ namespace Centipac
         private void verifyForm_Load(object sender, EventArgs e)
         {
             txtPass.Hint = "Password for: " + activeUser.getUser();
+            // If user does not meet permission requirements, close form.
             if (activeUser.getPerms() > permReq)
             {
                 msgbox msg = new msgbox("Access Denied", "Error", 1);
@@ -45,6 +52,9 @@ namespace Centipac
             submit();
         }
 
+        /// <summary>
+        /// Verifies that password entered is correct.
+        /// </summary>
         void submit()
         {
             string token = Server.login(activeUser.getUser(), txtPass.Text);

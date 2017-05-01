@@ -16,8 +16,11 @@ namespace Centipac
         public string data { get; set; }
 
         public string name { get; set; }
-
-        //  Deserializes the json object returned by the server.
+ 
+        /// <summary>
+        /// Deserializes the json object returned by the server.
+        /// </summary>
+        /// <param name="json">JSON string returned from server.</param>
         public void updateToken(string json)
         {
             User temp = JsonConvert.DeserializeObject<User>(json);
@@ -25,6 +28,9 @@ namespace Centipac
             this.data = temp.data;
         }
 
+        /// <summary>
+        /// Updates the name value with name stored in server.
+        /// </summary>
         public void updateName()
         {
             name = Server.getName(this);
@@ -35,11 +41,19 @@ namespace Centipac
             return name;
         }
 
+        /// <summary>
+        /// Gets permission level from data.
+        /// </summary>
+        /// <returns>Permission integer.</returns>
         public int getPerms()
         {
             return Convert.ToInt32(this.data.Split('-')[1]);
         }
 
+        /// <summary>
+        /// Gets user name from data.
+        /// </summary>
+        /// <returns>Username as string.</returns>
         public string getUser()
         {
             return this.data.Split('_')[1].Split('-')[0];

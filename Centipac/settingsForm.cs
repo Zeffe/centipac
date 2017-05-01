@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace Centipac
 {
+    /// <summary>
+    /// Form used only for changing theme settings.
+    /// </summary>
     public partial class settingsForm : MaterialSkin.Controls.MaterialForm
     {
         public settingsForm()
